@@ -1,10 +1,12 @@
 @import-normalize;
+
 :root {
   --main-bg-color: #000;
   --white:#ffF;
-  --grey:#ddd;
+  --grey:#969696;
   --main-color01:#5257CF;
   --main-p-font-size:8pt;
+  --h1-fontsize: 18pt;
 }
 /* Scroll Bar */
 ::-webkit-scrollbar {
@@ -41,25 +43,111 @@ a{
   text-decoration: none;
   color:var(--white)
 }
+.home_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 15px;
+  h1{
+    font-size: var(--h1-fontsize);
+    margin: 0;
+  }
+  .more{
+    font-size: var(--main-p-font-size);
+    color:var(--grey);
+    font-weight: 100;
+  }
+  .desc{
+    font-size: var(--main-p-font-size);
+    color:var(--grey);
+    font-weight: 100;
+    text-align: right;
+  }
+}
 
 #home{
   width: 80%;
   margin:0 auto;
+  position: relative;
+  margin-top: -150px;
+  z-index: 9;
   #Newest{
+
+    
     .newest_list{
       display: flex;
+      width: 100%;
+
       // justify-content: center;
       // align-items: center;
+      &:hover .newest_item:not(:hover){
+        filter:brightness(0.5)
+      }
+
       .newest_item{
-        flex: 0 0 18vw;
-        height: 120px;
+        flex: 1;
         position: relative;
-        .title{
-          position: absolute;
-          left:2px;
-          bottom:2px;
+        margin:0.4%;
+        background-repeat: no-repeat;
+        background-position:  center;
+        background-size: cover;
+        transition: 250ms all;
+        padding-top:11%;
+        cursor: pointer;
+        &:first-child {
+          margin-left:0;
         }
 
+        &:last-child{
+          margin-right: 0;
+        }
+        &:hover{
+          transform: scale(1.2);
+          opacity: 1;
+          margin:0 1.8%;
+          z-index: 1;
+
+        }
+      
+        &:first-child:hover{
+          margin:0 1.8%;
+        }
+
+        &:last-child:hover{
+            margin:0 1.8%;
+        }
+        .title{
+          position: absolute;
+          left:5px;
+          bottom:5px;
+          font-size: 8pt;
+        }
+
+      }
+    }
+  }
+  #Home_services{
+    margin-top: 150px;
+    .service_list{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      
+      &:hover {
+        .service_item{
+          flex-grow: 1;
+        }
+        .service_item:not(:hover){
+          width: 20px;
+        }
+      }
+      .service_item{
+        padding-top:25%;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position:  center;
+        background-size: cover;
+        transition:all .5s ease;
       }
     }
   }
