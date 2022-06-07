@@ -2,32 +2,50 @@
   "service":[
     {
       "id":1,
-      "image":"w01.png",
-      "title":"ASUS ROG Brand Video 5",
-      "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
+      "image":"s01.png",
+      "title":"ANIMATION",
+      "desc":"需提供中英文字Animation is what we do best, whether it's 3D or 2D, photorealistic or stylized, characters or products, we breathe a soul into flat concepts; presenting the highest quality animation work."
     },
     {
       "id":2,
-      "image":"w01.png",
-      "title":"ASUS ROG Brand Video 5",
+      "image":"s02.png",
+      "title":"MOTION DESIGN",
       "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
     },
     {
       "id":3,
-      "image":"w01.png",
-      "title":"ASUS ROG Brand Video 5",
+      "image":"s03.png",
+      "title":"POST-PRODUCTION",
       "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
     },
     {
       "id":4,
-      "image":"w01.png",
-      "title":"ASUS ROG Brand Video 5",
+      "image":"s04.png",
+      "title":"INTERACTION",
       "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
     },
     {
       "id":5,
-      "image":"w01.png",
-      "title":"ASUS ROG Brand Video 5",
+      "image":"s01.png",
+      "title":"VIRTUAL PRODUCTION",
+      "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
+    },
+    {
+      "id":6,
+      "image":"s02.png",
+      "title":"R & D",
+      "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
+    },
+    {
+      "id":7,
+      "image":"s03.png",
+      "title":"EDUCATION",
+      "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
+    },
+    {
+      "id":8,
+      "image":"s04.png",
+      "title":"MARKET",
       "desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempus eget. Sed in dui ac ipsum feugiat ultricies. Phasellus vestibulum enim quis quam congue, non fringilla orci placerat. Praesent sollicitudin"
     }
   ]

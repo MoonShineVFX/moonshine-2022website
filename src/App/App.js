@@ -16,7 +16,6 @@ function App() {
       <Routes> 
             <Route path="/"  element={ <PublicPageLayout/>}>
               <Route path="" element={<Home />} />
-
             </Route>
             
             <Route path="admin"  element={ <DashboardPageLayout/>}>

@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Newest({data}) {
-  console.log(data)
   return (
     <div id="Newest">
       <div className="home_header header_newwest">

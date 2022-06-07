@@ -1,0 +1,29 @@
+{
+  "socialmedia":[
+    {
+      "id":1,
+      "image":"104.svg",
+      "link":"https://www.google.com"
+    },
+    {
+      "id":2,
+      "image":"vimeo.svg",
+      "link":"https://www.google.com"
+    },
+    {
+      "id":3,
+      "image":"linkin.svg",
+      "link":"https://www.google.com"
+    },
+    {
+      "id":4,
+      "image":"fb.svg",
+      "link":"https://www.google.com"
+    },
+    {
+      "id":5,
+      "image":"ins.svg",
+      "link":"https://www.google.com"
+    }
+  ]
+}
