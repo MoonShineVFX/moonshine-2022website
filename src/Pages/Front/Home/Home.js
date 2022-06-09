@@ -1,4 +1,6 @@
 import React from 'react'
+
+import Header from '../../../Components/Header'
 import Newest from '../Home/Newest'
 import Service from '../Home/Services'
 import Home_about from '../Home/Home_about'
@@ -17,11 +19,14 @@ function Home() {
 
   return (
     <section id="home">
+      <Header />
+      <div className="home_container">
+        <Newest data={newest}/> 
+        <Service data={service}/>
+        <Home_about />
+        <Award />
+      </div>
 
-      <Newest data={newest}/> 
-      <Service data={service}/>
-      <Home_about />
-      <Award />
       
     </section>
   )
