@@ -7,6 +7,10 @@ import DashboardPageLayout from '../Layouts/DashboardPageLayout'
 
 //pages
 import Home from '../Pages/Front/Home/Home'
+import About from '../Pages/Front/About/About'
+import Work from '../Pages/Front/Work/Work'
+import Services from '../Pages/Front/Services/Services';
+import Contact from '../Pages/Front/Contact/Contact'
 import AdminHome from '../Pages/Back/Home.js'
 
 
@@ -16,6 +20,11 @@ function App() {
       <Routes> 
             <Route path="/"  element={ <PublicPageLayout/>}>
               <Route path="" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/work" element={<Work />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/services" element={<Services />} />
+
             </Route>
             
             <Route path="admin"  element={ <DashboardPageLayout/>}>

@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import { BsArrowRightCircle } from "react-icons/bs";
 function Services({data}) {
-  const [hover, setHover] = useState(false);
   let [addActive, setAddActive] = useState({
     class: null,
     index: 1

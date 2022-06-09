@@ -3,42 +3,24 @@
     {
       "id":1,
       "chtName":"navbar1",
-      "engName":"CASE STUDY",
-      "type":"works"
+      "engName":"WORK",
+      "type":"work"
     },
     {
       "id":2,
       "chtName":"navbar2",
-      "engName":"INTRODUCTION",
-      "type":"intro_bigbg"
-    },
-    {
-      "id":3,
-      "chtName":"navbar3",
       "engName":"ABOUT",
       "type":"about"
     },
     {
+      "id":3,
+      "chtName":"navbar3",
+      "engName":"SERVICES",
+      "type":"services"
+    },
+    {
       "id":4,
       "chtName":"navbar4",
-      "engName":"SPACE CONFIGURATIONS",
-      "type":"space"
-    },
-    {
-      "id":5,
-      "chtName":"navbar5",
-      "engName":"VIRTUAL STUDIO R&D",
-      "type":"technology"
-    },
-    {
-      "id":6,
-      "chtName":"navbar6",
-      "engName":"PARTNERSHIP",
-      "type":"partner_marquee"
-    },
-    {
-      "id":7,
-      "chtName":"navbar7",
       "engName":"CONTACT",
       "type":"contact"
     }

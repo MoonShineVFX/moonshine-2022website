@@ -18,7 +18,7 @@ function Newest({data}) {
               <div 
                 key = {id}
                 className="newest_item" 
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/w01.png'})`}}
+                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/'+image})`}}
               >
                 <div className="title">ASUS ROG Brand Video 5</div>
               </div>

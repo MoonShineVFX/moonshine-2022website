@@ -1,6 +1,13 @@
 import React from 'react'
 import { FaVimeoV,FaLinkedin,FaFacebookF,FaInstagram } from "react-icons/fa";
-function Navbar() {
+import { useTranslation } from 'react-i18next';
+import { Link ,useLocation  } from "react-router-dom";
+function Navbar({data , toggleTrueFalse}) {
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);
+  };
+  const { pathname } = useLocation();
   return (
     <div id="navbar" className='site-menu'>
       <div className="logo">
@@ -8,18 +15,21 @@ function Navbar() {
       </div>
       <div className="navlist">
         <ul className='menu_list'>
-          <li>
-            <a href="/">WORK</a>
-          </li>
-          <li>
-            <a href="/">ABOUT</a>
-          </li>
-          <li>
-            <a href="/">SERVICES</a>
-          </li>
-          <li>
-            <a href="/">CONTACT</a>
-          </li>
+        { data?
+            data.map((item,index)=>{
+              return(
+                <li key={index}>
+                  <Link 
+                    to={item.type}
+                    spy={true}
+                    className={ pathname.substring(1) === item.type ? 'active' : ''}
+                  >
+                    {t(`${item.chtName}`)}
+                  </Link>
+                </li>
+              )
+            }): ""
+          }
         </ul>
         <ul className='social_list'>
           <li>
