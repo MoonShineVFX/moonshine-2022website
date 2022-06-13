@@ -11,7 +11,12 @@ function Navbar({data , toggleTrueFalse}) {
   return (
     <div id="navbar" className='site-menu'>
       <div className="logo">
-        <img src={process.env.PUBLIC_URL+'/images/logo.png'} alt="" />
+        <Link
+          to="/"
+        >
+          <img src={process.env.PUBLIC_URL+'/images/logo.png'} alt="" />
+        </Link>
+
       </div>
       <div className="navlist">
         <ul className='menu_list'>
@@ -21,7 +26,6 @@ function Navbar({data , toggleTrueFalse}) {
                 <li key={index}>
                   <Link 
                     to={item.type}
-                    spy={true}
                     className={ pathname.substring(1) === item.type ? 'active' : ''}
                   >
                     {t(`${item.chtName}`)}

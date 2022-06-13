@@ -46,7 +46,7 @@ function Row({title,movies}) {
           className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
           onClick={() => handleClick('right')}
         />
-        <div className="absolute top-0 bottom-0 right-0 z-30 m-auto h-full w-80 cursor-pointer opacity-100 transition bg-gradient-to-l from-black"></div>
+        <div className="absolute top-0 bottom-0 right-0 z-30 m-auto h-full w-80 cursor-pointer opacity-100 transition bg-gradient-to-l from-black pointer-events-none"></div>
       </div>
     </div>
   )
