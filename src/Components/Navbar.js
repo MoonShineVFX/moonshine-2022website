@@ -2,7 +2,7 @@ import React from 'react'
 import { FaVimeoV,FaLinkedin,FaFacebookF,FaInstagram } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import { Link ,useLocation  } from "react-router-dom";
-function Navbar({data , toggleTrueFalse}) {
+function Navbar({data , toggleTrueFalse,socialmedia}) {
   const { t, i18n } = useTranslation();
   const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
@@ -36,23 +36,20 @@ function Navbar({data , toggleTrueFalse}) {
           }
         </ul>
         <ul className='social_list'>
-          <li>
-            <a href="/">
-              <img className='imglogo' src={process.env.PUBLIC_URL+'/images/104logo.png'} alt="" />
-            </a>
-          </li>
-          <li>
-            <a href="/"><FaVimeoV color="white"/></a>
-          </li>
-          <li>
-            <a href="/"><FaLinkedin color="white"/></a>
-          </li>
-          <li>
-            <a href="/"><FaFacebookF color="white"/></a>
-          </li>
-          <li>
-            <a href="/"><FaInstagram color="white"/></a>
-          </li>
+          {
+            socialmedia.length ? 
+            socialmedia.map((item,index)=>{
+              const {id,image, link}=item
+              return(
+                <li key={id} className="social">
+                  <a href={link} target="_blank" rel="noreferrer">
+                    <img src={process.env.PUBLIC_URL+ '/images/socialicon/' + image} alt="" />
+                  </a> 
+                </li>
+              )
+            }) : <div> </div>
+          }
+
         </ul>
         <ul>
 

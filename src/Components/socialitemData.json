@@ -2,28 +2,32 @@
   "socialmedia":[
     {
       "id":1,
-      "image":"104.svg",
+      "image":"104logo_200x200.png",
       "link":"https://www.google.com"
     },
     {
       "id":2,
       "image":"vimeo.svg",
-      "link":"https://www.google.com"
+      "link":"https://www.google.com",
+      "faicons":"FaVimeoV"
     },
     {
       "id":3,
       "image":"linkin.svg",
-      "link":"https://www.google.com"
+      "link":"https://www.google.com",
+      "faicons":"FaLinkedin"
     },
     {
       "id":4,
       "image":"fb.svg",
-      "link":"https://www.google.com"
+      "link":"https://www.google.com",
+      "faicons":"FaFacebookF"
     },
     {
       "id":5,
       "image":"ins.svg",
-      "link":"https://www.google.com"
+      "link":"https://www.google.com",
+      "faicons":"FaInstagram"
     }
   ]
 }

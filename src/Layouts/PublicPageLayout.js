@@ -15,7 +15,7 @@ function PublicPageLayout() {
   return (
     <React.Fragment>
       <RecoilRoot>
-      <Navbar data={navbar}/>
+      <Navbar data={navbar} socialmedia = {socialmedia}/>
       <Outlet />
       <Footer footerData={footerData} socialmedia={socialmedia}/>
       </RecoilRoot>
