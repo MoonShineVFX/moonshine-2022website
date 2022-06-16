@@ -9,6 +9,10 @@ import NavData from '../Components/navbar.json'
 import footerData from '../Components/footer.json'
 import socialMediaData from '../Components/socialitemData.json'
 import { RecoilRoot } from 'recoil';
+
+
+
+
 function PublicPageLayout() {
   const {socialmedia} = socialMediaData
   const {navbar} =NavData

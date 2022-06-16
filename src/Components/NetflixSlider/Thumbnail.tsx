@@ -14,7 +14,7 @@ function Thumbnail({movie}) {
       }}
     >
       <img
-        src={process.env.PUBLIC_URL + '/images/work/'+ movie.image} 
+        src={movie.imgpath} 
         layout="fill"
         className="rounded-sm object-cover md:rounded saturate-80"
         alt={'movie.name'}

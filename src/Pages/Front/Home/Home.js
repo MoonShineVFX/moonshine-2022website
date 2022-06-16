@@ -7,6 +7,7 @@ import Home_about from '../Home/Home_about'
 import Award from './Award'
 
 
+
 //data
 import newestData from './Newest.json'
 import serviceData from './Services.json'
