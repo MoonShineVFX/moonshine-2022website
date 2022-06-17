@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '../../atoms/modalAtom';
 import { Movie } from '../../types';
 function Thumbnail({movie}) {
+  console.log(movie)
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
   return (
@@ -17,7 +18,7 @@ function Thumbnail({movie}) {
         src={movie.imgpath} 
         layout="fill"
         className="rounded-sm object-cover md:rounded saturate-80"
-        alt={'movie.name'}
+        alt={movie.title}
       />
     </div>
   )

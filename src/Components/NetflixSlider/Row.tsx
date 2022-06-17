@@ -1,10 +1,15 @@
-import React,{useRef, useState} from 'react'
+import React,{useRef, useState, useEffect} from 'react'
 import { HiOutlineChevronRight,HiOutlineChevronLeft } from "react-icons/hi";
 import Thumbnail from './Thumbnail';
-function Row({title,movies}) {
-  console.log(movies)
+
+//helper
+import { queryByCategoryId } from '../../Helper/getfunction'
+
+function Row({title,movies,categoryData}) {
+  // console.log(categoryData)
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
+  const [workData, setWorkData] = useState([]);
 
   const handleClick = (direction) => {
     setIsMoved(true);
@@ -19,6 +24,11 @@ function Row({title,movies}) {
       rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
+  useEffect(()=>{
+    queryByCategoryId(categoryData.id , function(res){
+      setWorkData(res)
+    })
+  },[])
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
@@ -37,9 +47,12 @@ function Row({title,movies}) {
           ref={rowRef}
           className="flex items-center overflow-hidden space-x-0.5  md:space-x-2.5 md:p-2"
         >
-          {movies.map((movie) => (
-            <Thumbnail key={movie.id} movie={movie} />
-          ))}
+          {
+            workData.length > 0 ?
+            workData.map((movie) => (
+              <Thumbnail key={movie.id} movie={movie} />
+            )) : <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"></svg>
+          }
         </div>
 
         <HiOutlineChevronRight
