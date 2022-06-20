@@ -43,14 +43,7 @@
     }
   }
   .caption{
-    position: absolute;
     color:white;
-    width: 700px;
-    top:40%;
-    left:10%;
-    transform: translateY(-50%);
-    // transform: translate(-50%, -50%);
-    text-align: left;
     z-index: 2;
     .title{
       font-size: 2.5rem;

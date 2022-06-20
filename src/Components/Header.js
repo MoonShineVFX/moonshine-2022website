@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
+import { motion } from "framer-motion"
 function Header() {
   return (
     <div id="header">
@@ -17,9 +18,10 @@ function Header() {
           config={{ vimeo: { playerOptions: { background: true }}}}
         />
       </div>
-      <div className="caption">
-        <div className="title">ASUS ROG Brand Video 5</div>
-        <button type='button' className="header_playbtn" >play video</button>
+      <div className="caption absolute  inset-0 flex flex-col justify-center items-center -translate-y-20">
+          <img src={ process.env.PUBLIC_URL + '/images/MS_logo.svg'} alt="" className='w-1/3' />
+        {/* <div className="title">MOONSHINE</div> */}
+        {/* <button type='button' className="header_playbtn" >play video</button> */}
       </div>
     
     </div>

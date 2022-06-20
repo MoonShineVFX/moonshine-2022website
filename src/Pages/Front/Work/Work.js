@@ -4,12 +4,7 @@ import { modalState, movieState } from '../../../atoms/modalAtom';
 import { Movie } from '../../../types';
 import ImgHeader from '../../../Components/ImgHeader'
 import Row from '../../../Components/NetflixSlider/Row'
-import Modal from '../../../Components/NetflixSlider/Modal';
-
-// firebase 資料庫連線
-import db from '../../../firebaseConfig/firebase'
-import {collection, query,  getDocs,orderBy} from "firebase/firestore"
-import { getStorage, ref, getDownloadURL,  } from "firebase/storage";
+import Modal from '../../../Components/NetflixSlider/Modal'; 
 
 //data
 import worksData from './work.json'

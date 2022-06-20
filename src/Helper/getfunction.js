@@ -7,7 +7,18 @@ const storage = getStorage();
 
 
 /**
- * 到 firebase 撈作品資料表
+ * 取5筆資料
+ * **/
+export const getNewestWorks = async (callback) =>{
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(5))
+  const data = await getDocs(q);
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
+
+/**
+ * 到 firebase 撈作品資料表 全部
  * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用
  * **/ 
 export const getWorks = async (callback)=>{
@@ -59,7 +70,7 @@ const mapWorkData =async (data , callback)=>{
   callback(data.docs.map(doc=> doc.data()))
 }
 
-// invalid
+// invalid 沒在佣
 const mapCategoryData = async ( data ,callback)=>{
   const newArray = []
   const cateArr= data.map( async (element) => {
@@ -72,6 +83,7 @@ const mapCategoryData = async ( data ,callback)=>{
 
 /**
  * query by catergory id
+ * 按分類 分好作品  給ROW用
  * **/
 export const queryByCategoryId = async (cid,callback)=>{
 

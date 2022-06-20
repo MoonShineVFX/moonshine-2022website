@@ -1,6 +1,12 @@
 import React from 'react'
-
+import { useRecoilState } from 'recoil';
+import { modalState, movieState } from '../../../atoms/modalAtom';
+import { Movie } from '../../../types';
 function Newest({data}) {
+  console.log(data)
+  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  
   return (
     <div id="Newest">
       <div className="home_header header_newwest">
@@ -13,14 +19,18 @@ function Newest({data}) {
       <div className="newest_list">
         {
           data ? data.map((item)=>{
-            const { id,image,title,desc} = item
+            const { id,image,title,imgpath} = item
             return(
               <div 
                 key = {id}
                 className="newest_item" 
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/'+image})`}}
+                style={{backgroundImage: `url(${imgpath})`}}
+                onClick={() => {
+                  setShowModal(true);
+                  setCurrentMovie(item);
+                }}
               >
-                <div className="title">ASUS ROG Brand Video 5</div>
+                <div className="title">{title}</div>
               </div>
             )
           }) : <div>Loading</div>
