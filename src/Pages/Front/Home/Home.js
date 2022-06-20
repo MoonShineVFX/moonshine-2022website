@@ -29,7 +29,7 @@ function Home() {
     getNewestWorks((res)=>{
       setNewestWorkData(res)
     })
-  })
+  },[])
 
   return (
     <section id="home">

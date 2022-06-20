@@ -94,3 +94,13 @@ export const queryByCategoryId = async (cid,callback)=>{
     callback(res)
   })
 }
+
+
+/**
+ * 按照分類ID 取得作品的 並且分頁
+ * lastestdoc 很重要
+ * **/
+ let latestDoc = null
+export const nextPage=(last) =>{
+ 
+}

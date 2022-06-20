@@ -2,6 +2,7 @@ import React from 'react'
 import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '../../../atoms/modalAtom';
 import { Movie } from '../../../types';
+import { Link   } from "react-router-dom";
 function Newest({data}) {
   console.log(data)
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -11,7 +12,7 @@ function Newest({data}) {
     <div id="Newest">
       <div className="home_header header_newwest">
         <h1>Newest</h1>
-        <div className="more">More</div>
+        <Link to='work' className="more hover:text-white">More</Link>
 
       </div>
       

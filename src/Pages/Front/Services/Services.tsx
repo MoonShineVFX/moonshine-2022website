@@ -4,6 +4,7 @@ import { motion,AnimatePresence  } from "framer-motion"
 import serviceData from '../Home/Services.json';
 import { BsShieldLockFill } from 'react-icons/bs';
 import { resolve } from 'path';
+import { Link   } from "react-router-dom";
 
 function Services() {
   const {service} = serviceData
@@ -45,6 +46,8 @@ function Services() {
     setCurrentData(service[0])
   },[])
   return (
+    <>
+    
     <div className="relative  w-full h-screen">
       <div className='w-full h-screen  absolute  bg-gradient-to-t from-black z-10'></div>
       <AnimatePresence>
@@ -94,8 +97,29 @@ function Services() {
           </motion.div>
           )
         }
+        {
+          currentData.types === 'link' ? 
+         showBg && (
+          <motion.a 
+            key='link'
+            href={currentData.link}
+            target="_blank"
+            className='inline-flex items-center justify-center h-12 px-5 py-0 text-sm font-semibold text-center text-gray-200 no-underline align-middle transition-all duration-300 ease-in-out bg-transparent border-2 border-zinc-600 border-solid rounded-full cursor-pointer select-none hover:text-white hover:border-white focus:shadow-xs focus:no-underline mt-5'
+            initial={{ opacity: 0 , y: '-2vw' }}
+            animate={{ opacity: 1 , y:  0}}
+            exit={{ opacity: 0, y: '-2vw' }}
+            transition={{delay:0.4 , duration: 0.5}}
+          >
+            Visit Website
+          </motion.a>
+
+        ) : null
+        }
         
         </AnimatePresence>
+
+
+
       </div>
       <div className='flex  border-t  border-[#ffffff83] absolute bottom-0 w-full'>
         {
@@ -114,6 +138,44 @@ function Services() {
         }
       </div>
     </div>
+    {
+        currentData.types === 'article' ? 
+        <div className=''>
+          <div className="text-center pt-16 md:pt-32">
+            <p className="text-sm md:text-base text-green-500 font-bold"> {currentData.title}</p>
+            <h1 className="font-bold break-normal text-3xl md:text-5xl">{currentData.title}</h1>
+          </div>
+          <div className="container max-w-5xl mx-auto">
+          {
+            currentData.children.map((child,idx)=>{
+              const {types , title,text,image} = child
+              return(
+                <>
+                  {types === 'one-image' ? 
+                  <div 
+                    className=" w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" 
+                    style={{
+                      height: "35vh",
+                      backgroundImage: `url(${process.env.PUBLIC_URL + '/images/service/' + image})`
+                    }}
+                    ></div> :""}
+                  {types === 'title-text' ?  
+                  <div className="p-8 text-center">
+                    <div className="text-2xl md:text-3xl mb-5">{title}</div>
+                    <div className="py-6 text-slate-500">{text}</div>
+                  </div> : ""}
+
+                </>
+              )
+            })
+          }
+          </div>
+        </div> : null
+
+
+
+      }
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 import React,{useRef, useState, useEffect} from 'react'
 import { HiOutlineChevronRight,HiOutlineChevronLeft } from "react-icons/hi";
 import Thumbnail from './Thumbnail';
-
+import { CgMoreO } from "react-icons/cg";
 //helper
 import { queryByCategoryId } from '../../Helper/getfunction'
 
@@ -32,8 +32,9 @@ function Row({title,movies,categoryData}) {
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
-      <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition-colors duration-200 hover:text-white md:text-2xl">
+      <h2 className="flex items-center w-full cursor-pointer text-sm font-semibold text-[#e5e5e5] transition-colors duration-200  md:text-2xl">
         {title}
+        <div className='flex items-center text-xs ml-5 font-thin text-zinc-400 hover:text-white'> <CgMoreO/> <p className='ml-1'>More</p></div>
       </h2>
       <div className="group relative md:-ml-2">
         <HiOutlineChevronLeft

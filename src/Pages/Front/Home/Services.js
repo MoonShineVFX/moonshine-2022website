@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { BsArrowRightCircle } from "react-icons/bs";
+import { Link   } from "react-router-dom";
 function Services({data}) {
   let [addActive, setAddActive] = useState({
     class: null,
@@ -29,7 +30,7 @@ photorealistic or stylized, characters or products, we breathe a soul into flat 
         <div className="service_list">
           {
             data ? data.map((item)=>{
-              const { id,image,title,desc} = item
+              const { id,image,title,desc,params_name} = item
               return(
                 <div 
                   data-id={id}
@@ -44,9 +45,12 @@ photorealistic or stylized, characters or products, we breathe a soul into flat 
                     <div className="desc">
                       {desc}
                     </div>
-                    <div className='icon_btn'>
-                      <BsArrowRightCircle size={25}/>
+                    <div className="mt-3 hover:translate-x-2.5 transition">
+                      <Link to={`services?q=${params_name}`}>
+                        <BsArrowRightCircle size={25}/>
+                      </Link>
                     </div>
+
                   </div>
 
                 </div>

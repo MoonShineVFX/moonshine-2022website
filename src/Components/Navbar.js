@@ -41,7 +41,7 @@ function Navbar({data , toggleTrueFalse,socialmedia}) {
             socialmedia.map((item,index)=>{
               const {id,image, link}=item
               return(
-                <li key={id} className="social">
+                <li key={id} className="social hover:-translate-y-1 transition">
                   <a href={link} target="_blank" rel="noreferrer">
                     <img src={process.env.PUBLIC_URL+ '/images/socialicon/' + image} alt="" />
                   </a> 
