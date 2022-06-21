@@ -1,6 +1,6 @@
 // firebase 資料庫連線
 import db from '../firebaseConfig/firebase'
-import {collection, query,  getDocs,orderBy,where,limit} from "firebase/firestore"
+import {collection, query,  getDocs,orderBy,where,limit,startAt} from "firebase/firestore"
 import { getStorage, ref, getDownloadURL,  } from "firebase/storage";
 import { async } from '@firebase/util';
 const storage = getStorage();
@@ -10,7 +10,7 @@ const storage = getStorage();
  * 取5筆資料
  * **/
 export const getNewestWorks = async (callback) =>{
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(5))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'), where("display", "==", '1'),limit(5))
   const data = await getDocs(q);
   mapWorkData(data.docs.map(doc=> doc.data()),function(res){
     callback(res)
@@ -22,7 +22,7 @@ export const getNewestWorks = async (callback) =>{
  * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用
  * **/ 
 export const getWorks = async (callback)=>{
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'), where("display", "==", '1'))
   const data = await getDocs(q);
   mapWorkData(data.docs.map(doc=> doc.data()),function(res){
     callback(res)
@@ -70,16 +70,6 @@ const mapWorkData =async (data , callback)=>{
   callback(data.docs.map(doc=> doc.data()))
 }
 
-// invalid 沒在佣
-const mapCategoryData = async ( data ,callback)=>{
-  const newArray = []
-  const cateArr= data.map( async (element) => {
-    return queryByCategoryId(element.id , function (res) {
-      return {res}
-    })
-  })
-  console.log(await Promise.all(cateArr))
-}
 
 /**
  * query by catergory id
@@ -87,7 +77,7 @@ const mapCategoryData = async ( data ,callback)=>{
  * **/
 export const queryByCategoryId = async (cid,callback)=>{
 
-  const q = query(collection(db, "data"), where("category", "==", cid), where("display", "==", '1'),limit(15));
+  const q = query(collection(db, "data"), where("category", "==", cid),orderBy('time_added' , 'desc'), where("display", "==", '1'),limit(15));
   const data = await getDocs(q);
   // console.log(data.docs.map(doc=> doc.data()))
   mapWorkData(data.docs.map(doc=> doc.data()),function(res){
@@ -100,7 +90,34 @@ export const queryByCategoryId = async (cid,callback)=>{
  * 按照分類ID 取得作品的 並且分頁
  * lastestdoc 很重要
  * **/
- let latestDoc = null
-export const nextPage=(last) =>{
- 
+let latestDoc = null
+export const getWorksByCategoryAndLimits = async (cid,callback)=>{
+
+  const q = query(collection(db, "data"), 
+    where("category", "==", cid),
+    orderBy('time_added' , 'desc'), 
+    where("display", "==", '1'))
+    ;
+  const data = await getDocs(q);
+  latestDoc = data.docs[data.docs.length -1 ]
+
+
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
+
+export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
+  const q = query(collection(db, "data"), 
+    where("category", "==", cid),
+    orderBy('time_added' , 'desc'),
+    startAt(latestDoc),
+    where("display", "==", '1'),limit(10))
+    ;
+  const data = await getDocs(q);
+
+
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
 }

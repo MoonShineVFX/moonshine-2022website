@@ -12,6 +12,7 @@ import Work from '../Pages/Front/Work/Work'
 import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
 import AdminHome from '../Pages/Back/Home.js'
+import By_Category from '../Pages/Front/Work/By_Category';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path="/work" element={<Work />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/By_Category/:cid" element={<By_Category />} />
 
             </Route>
             

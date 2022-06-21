@@ -10,3 +10,14 @@ export const movieState = atom<Movie  | null>({
   key: 'movieState',
   default: null,
 });
+
+
+export const byCategoryModalState = atom({
+  key: 'byCategoryModalState',
+  default: false,
+});
+
+export const categoryState = atom({
+  key: 'categoryState',
+  default: null,
+});

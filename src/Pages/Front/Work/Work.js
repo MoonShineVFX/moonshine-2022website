@@ -1,10 +1,11 @@
 import React , { useState, useEffect }from 'react'
 import { useRecoilValue } from 'recoil';
-import { modalState, movieState } from '../../../atoms/modalAtom';
+import { modalState, movieState ,byCategoryModalState } from '../../../atoms/modalAtom';
 import { Movie } from '../../../types';
 import ImgHeader from '../../../Components/ImgHeader'
 import Row from '../../../Components/NetflixSlider/Row'
 import Modal from '../../../Components/NetflixSlider/Modal'; 
+import ByCategoryModal from '../../../Components/ByCategoryModal';
 
 //data
 import worksData from './work.json'
@@ -15,10 +16,10 @@ import { getCategory} from '../../../Helper/getfunction'
 function Work() {
   const {works} = worksData
   const showModal = useRecoilValue(modalState);
+  const showCategoryModal = useRecoilValue(byCategoryModalState);
   const [workData, setWorkData] = useState([]);
   const [filteredWorkData, setFilteredWorkData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
-
   //執行撈資料
   useEffect(()=>{
     // getWorks()
@@ -32,7 +33,7 @@ function Work() {
   },[])
   return (
     <div id="work">
-      <ImgHeader imgPath={'work01.png'} button={'ALL'}/>
+      <ImgHeader imgPath={'work01.png'} button={'ALL PROJECTS'} categoryData={categoryData[0]} />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16 -mt-20 z-10">
         {/* <Row title="ALL" movies={workData} /> */}
         {
@@ -49,6 +50,7 @@ function Work() {
       </main>
       
       {showModal && <Modal />}
+      {showCategoryModal && <ByCategoryModal />}
     </div>
   )
 }

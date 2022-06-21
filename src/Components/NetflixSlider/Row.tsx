@@ -2,11 +2,17 @@ import React,{useRef, useState, useEffect} from 'react'
 import { HiOutlineChevronRight,HiOutlineChevronLeft } from "react-icons/hi";
 import Thumbnail from './Thumbnail';
 import { CgMoreO } from "react-icons/cg";
+import { Link   } from "react-router-dom";
+
+import { useRecoilState } from 'recoil';
+import { byCategoryModalState,categoryState } from '../../atoms/modalAtom';
+
 //helper
 import { queryByCategoryId } from '../../Helper/getfunction'
 
 function Row({title,movies,categoryData}) {
-  // console.log(categoryData)
+  const [showModal, setShowModal] = useRecoilState(byCategoryModalState);
+  const [categoryId, setCategoryId] = useRecoilState(categoryState);
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
   const [workData, setWorkData] = useState([]);
@@ -32,9 +38,13 @@ function Row({title,movies,categoryData}) {
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
-      <h2 className="flex items-center w-full cursor-pointer text-sm font-semibold text-[#e5e5e5] transition-colors duration-200  md:text-2xl">
+      <h2 className="group  flex items-center w-full cursor-pointer text-sm font-semibold text-[#e5e5e5da] hover:text-white  transition duration-200  md:text-2xl"
+        onClick={() => {
+          setShowModal(true);
+          setCategoryId(categoryData)
+        }}>
         {title}
-        <div className='flex items-center text-xs ml-5 font-thin text-zinc-400 hover:text-white'> <CgMoreO/> <p className='ml-1'>More</p></div>
+        <div  className='flex items-center text-sm ml-1 font-bold text-slate-500 hover:text-white opacity-0 group-hover:opacity-100 transition -translate-x-2 group-hover:translate-x-2'> <p className='ml-1'>Show More</p></div>
       </h2>
       <div className="group relative md:-ml-2">
         <HiOutlineChevronLeft
@@ -52,7 +62,7 @@ function Row({title,movies,categoryData}) {
             workData.length > 0 ?
             workData.map((movie) => (
               <Thumbnail key={movie.id} movie={movie} />
-            )) : <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"></svg>
+            )) : <svg className="animate-spin h-5 w-5 mr-3 fill-white" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.917 7A6.002 6.002 0 0 0 2.083 7H1.071a7.002 7.002 0 0 1 13.858 0h-1.012z"/></svg>
           }
         </div>
 

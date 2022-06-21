@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react'
-import { HiOutlineX ,HiVolumeUp ,HiVolumeOff} from "react-icons/hi";
+import { HiOutlineX} from "react-icons/hi";
 import MuiModal from '@mui/material/Modal';
 import ReactPlayer from 'react-player';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -7,13 +7,7 @@ import { modalState, movieState } from '../../atoms/modalAtom';
 import { Element, Genre, Movie } from '../../types';
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
-  const [trailer, setTrailer] = useState<string | null>(null);
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [muted, setMuted] = useState<boolean>(false);
-  const [addedToList, setAddedToList] = useState<boolean>(false);
-  const [moviesInList, setMoviesInList] = useState< Movie[]>(
-    []
-  );
+
   const movie = useRecoilValue(movieState);
   const handleClose = () => {
     setShowModal(false);
