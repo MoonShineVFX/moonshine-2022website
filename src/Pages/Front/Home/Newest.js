@@ -18,7 +18,7 @@ function Newest({data}) {
       </div>
       
       
-      <div className=" flex w-full group ">
+      <div className=" flex w-full  ">
         {
           data ? data.map((item)=>{
             const { id,image,title,imgpath} = item
@@ -29,14 +29,17 @@ function Newest({data}) {
                 animate={{ opacity: 1}}
                 exit={{ opacity: 0 }}
                 transition={{type:'spring' , stiffness:50}}
-                className=" flex-1 relative m-[0.5%] bg-no-repeat bg-cover bg-center  pt-32 cursor-pointer first:ml-0 last:mr-0 hover:scale-110 hover:my-0 hover:mx-[1.8%] hover:z-10   transition-all" 
-                style={{backgroundImage: `url(${imgpath})`}}
+                className=" flex-1 relative m-[0.5%] cursor-pointer first:ml-0 last:mr-0 h-auto  group transition-all " 
                 onClick={() => {
                   setShowModal(true);
                   setCurrentMovie(item);
                 }}
-              >
-                <div className=" text-xs absolute left-1 bottom-1">{title}</div>
+              > 
+                <div className='overflow-hidden'>
+                  <div className='bg-no-repeat bg-cover bg-center pt-[55%] transition-all brightness-75 hover:brightness-110 duration-300  hover:scale-125' style={{backgroundImage: `url(${imgpath})`}}></div>
+                </div>
+
+                <div className="mt-2 text-xs text-stone-300 opacity-0 group-hover:opacity-100 transition duration-300">{title}</div>
               </motion.div>
             )
           }) :<svg className="animate-spin h-5 w-5 mr-3 fill-white" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.917 7A6.002 6.002 0 0 0 2.083 7H1.071a7.002 7.002 0 0 1 13.858 0h-1.012z"/></svg>
