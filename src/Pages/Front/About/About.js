@@ -1,7 +1,12 @@
 import React from 'react'
-
+import { motion,AnimatePresence  } from "framer-motion"
 import ImgHeader from '../../../Components/ImgHeader'
 function About() {
+  const images = [
+    'about-s04.png',
+    'about-s02.png',
+    'about-s03.png'
+  ];
   return (
     <div id="about" className=''>
       <ImgHeader imgPath={'work01.png'} />
@@ -55,22 +60,45 @@ function About() {
           </div>
           <div className="right flex-auto  w-32">
             <div className="flex">
-              <div 
-                className="bg-center bg-no-repeat bg-cover w-32 max-w-xs pt-80   mr-4"
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/work01.png'})`}}
-              ></div>
-               <div 
-                className="bg-center bg-no-repeat bg-cover w-32 pt-80 mr-4 translate-y-40"
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/work02.png'})`}}
-              ></div>
-               <div 
+              <motion.div
+                initial={{ opacity: 0, y:'0'  }}
+                animate={{ opacity: 1,y:'1vw' }}
+                exit={{ opacity: 0 }}
+                transition={{type:'spring' , stiffness:30 }} 
+                className=" w-32 max-w-xs mr-4"
+              >
+                <div 
+                className="bg-center bg-no-repeat bg-cover w-full max-w-xs pt-80"
+                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/'+images[0] })`}} ></div>
+              </motion.div>
+               <motion.div 
+                initial={{ opacity: 0, y:0  }}
+                animate={{ opacity: 1,y:'12vw' }}
+                exit={{ opacity: 0 }}
+                transition={{type:'spring' , stiffness:30 , delay:0.15}} 
+                className="w-32 mr-4 "
+
+              >
+                <div 
+                className="bg-center bg-no-repeat bg-cover w-full max-w-xs pt-80"
+                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/about-s02.png'})`}} ></div>
+              </motion.div>
+               <motion.div 
+                initial={{ opacity: 0, y:'-6vw'  }}
+                animate={{ opacity: 1,y:'5vw' }}
+                exit={{ opacity: 0 }}
+                transition={{type:'spring' , stiffness:30 , delay:0.25}} 
                 className="bg-center bg-no-repeat bg-cover w-32 pt-80   mr-4 translate-y-20"
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/work03.png'})`}}
-              ></div>
-               <div 
+                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/about-s03.png'})`}}
+              ></motion.div>
+               <motion.div 
+                initial={{ opacity: 0, y:15  }}
+                animate={{ opacity: 1,y:'-2vw' }}
+                exit={{ opacity: 0 }}
+                transition={{type:'spring' , stiffness:30 , delay:0.35}} 
                 className="bg-center bg-no-repeat bg-cover w-32 pt-80  translate-y-12"
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/work/work04.png'})`}}
-              ></div>
+                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/about-s04.png'})`}}
+              ></motion.div>
 
             </div>
 

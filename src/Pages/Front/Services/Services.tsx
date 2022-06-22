@@ -4,14 +4,17 @@ import { motion,AnimatePresence  } from "framer-motion"
 import serviceData from '../Home/Services.json';
 import { BsShieldLockFill } from 'react-icons/bs';
 import { resolve } from 'path';
-import { Link   } from "react-router-dom";
+import { Link , useSearchParams   } from "react-router-dom";
 
 function Services() {
   const {service} = serviceData
   const [currentData , setCurrentData] = useState([])
   const [showBg , setShowBg] = useState(true)
-  const handleClick = (dataId) =>{
+  const [getParams, setParam] = useSearchParams()
+  const q = getParams.getAll('q')
 
+
+  const handleClick = (dataId) =>{
     disapearElement()
       .then(res=>{
         console.log(res)
@@ -27,8 +30,6 @@ function Services() {
       .catch((err)=>{
         console.log(err)
       })
-    
-  
   }
   const disapearElement = ()=>{
     return new Promise((resolve, reject) => {
@@ -41,9 +42,22 @@ function Services() {
 
     })
   }
+  const filterData = () =>{
+    if( q.length !== 1){
+      setCurrentData(service[0])
+      setParam({q : service[0].params_name})
+    } else{
+      const data = service.filter(function (e){
+        return e.params_name === q[0] ; 
+      })
+      setCurrentData(data[0])
+    }
+
+  }
 
   useEffect(()=>{
-    setCurrentData(service[0])
+    window.scrollTo(0, 0)
+    filterData()
   },[])
   return (
     <>
@@ -124,12 +138,15 @@ function Services() {
       <div className='flex  border-t  border-[#ffffff83] absolute bottom-0 w-full'>
         {
           service.map((item,index)=>{
-            const {id, title} = item
+            const {id, title,params_name} = item
             return(
               <div 
                 key = {id}
                 className='flex-1 flex justify-center items-center border-x border-[#ffffff1a]  h-48 min-h-0 box-border transition cursor-pointer text-[#c5c5c5] hover:bg-[#0000004d] hover:border-t-4 hover:border-t-slate-400 z-30 '
-                onClick={()=> {handleClick(id)}}
+                onClick={()=> {
+                  handleClick(id)
+                  setParam({q : params_name})
+                }}
               > 
                 {title}
               </div>

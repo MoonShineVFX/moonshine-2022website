@@ -18,7 +18,7 @@ photorealistic or stylized, characters or products, we breathe a soul into flat 
             </Link>
           </div>
         </div>
-        <div className="image_cover" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/a01.png'})`}}>
+        <div className="image_cover" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/about-s04.png'})`}}>
 
         </div>
       </div>
