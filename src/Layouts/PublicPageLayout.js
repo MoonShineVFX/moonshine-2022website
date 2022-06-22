@@ -3,6 +3,7 @@ import { Outlet} from 'react-router-dom';
 
 
 import Navbar from '../Components/Navbar'
+import MobileNavbar from '../Components/MobileNavbar';
 import Footer from '../Components/Footer'
 
 import NavData from '../Components/navbar.json'
@@ -20,6 +21,7 @@ function PublicPageLayout() {
     <React.Fragment>
       <RecoilRoot>
       <Navbar data={navbar} socialmedia = {socialmedia}/>
+      <MobileNavbar data={navbar} />
       <Outlet />
       <Footer footerData={footerData} socialmedia={socialmedia}/>
       </RecoilRoot>
