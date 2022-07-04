@@ -9,7 +9,7 @@ function Navbar({data , toggleTrueFalse,socialmedia}) {
   };
   const { pathname } = useLocation();
   return (
-    <div id="navbar" className='sm:flex justify-between items-center text-white top-3 left-1/2 -translate-x-2/4 w-11/12 fixed z-50 site-menu hidden '>
+    <div id="navbar" className='flex justify-between items-center text-white top-3 left-1/2 -translate-x-2/4 w-11/12 fixed z-50 site-menu xs:hidden '>
       <div className="logo">
         <Link
           to="/"

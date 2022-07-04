@@ -34,7 +34,7 @@ function Work() {
   return (
     <div id="work">
       <ImgHeader imgPath={'work01.png'} button={'ALL PROJECTS'} categoryData={categoryData[0]} />
-      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16 -mt-20 z-10">
+      <main className="relative pb-24 space-y-24 pl-16 -mt-20 z-10 xs:pl-4">
         {/* <Row title="ALL" movies={workData} /> */}
         {
           categoryData ? 

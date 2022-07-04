@@ -133,24 +133,8 @@ a{
     }
   }
   #Home_services{
-    margin-top: 150px;
     .service_list{
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
       .service_item{
-        padding-top:30%;
-        position: relative;
-        background-repeat: no-repeat;
-        background-position:  center;
-        background-size: cover;
-        
-        transition:all .5s ease;
-        transition-delay: 100ms;
-        flex:1;
-        overflow: hidden;
-        cursor: pointer;
-        filter: brightness(0.5);
         &.active{
           flex: 10;
           filter: contrast(120%);
@@ -163,41 +147,15 @@ a{
           height: 100%;
           background: rgba(0, 0, 0, 0.27);
         }
-        .content{
-          position: absolute;
-          bottom:1%;
-          padding:24px;
-          max-width: 90%;
-          min-width: 320px;
-          overflow: hidden;
-          .title{
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-          }
-          .desc{
-            font-size: 14px;
-            font-weight: 100;
-            color:#ddd;
-            line-height: 16px;
-          }
-          .icon_btn{
-            margin-top: 15px;
-          }
-        }
         
       }
     }
   }
   #home_about{
     .home_about_container{
-      position: relative;
-      margin-top: 150px;
+
       .content{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 300px;
+
         background: rgba(28, 28, 28, 0.685);
         padding:35px 20px;
         z-index: 1;
@@ -224,13 +182,8 @@ a{
     }
   }
   #award{
-    margin-top: 150px;
     .award_list{
-      width: 70%;
-      margin: 0 auto;
-      margin-top: 80px;
-      display: flex;
-      justify-content: space-between;
+
       li{
         img{
           width: 100px;
@@ -268,14 +221,8 @@ a{
     left: 0;
   }
   .imgbg{
-    width: 100vw;
-    height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
-    min-height: 100vh;
-    min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
-    position: absolute;
-    background-position:center;
-    background-size: cover;
-    background-repeat: no-repeat;
+
+
   }
 }
 .vimeo-wrapper iframe {

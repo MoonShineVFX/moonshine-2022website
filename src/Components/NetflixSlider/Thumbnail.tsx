@@ -13,18 +13,23 @@ function Thumbnail({movie,categorystyle}) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{type:'spring' , stiffness:50 , delay:0.15}}
-      className={categorystyle ? 'relative w-1/5 px-2 cursor-pointer transition-transform duration-200 ease-out md:h-36 md:hover:scale-105' : `relative h-28 min-w-[180px] cursor-pointer transition-transform duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105 `}
+      className={categorystyle ? 'relative w-1/5 px-2 cursor-pointer transition-transform duration-200 ease-out h-36 hover:scale-105' : `relative  cursor-pointer transition-transform duration-200 ease-out h-36  min-w-[260px] hover:scale-105  xs:h-40 xs:min-w-[120px]  `}
       onClick={() => {
         setShowModal(true);
         setCurrentMovie(movie);
       }}
     >
-      <img
+      <div
+        className=' bg-no-repeat bg-center bg-cover absolute top-0 left-0 inset-0 rounded saturate-80'
+        style={{backgroundImage: `url(${movie.imgpath})`}}
+      >
+
+      </div>
+      {/* <img
         src={movie.imgpath} 
-        layout="fill"
-        className="rounded-sm object-cover md:rounded saturate-80"
+        className="xs:rounded-sm rounded saturate-80"
         alt={movie.title}
-      />
+      /> */}
     </motion.div>
     </AnimatePresence>
   )

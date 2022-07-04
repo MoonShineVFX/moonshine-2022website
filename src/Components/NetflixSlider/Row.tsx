@@ -37,8 +37,8 @@ function Row({title,movies,categoryData}) {
   },[])
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2">
-      <h2 className="group  flex items-center w-full cursor-pointer text-sm font-semibold text-[#e5e5e5da] hover:text-white  transition duration-200  md:text-2xl"
+    <div className="h-40 xs:space-y-0.5 space-y-2">
+      <h2 className="group  flex items-center w-full cursor-pointer  font-semibold text-[#e5e5e5da] hover:text-white  transition duration-200  text-2xl xs:text-sm"
         onClick={() => {
           setShowModal(true);
           setCategoryId(categoryData)
@@ -46,9 +46,9 @@ function Row({title,movies,categoryData}) {
         {title}
         <div  className='flex items-center text-sm ml-1 font-bold text-slate-500 hover:text-white opacity-0 group-hover:opacity-100 transition -translate-x-2 group-hover:translate-x-2'> <p className='ml-1'>Show More</p></div>
       </h2>
-      <div className="group relative md:-ml-2">
+      <div className="group relative -ml-2">
         <HiOutlineChevronLeft
-          className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
+          className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 xs:opacity-100 ${
             !isMoved && 'hidden'
           }`}
           onClick={() => handleClick('left')}
@@ -56,18 +56,18 @@ function Row({title,movies,categoryData}) {
 
         <div
           ref={rowRef}
-          className="flex items-center overflow-hidden space-x-0.5  md:space-x-2.5 md:p-2"
+          className="flex items-center overflow-hidden xs:space-x-2  space-x-2.5 p-2"
         >
           {
             workData.length > 0 ?
             workData.map((movie) => (
               <Thumbnail key={movie.id} movie={movie} />
-            )) : <svg className="animate-spin h-5 w-5 mr-3 fill-white" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.917 7A6.002 6.002 0 0 0 2.083 7H1.071a7.002 7.002 0 0 1 13.858 0h-1.012z"/></svg>
+            )) : <svg className="animate-spin h-5 w-5 mr-3 fill-white" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fillRule="evenodd" clipRule="evenodd" d="M13.917 7A6.002 6.002 0 0 0 2.083 7H1.071a7.002 7.002 0 0 1 13.858 0h-1.012z"/></svg>
           }
         </div>
 
         <HiOutlineChevronRight
-          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
+          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 xs:opacity-100"
           onClick={() => handleClick('right')}
         />
         <div className="absolute top-0 bottom-0 right-0 z-30 m-auto h-full w-80 cursor-pointer opacity-100 transition bg-gradient-to-l from-black pointer-events-none"></div>

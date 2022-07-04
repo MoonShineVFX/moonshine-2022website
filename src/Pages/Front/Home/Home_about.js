@@ -3,8 +3,8 @@ import { Link   } from "react-router-dom";
 function Home_about() {
   return (
     <div id="home_about">
-      <div className="home_about_container">
-        <div className="content">
+      <div className="home_about_container relative mt-36 xs:mt-20">
+        <div className="content absolute top-0 left-0 w-[300px]  xs:relative xs:w-full">
           <div className="title">
             About
           </div>
@@ -18,7 +18,7 @@ photorealistic or stylized, characters or products, we breathe a soul into flat 
             </Link>
           </div>
         </div>
-        <div className="image_cover" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/about-s04.png'})`}}>
+        <div className=" ml-[150px] pt-[25%] relative bg-no-repeat bg-center bg-cover xs:pt-[56%] xs:ml-0" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/about-s04.png'})`}}>
 
         </div>
       </div>

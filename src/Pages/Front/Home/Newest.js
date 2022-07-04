@@ -18,7 +18,7 @@ function Newest({data}) {
       </div>
       
       
-      <div className=" flex w-full  ">
+      <div className=" flex w-full xs:flex-col">
         {
           data ? data.map((item)=>{
             const { id,image,title,imgpath} = item
@@ -29,14 +29,14 @@ function Newest({data}) {
                 animate={{ opacity: 1}}
                 exit={{ opacity: 0 }}
                 transition={{type:'spring' , stiffness:50}}
-                className=" flex-1 relative m-[0.5%] cursor-pointer first:ml-0 last:mr-0 h-auto  group transition-all " 
+                className=" flex-1 relative m-[0.5%] cursor-pointer first:ml-0 last:mr-0 h-auto  group transition-all   xs:flex-initial xs:m-0 " 
                 onClick={() => {
                   setShowModal(true);
                   setCurrentMovie(item);
                 }}
               > 
                 <div className='overflow-hidden'>
-                  <div className='bg-no-repeat bg-cover bg-center pt-[55%] transition-all brightness-75 hover:brightness-110 duration-300  hover:scale-125' style={{backgroundImage: `url(${imgpath})`}}></div>
+                  <div className='bg-no-repeat bg-cover bg-center pt-[55%] transition-all brightness-75 hover:brightness-110 duration-300  hover:scale-125 xs:pt-[25%]' style={{backgroundImage: `url(${imgpath})`}}></div>
                 </div>
 
                 <div className="mt-2 text-xs text-stone-300 opacity-0 group-hover:opacity-100 transition duration-300">{title}</div>

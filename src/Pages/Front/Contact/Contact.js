@@ -75,7 +75,7 @@ function Contact() {
           </LoadScript>
         </div>
         <div className="contact_info mt-16">
-          <div className="infoArea flex">
+          <div className="infoArea flex xs:flex-wrap">
             <div className="infoContent flex-auto">
                 <p className='text-gray-200'>Tel</p>
                 <p>+886-2-27857037</p>
@@ -84,7 +84,7 @@ function Contact() {
                 <p className='text-gray-200'>Email</p>
                 <p>info@moonshine.tw</p>
             </div>
-            <div className="infoContent flex-auto">
+            <div className="infoContent flex-auto xs:mt-12">
                 <p className='text-gray-200'>Address</p>
                 <p>{t('address')}</p>
             </div>

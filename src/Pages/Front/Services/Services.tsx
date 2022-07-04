@@ -62,8 +62,8 @@ function Services() {
   return (
     <>
     
-    <div className="relative  w-full h-screen">
-      <div className='w-full h-screen  absolute  bg-gradient-to-t from-black z-10'></div>
+    <div className="relative  w-full h-screen ">
+      <div className='w-full h-screen  absolute  bg-gradient-to-t from-black z-10 '></div>
       <AnimatePresence>
         {
           showBg && (
@@ -81,7 +81,7 @@ function Services() {
           )
         }
       </AnimatePresence>
-      <div className='absolute top-[45%] left-[10%] w-2/5 z-20'>
+      <div className='absolute top-[45%] left-[10%] w-2/5 z-20 xs:top-[10%] xs:w-4/5 '>
       <AnimatePresence>
         {
           showBg && (
@@ -135,14 +135,15 @@ function Services() {
 
 
       </div>
-      <div className='flex  border-t  border-[#ffffff83] absolute bottom-0 w-full'>
+      <div className='flex  border-t  border-[#ffffff83] absolute bottom-0 w-full xs:flex-wrap  
+       '>
         {
           service.map((item,index)=>{
             const {id, title,params_name} = item
             return(
               <div 
                 key = {id}
-                className='flex-1 flex justify-center items-center border-x border-[#ffffff1a]  h-48 min-h-0 box-border transition cursor-pointer text-[#c5c5c5] hover:bg-[#0000004d] hover:border-t-4 hover:border-t-slate-400 z-30 '
+                className='flex-1 flex justify-center items-center border-x border-[#ffffff1a]  h-48 min-h-0 box-border transition cursor-pointer text-[#c5c5c5] hover:bg-[#0000004d] hover:border-t-4 hover:border-t-slate-400 z-30 xs:border-b-2 xs:text-center xs:text-sm  xs:grow xs:w-[24%]'
                 onClick={()=> {
                   handleClick(id)
                   setParam({q : params_name})

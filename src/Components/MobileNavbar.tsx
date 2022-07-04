@@ -2,7 +2,7 @@ import React from 'react'
 import { Link ,useLocation  } from "react-router-dom";
 function MobileNavbar({data}) {
   return (
-    <div className='sm:hidden block fixed bg-neutral-900 bottom-0 z-40 shadow inset-x-0 text-stone-500'>
+    <div className='xs:block hidden fixed bg-neutral-900 bottom-0 z-40 shadow inset-x-0 text-stone-500'>
       <div className='flex justify-between'>
           <Link 
               key='home'

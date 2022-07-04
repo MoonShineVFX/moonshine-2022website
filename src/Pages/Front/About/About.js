@@ -11,11 +11,11 @@ function About() {
     <div id="about" className=''>
       <ImgHeader imgPath={'work01.png'} />
       <div className="w-5/6 mx-auto -mt-60 z-10 relative">
-        <div className="w-3/5 mb-20">
-          <h1 className='italic text-4xl font-bold'>MoonShine Animation is an artist-centered VFX company based in Taiwan.</h1>
+        <div className="w-3/5 mb-20 xs:w-full ">
+          <h1 className='italic text-4xl font-bold xs:text-2xl'>MoonShine Animation is an artist-centered VFX company based in Taiwan.</h1>
         </div>
-        <div className="about_content flex ">
-          <div className="left flex-auto  w-48 mr-24">
+        <div className="about_content flex xs:flex-col ">
+          <div className="left flex-auto  w-48 mr-24 xs:w-full ">
             <div className="mb-14">
               <div className="text-lg font-bold mb-5">
                 About MoonShine Animation
@@ -58,7 +58,7 @@ function About() {
             </div>
 
           </div>
-          <div className="right flex-auto  w-32">
+          <div className="right flex-auto  w-32 xs:w-full">
             <div className="flex">
               <motion.div
                 initial={{ opacity: 0, y:'0'  }}
