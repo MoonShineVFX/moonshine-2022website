@@ -19,10 +19,24 @@ export const getNewestWorks = async (callback) =>{
 
 /**
  * 到 firebase 撈作品資料表 全部
- * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用
+ * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用 
+ * 條件 display 1 設定顯示的
  * **/ 
 export const getWorks = async (callback)=>{
   const q = query(collection(db, "data"),orderBy('time_added' , 'desc'), where("display", "==", '1'))
+  const data = await getDocs(q);
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
+
+/**
+ * 到 firebase 撈作品資料表 
+ * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用 
+ * 條件 display 全部 要給後台用(admin) 
+ * **/ 
+export const getAllWorksForDashboard = async (callback)=>{
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'))
   const data = await getDocs(q);
   mapWorkData(data.docs.map(doc=> doc.data()),function(res){
     callback(res)

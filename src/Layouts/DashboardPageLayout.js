@@ -1,12 +1,21 @@
 import React from 'react'
 import {Outlet} from 'react-router-dom';
+import AdminNavbar from '../Pages/Back/Components/AdminNavbar';
+import { RecoilRoot } from 'recoil';
 function DashboardPageLayout() {
   return (
-    <div>
-      <h1>dasboard</h1>
-      <Outlet />
-    </div>
+    <React.Fragment>
+      <RecoilRoot>
+        <div className='flex'>
+          <AdminNavbar />
+          <Outlet />
+        </div>
+      </RecoilRoot>
+
+
+    </React.Fragment>
   )
+
 }
 
 export default DashboardPageLayout

@@ -10,7 +10,7 @@ import { byCategoryModalState,categoryState } from '../../atoms/modalAtom';
 //helper
 import { queryByCategoryId } from '../../Helper/getfunction'
 
-function Row({title,movies,categoryData}) {
+function Row({title,categoryData}) {
   const [showModal, setShowModal] = useRecoilState(byCategoryModalState);
   const [categoryId, setCategoryId] = useRecoilState(categoryState);
   const rowRef = useRef<HTMLDivElement>(null);
