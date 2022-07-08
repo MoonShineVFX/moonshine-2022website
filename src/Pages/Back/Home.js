@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useRecoilState } from 'recoil';
-import { formDisplayState,formStatusState } from './atoms/fromTypes';
+import { formDisplayState,formStatusState,workState } from './atoms/fromTypes';
 import EditForm from './Components/EditForm';
 
 //helper
-import {getAllWorksForDashboard ,getCategory} from '../../Helper/getfunction'
+import {getAllWorksForDashboard ,getCategory, getNextWorkForDashboard,getPrevWorkForDashboard,createWork} from '../../Helper/getfunction'
 import {LoadingAnim} from '../../Helper/HtmlComponents'
 
 function Home() {
@@ -13,12 +13,31 @@ function Home() {
 
   const [showModal, setShowModal] = useRecoilState(formDisplayState);
   const [formStatus, setFormStatus] = useRecoilState(formStatusState);
+  const [singleWork, setSingleWork] = useRecoilState(workState);
 
-  console.log(categoryData)
+  const handleNext = ()=>{
+    console.log('next')
+    getNextWorkForDashboard(workData[0] , function(res){
+      console.log(res)
+      setWorkData(res)
+    })
+  }
+  const handlePrev=()=>{
+    console.log('prev')
+    getPrevWorkForDashboard(workData[workData.length-1] , function(res){
+      console.log(res)
+      setWorkData(res)
+    })
+  }
+  const handleCreateWork = (data) => {
+    createWork(data,function(res){
+      console.log(res)
+    })
+  }
   useEffect(()=>{
-    // getAllWorksForDashboard((res)=>{
-    //   setWorkData(res)
-    // })
+    getAllWorksForDashboard((res)=>{
+      setWorkData(res)
+    })
     getCategory((res)=>{
       setCategoryData(res)
     })
@@ -30,6 +49,7 @@ function Home() {
       <div className='w-full border-b mb-10'>
         <h1>管理作品</h1>
       </div>
+      
       <button 
         className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600'
         onClick={() => {
@@ -61,13 +81,19 @@ function Home() {
                     <td className='p-2 text-xs'>
                       {categoryData.map((item) => {
                         if(item.id === category)
-                          return <div>{item.name}</div>
+                          return <div key={item.id}>{item.name}</div>
                       })}
                     </td>
                     <td className='p-2 text-xs'>{display ? '顯示' : '不顯示'}</td>
                     <td className='p-2 text-xs'>{time_added.toLocaleString()}</td>
                     <td className='p-2 text-xs'>
-                    <button className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '>編輯 </button>
+                    <button 
+                      className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '
+                      onClick={() => {
+                        setShowModal(true);
+                        setSingleWork(item)
+                        setFormStatus('EDIT')
+                      }}>編輯</button>
                     </td>
                   </tr>
                 )
@@ -78,9 +104,13 @@ function Home() {
           </tbody>
         </table>
       </div>
-      
+      <div className='mt-3 flex gap-2'>
+        <button className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600' onClick={handlePrev}>Prev</button>
+        <button className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600' onClick={handleNext}>Next</button>
+      </div>
 
-      {showModal && <EditForm categoryData={categoryData}  />}
+
+      {showModal && <EditForm categoryData={categoryData} handleCreateWork={handleCreateWork} />}
     </section>
     
 

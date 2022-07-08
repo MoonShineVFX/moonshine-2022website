@@ -1,6 +1,6 @@
 // firebase 資料庫連線
 import db from '../firebaseConfig/firebase'
-import {collection, query,  getDocs,orderBy,where,limit,startAt} from "firebase/firestore"
+import {collection, query,  getDocs,orderBy,where,limit,limitToLast,startAfter,endBefore,addDoc,deleteDoc,doc} from "firebase/firestore"
 import { getStorage, ref, getDownloadURL,  } from "firebase/storage";
 import { async } from '@firebase/util';
 const storage = getStorage();
@@ -30,18 +30,6 @@ export const getWorks = async (callback)=>{
   })
 }
 
-/**
- * 到 firebase 撈作品資料表 
- * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用 
- * 條件 display 全部 要給後台用(admin) 
- * **/ 
-export const getAllWorksForDashboard = async (callback)=>{
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'))
-  const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
-    callback(res)
-  })
-}
 
 // 處理作品的圖片路徑
 const mapWorkData =async (data , callback)=>{
@@ -125,7 +113,7 @@ export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
   const q = query(collection(db, "data"), 
     where("category", "==", cid),
     orderBy('time_added' , 'desc'),
-    startAt(latestDoc),
+    startAfter(latestDoc),
     where("display", "==", '1'),limit(10))
     ;
   const data = await getDocs(q);
@@ -134,4 +122,59 @@ export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
   mapWorkData(data.docs.map(doc=> doc.data()),function(res){
     callback(res)
   })
+}
+
+
+
+/**
+ * 到 firebase 撈作品資料表 
+ * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用 
+ * 條件 display 全部 要給後台用(admin) 
+ * **/ 
+export const getAllWorksForDashboard = async (callback)=>{
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(10))
+  const data = await getDocs(q);
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
+
+export const getNextWorkForDashboard = async (item , callback) => {
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(10),startAfter(item.time_added))
+  const data = await getDocs(q);
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
+
+export const getPrevWorkForDashboard = async (item , callback) => {
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),endBefore(item.time_added),limitToLast(10))
+  const data = await getDocs(q);
+  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
+
+export const getSearchWork = async (search , callback)=>{
+
+}
+
+export const createWork = async (data , callback)=>{
+  const collectionRef = collection(db ,"data")
+  try {
+    await addDoc(collectionRef,data)
+    callback('success')
+  } catch (error) {
+    console.log(error)
+    callback(error)
+  }
+}
+export const deleteWork = async(uid)=>{
+  const workDoc = doc(db , 'data' , uid)
+  
+  try {
+    await deleteDoc(workDoc)
+  } catch (error) {
+    
+  }
 }
