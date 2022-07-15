@@ -1,6 +1,6 @@
 // firebase 資料庫連線
 import db from '../firebaseConfig/firebase'
-import {collection, query,  getDocs,orderBy,where,limit,limitToLast,startAfter,endBefore,addDoc,deleteDoc,doc} from "firebase/firestore"
+import {collection, query,  getDocs,orderBy,where,limit,limitToLast,startAfter,endBefore,addDoc,deleteDoc,doc,updateDoc} from "firebase/firestore"
 import { getStorage, ref, getDownloadURL,  } from "firebase/storage";
 import { async } from '@firebase/util';
 const storage = getStorage();
@@ -58,6 +58,18 @@ const mapWorkData =async (data , callback)=>{
   callback(await Promise.all(twoarr))
   // setWorkData(await Promise.all(twoarr))
   // setFilteredWorkData(await Promise.all(twoarr))
+}
+const mapCategoryData = async (data, callback)=>{
+  let dataSorted = data.sort(function(a, b) {
+    return b.sort_num - a.sort_num;
+  });
+  let latestSortNum = (parseInt(dataSorted[0].sort_num)+1).toString()
+  const twoarr= dataSorted.map( async (element) => {
+
+    return {...element , latestSortNum :latestSortNum}
+   
+  })
+  callback(await Promise.all(twoarr))
 }
 
 
@@ -132,31 +144,32 @@ export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
  * 條件 display 全部 要給後台用(admin) 
  * **/ 
 export const getAllWorksForDashboard = async (callback)=>{
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(10))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(15))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+
+  mapWorkData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
 
 export const getNextWorkForDashboard = async (item , callback) => {
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(10),startAfter(item.time_added))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),startAfter(item.time_added),limit(15))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapWorkData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
 
 export const getPrevWorkForDashboard = async (item , callback) => {
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),endBefore(item.time_added),limitToLast(10))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),endBefore(item.time_added),limitToLast(15))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapWorkData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
 
 export const getSearchWork = async (search , callback)=>{
-
+ //TODO
 }
 
 export const createWork = async (data , callback)=>{
@@ -165,16 +178,36 @@ export const createWork = async (data , callback)=>{
     await addDoc(collectionRef,data)
     callback('success')
   } catch (error) {
-    console.log(error)
     callback(error)
   }
 }
-export const deleteWork = async(uid)=>{
+export const deleteWork = async(uid,callback)=>{
   const workDoc = doc(db , 'data' , uid)
   
   try {
     await deleteDoc(workDoc)
+    callback('DEL success')
   } catch (error) {
-    
+    callback(error)
   }
+}
+ export const updateWork = async (uid,currentData,callback)=>{
+  const workDoc = doc(db , 'data' , uid)
+   
+    try {
+      await updateDoc( workDoc ,currentData)
+      callback('Updated success')
+    } catch (error) {
+      callback(error)
+    }
+ }
+
+
+ //admin category
+ export const getAllCategoryForDashboard = async (callback)=>{
+  const q = query(collection(db, "category"),orderBy('sort_num' , 'desc'))
+  const data = await getDocs(q);
+  mapCategoryData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+    callback(res)
+  })
 }

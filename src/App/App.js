@@ -11,8 +11,10 @@ import About from '../Pages/Front/About/About'
 import Work from '../Pages/Front/Work/Work'
 import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
-import AdminHome from '../Pages/Back/Home.js'
 import By_Category from '../Pages/Front/Work/By_Category';
+//Back Pages
+import AdminHome from '../Pages/Back/Home.js'
+import AdminCateogry from '../Pages/Back/Category'
 
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
             
             <Route path="admin"  element={ <DashboardPageLayout/>}>
               <Route  path="" element={<AdminHome/>} />
+              <Route  path="category" element={<AdminCateogry/>} />
             </Route>
             
  

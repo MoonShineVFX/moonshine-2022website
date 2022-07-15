@@ -15,3 +15,8 @@ export const formStatusState = atom({
   key: 'formStatusState',
   default: null,
 });
+
+export const adminCategoryState = atom({
+  key: 'adminCategoryState',
+  default: null,
+});

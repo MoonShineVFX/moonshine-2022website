@@ -2,16 +2,21 @@ import React, { useEffect } from 'react'
 import { constSelector, useRecoilState, useRecoilValue } from 'recoil';
 import { formDisplayState, workState,formStatusState } from '../atoms/fromTypes'
 import { useForm } from 'react-hook-form';
-function EditForm({categoryData,handleCreateWork}) {
+
+
+function EditForm({categoryData,handleCreateWork , handleEditWork}) {
   const {register, handleSubmit, reset, formState: { errors }} = useForm(
-    {defaultValues: { title: "", intro: "",sort_num:"",youtube_id:"" ,year_of_work:"",video_url:""}});
+    {defaultValues: { title: "", intro: "",sort_num:"",youtube_id:"" ,year_of_work:"",video_url:"",vimeo_id:"", youtube_id:""}});
   const onSubmit = (data) => {
     console.log(data)
     if(data.method === 'ADD'){
-      console.log('ADDDD')
+      handleCreateWork(data)
+      
     } else if (data.method === 'EDIT'){
       console.log('EDITTT')
+      handleEditWork(work.uid,data)
     }
+    
   };
   const [showModal, setShowModal] = useRecoilState(formDisplayState);
   const work = useRecoilValue(workState);
@@ -69,7 +74,7 @@ function EditForm({categoryData,handleCreateWork}) {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">影片位置(youtube or vimeo 網址)</label>
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">影片位置(2022開始已經可以直接貼上youtube or vimeo 網址)</label>
                 <input
                   type="text"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
@@ -77,14 +82,37 @@ function EditForm({categoryData,handleCreateWork}) {
                   {...register('video_url')}
                 />
               </div>
+              <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">vimeo</label>
+                <input
+                  type="text"
+                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                  placeholder="影片位置"
+                  {...register('vimeo_id')}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">youtube</label>
+                <input
+                  type="text"
+                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                  placeholder="影片位置"
+                  {...register('youtube_id')}
+                />
+              </div>
+              
             </div>
             <div className='left w-1/2'>
               {
                 formStatus === 'EDIT' && 
-                <div className="mb-3">
-                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">縮圖</label>
-                  <input type="file" className="form-control" id="file"  {...register('file')} />
-                  <img src={work ? work.imgpath :　"1"} className="img-fluid" />
+                <div className="mb-3 ">
+                  <div className='mb-3'>
+                    <h1 className='mb-2'>設定作品縮圖</h1>
+
+                    <input type="file" className="custom form-control border p-2" id="file" name="photo" {...register('file')} />
+                  </div>
+
+                  <img src={work ? work.imgpath :　"1"} className="img-fluid"  alt={work && work.imgpath} />
                 
                 </div>
               }
