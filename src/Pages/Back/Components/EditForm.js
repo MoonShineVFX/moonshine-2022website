@@ -45,6 +45,16 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   {...register('title')}
                 />
               </div>
+              <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品年分</label>
+                <input
+                  type="text"
+                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                  id="exampleURL0"
+                  placeholder="作品年分"
+                  {...register('year_of_work')}
+                />
+              </div>
               <div className="relative mb-3">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品分類</label>
                 <select className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " id="category" {...register("category")}>
@@ -55,15 +65,7 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   })}
                 </select>
               </div>
-              <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品介紹</label>
-                <textarea
-                  rows="6"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  placeholder="作品介紹"
-                  {...register('intro')}
-                ></textarea>
-              </div>
+              
               <div className="mb-3">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品排序(輸入1-999)</label>
                 <input
@@ -83,7 +85,8 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">vimeo</label>
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">vimeo {formStatus === 'EDIT' && work.vimeo_id && <span>https://vimeo.com/{work.vimeo_id}</span> }</label>
+                
                 <input
                   type="text"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
@@ -92,7 +95,10 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">youtube</label>
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
+                  youtube {formStatus === 'EDIT' && work.youtube_id && <span>https://www.youtube.com/watch?v={work.youtube_id}</span> }
+                  </label>
+                
                 <input
                   type="text"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
@@ -100,9 +106,33 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   {...register('youtube_id')}
                 />
               </div>
+              <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
+                  前台顯示 
+                  </label>
+                
+                  <div className="flex items-center mb-4">
+                      <input checked id="default-radio-1" type="radio" value="1" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {...register("display")}/>
+                      <label htmlFor="default-radio-1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">顯示作品</label>
+                  </div>
+                  <div className="flex items-center">
+                      <input  id="default-radio-2" type="radio" value="0" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  {...register("display")}/>
+                      <label htmlFor="default-radio-2" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">不顯示此作品</label>
+                  </div>
+              </div>
+
               
             </div>
             <div className='left w-1/2'>
+              <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品介紹</label>
+                <textarea
+                  rows="6"
+                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                  placeholder="作品介紹"
+                  {...register('intro')}
+                ></textarea>
+              </div>
               {
                 formStatus === 'EDIT' && 
                 <div className="mb-3 ">

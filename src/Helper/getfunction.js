@@ -12,32 +12,32 @@ const storage = getStorage();
 export const getNewestWorks = async (callback) =>{
   const q = query(collection(db, "data"),orderBy('time_added' , 'desc'), where("display", "==", '1'),limit(5))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
     callback(res)
   })
 }
 
 /**
  * 到 firebase 撈作品資料表 全部
- * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用 
+ * 資料先傳到 mapDataWithImage 處理過圖片路徑再回傳 setWorkData 給網頁用 
  * 條件 display 1 設定顯示的
  * **/ 
 export const getWorks = async (callback)=>{
   const q = query(collection(db, "data"),orderBy('time_added' , 'desc'), where("display", "==", '1'))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
     callback(res)
   })
 }
 
 
 // 處理作品的圖片路徑
-const mapWorkData =async (data , callback)=>{
+const mapDataWithImage =async (folder,data , callback)=>{
   let dataSorted = data.sort(function(a, b) {
     return b.sort_num - a.sort_num;
   });
   const twoarr= dataSorted.map( async (element) => {
-    const imagesRef = ref(storage, `data/${element.img}`);
+    const imagesRef = ref(storage, `${folder}/${element.img}`);
     const newimgurl =await getDownloadURL(imagesRef).catch((error) => {
       switch (error.code) {
         case 'storage/object-not-found':
@@ -59,7 +59,7 @@ const mapWorkData =async (data , callback)=>{
   // setWorkData(await Promise.all(twoarr))
   // setFilteredWorkData(await Promise.all(twoarr))
 }
-const mapCategoryData = async (data, callback)=>{
+const mapDataWithUid = async (data, callback)=>{
   let dataSorted = data.sort(function(a, b) {
     return b.sort_num - a.sort_num;
   });
@@ -94,7 +94,7 @@ export const queryByCategoryId = async (cid,callback)=>{
   const q = query(collection(db, "data"), where("category", "==", cid),orderBy('time_added' , 'desc'), where("display", "==", '1'),limit(15));
   const data = await getDocs(q);
   // console.log(data.docs.map(doc=> doc.data()))
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
     callback(res)
   })
 }
@@ -116,7 +116,7 @@ export const getWorksByCategoryAndLimits = async (cid,callback)=>{
   latestDoc = data.docs[data.docs.length -1 ]
 
 
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
     callback(res)
   })
 }
@@ -131,7 +131,7 @@ export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
   const data = await getDocs(q);
 
 
-  mapWorkData(data.docs.map(doc=> doc.data()),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
     callback(res)
   })
 }
@@ -140,30 +140,30 @@ export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
 
 /**
  * 到 firebase 撈作品資料表 
- * 資料先傳到 mapWorkData 處理過圖片路徑再回傳 setWorkData 給網頁用 
+ * 資料先傳到 mapDataWithImage 處理過圖片路徑再回傳 setWorkData 給網頁用 
  * 條件 display 全部 要給後台用(admin) 
  * **/ 
 export const getAllWorksForDashboard = async (callback)=>{
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(15))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(12))
   const data = await getDocs(q);
 
-  mapWorkData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
 
 export const getNextWorkForDashboard = async (item , callback) => {
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),startAfter(item.time_added),limit(15))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),startAfter(item.time_added),limit(12))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
 
 export const getPrevWorkForDashboard = async (item , callback) => {
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),endBefore(item.time_added),limitToLast(15))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),endBefore(item.time_added),limitToLast(12))
   const data = await getDocs(q);
-  mapWorkData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
@@ -186,7 +186,7 @@ export const deleteWork = async(uid,callback)=>{
   
   try {
     await deleteDoc(workDoc)
-    callback('DEL success')
+    callback('success')
   } catch (error) {
     callback(error)
   }
@@ -196,7 +196,7 @@ export const deleteWork = async(uid,callback)=>{
    
     try {
       await updateDoc( workDoc ,currentData)
-      callback('Updated success')
+      callback('success')
     } catch (error) {
       callback(error)
     }
@@ -207,7 +207,111 @@ export const deleteWork = async(uid,callback)=>{
  export const getAllCategoryForDashboard = async (callback)=>{
   const q = query(collection(db, "category"),orderBy('sort_num' , 'desc'))
   const data = await getDocs(q);
-  mapCategoryData(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+  mapDataWithUid(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
+}
+
+export const createCategory = async (data , callback)=>{
+  const collectionRef = collection(db ,"category")
+  try {
+    await addDoc(collectionRef,data)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+export const deleteCategory = async(uid,callback)=>{
+  const categoryDoc = doc(db , 'category' , uid)
+  
+  try {
+    await deleteDoc(categoryDoc)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+export const updateCategory = async (uid,currentData,callback)=>{
+const categoryDoc = doc(db , 'category' , uid)
+  
+  try {
+    await updateDoc( categoryDoc ,currentData)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+
+// admin Award
+export const getAwardForDashboard = async (callback) => {
+  const q = query(collection(db, "awards"))
+  const data = await getDocs(q);
+  mapDataWithImage('img_award',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+    callback(res)
+  })
+}
+
+export const createAward = async (data , callback)=>{
+  const collectionRef = collection(db ,"awards")
+  try {
+    await addDoc(collectionRef,data)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+export const deleteAward = async(uid,callback)=>{
+  const awardDoc = doc(db , 'awards' , uid)
+  try {
+    await deleteDoc(awardDoc)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+export const updateAward = async (uid,currentData,callback)=>{
+  const awardDoc = doc(db , 'awards' , uid)
+  try {
+    await updateDoc( awardDoc ,currentData)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+
+//admin service
+export const getServiceForDashboard = async (callback) => {
+  const q = query(collection(db, "service"))
+  const data = await getDocs(q);
+  mapDataWithImage('img_service',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+    callback(res)
+  })
+}
+
+export const createService = async (data , callback)=>{
+  const collectionRef = collection(db ,"service")
+  try {
+    await addDoc(collectionRef,data)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+export const deleteService = async(uid,callback)=>{
+  const serviceDoc = doc(db , 'service' , uid)
+  try {
+    await deleteDoc(serviceDoc)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
+}
+export const updateService = async (uid,currentData,callback)=>{
+  const serviceDoc = doc(db , 'service' , uid)
+  try {
+    await updateDoc( serviceDoc ,currentData)
+    callback('success')
+  } catch (error) {
+    callback(error)
+  }
 }

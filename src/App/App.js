@@ -15,6 +15,8 @@ import By_Category from '../Pages/Front/Work/By_Category';
 //Back Pages
 import AdminHome from '../Pages/Back/Home.js'
 import AdminCateogry from '../Pages/Back/Category'
+import AdminAward from '../Pages/Back/Award'
+import AdminServices from '../Pages/Back/Services'
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
             <Route path="admin"  element={ <DashboardPageLayout/>}>
               <Route  path="" element={<AdminHome/>} />
               <Route  path="category" element={<AdminCateogry/>} />
+              <Route  path="award" element={<AdminAward/>} />
+              <Route  path="service" element={<AdminServices/>} />
             </Route>
             
  

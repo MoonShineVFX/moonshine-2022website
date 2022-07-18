@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useRecoilState } from 'recoil';
 import { formDisplayState,formStatusState,workState } from './atoms/fromTypes';
+
+//components
 import EditForm from './Components/EditForm';
 
 import { confirmAlert } from 'react-confirm-alert'; // Import
@@ -40,6 +42,29 @@ function Home() {
       setWorkData(res)
     })
   }
+  const fetchWorkDoneFun = (customStr, res)=>{
+    setShowModal(false)
+    if(res === 'success'){
+      getAllWorksForDashboard((res)=>{
+        setWorkData(res)
+      })
+    }else{
+      showErrorAlert(customStr,res)
+    }
+  }
+  const showErrorAlert = (str,res) =>{
+    confirmAlert({
+      title: str+ res,
+      buttons: [
+        {
+          label: '確定',
+        },
+        {
+          label: '取消',
+        }
+      ]
+    });
+  }
   const handleCreateWork = (data) =>{
     let currentData ={
       "id": Date.now().toString(36),
@@ -48,12 +73,13 @@ function Home() {
       "intro": data.intro,
       "video_url": data.video_url,
       "sort_num": data.sort_num ? data.sort_num : '666',
-      "display":"1",
+      "display":data.display ,
       "year_of_work":data.yearofwork ? data.yearofwork : '2022',
       "category":data.category ? data.category : '1'
     }
     createWork(currentData,function(res){
       console.log(res)
+      fetchWorkDoneFun('新增資料失敗，錯誤訊息:',res)
     })
   }
 
@@ -61,17 +87,24 @@ function Home() {
     let selectedFile = data.file[0];
     // 設定圖檔重新命名
     const imgFileName = Date.now()+'.jpg'
-    let currentData ={
-      "id": Date.now().toString(36),
-      "time_added": new Date().toISOString(),
+    let currentDataWithImg ={
       "title": data.title,
       "intro": data.intro,
       "video_url": data.video_url,
-      "sort_num": data.sort_num ? data.sort_num : '666',
-      "display":"1",
-      "year_of_work":data.yearofwork ? data.yearofwork : '2022',
-      "category":data.category ? data.category : '1',
-      "img": imgFileName ? imgFileName : 'placeholder.jpg'
+      "sort_num": data.sort_num ,
+      "display":data.display,
+      "year_of_work":data.year_of_work ,
+      "category":data.category ,
+      "img": imgFileName 
+    }
+    let currentDataWithoutImg ={
+      "title": data.title,
+      "intro": data.intro,
+      "video_url": data.video_url,
+      "sort_num": data.sort_num ,
+      "display":data.display,
+      "year_of_work":data.year_of_work ,
+      "category":data.category ,
     }
     // 如果有圖檔存在 執行新增資料 否則不執行
     if (selectedFile) {
@@ -80,16 +113,28 @@ function Home() {
           setFile({
             "filename":imgFileName,
             "file":selectedFile,
-            "folder":'data/'
+            "folder":'data/',
+            "maxWidth":500,
+            "maxHeight":283,
+            "compressFormat":"JPEG",
+            "quality":75
           });
       } else {
           setFile(null);
           setError("Please select an image file (png or jpg)");
       }
+      updateWork(uid,currentDataWithImg,function(res){
+        console.log(res)
+        fetchWorkDoneFun('編輯資料失敗，錯誤訊息:',res)
+
+      })
+    } else{
+      updateWork(uid,currentDataWithoutImg,function(res){
+        console.log(res)
+        fetchWorkDoneFun('編輯資料失敗，錯誤訊息:',res)
+      })
     }
-    updateWork(uid,currentData,function(res){
-      console.log(res)
-    })
+
   }
   const onDelete = (uid)=>{
     confirmAlert({
@@ -97,7 +142,9 @@ function Home() {
       buttons: [
         {
           label: '確定',
-          onClick: () =>  deleteWork(uid,function(res){console.log(res)})
+          onClick: () =>  deleteWork(uid,function(res){
+            fetchWorkDoneFun('刪除資料失敗，錯誤訊息:',res)
+          })
         },
         {
           label: '取消',
@@ -158,7 +205,7 @@ function Home() {
                           return <div key={item.id}>{item.name}</div>
                       })}
                     </td>
-                    <td className='p-2 text-xs'>{display ? '顯示' : '不顯示'}</td>
+                    <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
                     <td className='p-2 text-xs'>{time_added.toLocaleString()}</td>
                     <td className='p-2 text-xs'>
                       <button 

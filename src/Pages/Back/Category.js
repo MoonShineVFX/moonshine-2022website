@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useRecoilState } from 'recoil';
+import { formDisplayState,formStatusState,adminCategoryState } from './atoms/fromTypes';
+//components
+import CategoryForm from './Components/CategoryForm';
+
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 //helper
-import {getAllCategoryForDashboard} from '../../Helper/getfunction'
+import {getAllCategoryForDashboard, createCategory, deleteCategory, updateCategory} from '../../Helper/getfunction'
 import {LoadingAnim} from '../../Helper/HtmlComponents'
 
 
 function Category() {
   const [categoryData, setCategoryData] = useState([]);
+
+
+
+  const [showModal, setShowModal] = useRecoilState(formDisplayState);
+  const [formStatus, setFormStatus] = useRecoilState(formStatusState);
+  const [singleCategory, setSingleCategory] = useRecoilState(adminCategoryState);
 
   const onDelete = (uid)=>{
     confirmAlert({
@@ -16,7 +26,9 @@ function Category() {
       buttons: [
         {
           label: '確定',
-          // onClick: () =>  deleteWork(uid,function(res){console.log(res)})
+          onClick: () =>  deleteCategory(uid,function(res){
+            fetchCategoryDoneFun('刪除資料失敗，錯誤訊息:',res)
+          })
         },
         {
           label: '取消',
@@ -24,6 +36,53 @@ function Category() {
       ]
     });
    
+  }
+  const fetchCategoryDoneFun = (customStr, res)=>{
+    setShowModal(false)
+    if(res === 'success'){
+      getAllCategoryForDashboard((res)=>{
+        setCategoryData(res)
+      })
+    }else{
+      showErrorAlert(customStr,res)
+    }
+  }
+  const showErrorAlert = (str,res) =>{
+    confirmAlert({
+      title: str+ res,
+      buttons: [
+        {
+          label: '確定',
+        },
+        {
+          label: '取消',
+        }
+      ]
+    });
+  }
+  const handleCreateCategory = (data) =>{
+    let currentData ={
+      "id": Date.now().toString(36),
+      "time_added": new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')  ,
+      "name": data.name,
+      "name_cht": data.name_cht,
+      "sort_num": data.sort_num ? data.sort_num : '666',
+    }
+    createCategory(currentData,function(res){
+      console.log(res)
+      fetchCategoryDoneFun('新增資料失敗，錯誤訊息:',res)
+    })
+  }
+  const handleEditCategory = (uid,data) =>{
+    let currentData ={
+      "name": data.name,
+      "name_cht": data.name_cht,
+      "sort_num": data.sort_num ? data.sort_num : '666',
+    }
+    updateCategory(uid,currentData,function(res){
+      console.log(res)
+      fetchCategoryDoneFun('編輯資料失敗，錯誤訊息:',res)
+    })
   }
   useEffect(()=>{
     getAllCategoryForDashboard((res)=>{
@@ -39,16 +98,19 @@ function Category() {
       </div>
       <button 
           className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600'
+          onClick={() => {
+            setShowModal(true);
+            setFormStatus('ADD')
+          }}
 
         >新增分類 </button>
-        //TODO 這邊加表格新增分類
       <div id="table" className='w-full mt-5' >
         <table className="table-auto   border border-slate-200 w-full rounded-md ">
           <thead>
             <tr>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類ID</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>排序</th>
-              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類名稱</th>
+              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類名稱(英 - 中)</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>編輯</th>
             </tr>
           </thead>
@@ -68,9 +130,9 @@ function Category() {
                       <button 
                       className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '
                       onClick={() => {
-                        // setShowModal(true);
-                        // setSingleWork(item)
-                        // setFormStatus('EDIT')
+                        setShowModal(true);
+                        setSingleCategory(item)
+                        setFormStatus('EDIT')
                       }}>編輯</button>
                       <button 
                       className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '
@@ -86,6 +148,8 @@ function Category() {
           </tbody>
         </table>
       </div>
+
+      {showModal && <CategoryForm  handleCreateCategory={handleCreateCategory} handleEditCategory={handleEditCategory} />}
     </section>
   )
 }
