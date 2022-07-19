@@ -87,16 +87,6 @@ function Home() {
     let selectedFile = data.file[0];
     // 設定圖檔重新命名
     const imgFileName = Date.now()+'.jpg'
-    let currentDataWithImg ={
-      "title": data.title,
-      "intro": data.intro,
-      "video_url": data.video_url,
-      "sort_num": data.sort_num ,
-      "display":data.display,
-      "year_of_work":data.year_of_work ,
-      "category":data.category ,
-      "img": imgFileName 
-    }
     let currentDataWithoutImg ={
       "title": data.title,
       "intro": data.intro,
@@ -123,7 +113,7 @@ function Home() {
           setFile(null);
           setError("Please select an image file (png or jpg)");
       }
-      updateWork(uid,currentDataWithImg,function(res){
+      updateWork(uid,{...currentDataWithoutImg , "img": imgFileName },function(res){
         console.log(res)
         fetchWorkDoneFun('編輯資料失敗，錯誤訊息:',res)
 

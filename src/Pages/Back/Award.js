@@ -84,12 +84,6 @@ function Award() {
     let selectedFile = data.file[0];
     // 設定圖檔重新命名
     const imgFileName = Date.now()+'.png'
-    let currentDataWithImg ={
-      "title": data.title,
-      "sort_num": data.sort_num ,
-      "display":data.display ,
-      "img": imgFileName 
-    }
     let currentDataWithoutImg ={
       "title": data.title,
       "sort_num": data.sort_num ,
@@ -112,7 +106,7 @@ function Award() {
           setFile(null);
           setError("Please select an image file (png or jpg)");
       }
-      updateAward(uid,currentDataWithImg,function(res){
+      updateAward(uid,{...currentDataWithoutImg ,"img": imgFileName },function(res){
         console.log(res)
         fetchDataDoneFun('編輯資料失敗，錯誤訊息:',res)
 
@@ -171,7 +165,7 @@ function Award() {
                     <td className='p-2 text-xs'>{sort_num}</td>
                     <td className='p-2 text-xs'>{title}</td>
                     <td className='p-2 text-xs'>{imgpath ? '是' : '否'}</td>
-                    <td className='p-2 text-xs'>{display ? '顯示' : '不顯示'}</td>
+                    <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
                     <td className='p-2 text-xs'>
                       <button 
                       className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '

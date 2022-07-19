@@ -35,8 +35,13 @@ function Services() {
     });
    
   }
-  const handleCreate = (data) =>{}
-  const handleEdit = (data) =>{}
+  const handleCreate = (data) =>{
+
+  }
+  const handleEdit = (data) =>{
+    console.log(data)
+    
+  }
   useEffect(()=>{
     getServiceForDashboard((res)=>{
       setServiceData(res)
@@ -68,6 +73,7 @@ function Services() {
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>排序</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>名稱(英 - 中)</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>形式</th>
+              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>顯示</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>編輯</th>
             </tr>
           </thead>
@@ -75,13 +81,14 @@ function Services() {
             {
               serviceData ?
               serviceData.map((item,index)=>{
-                const {uid,id, title, intro,sort_num,params_name,types,imgpath,children} =item
+                const {uid,id, title, intro,sort_num,params_name,types,imgpath,children,display} =item
                 return(
                   <tr className=' hover:bg-zinc-200' key={id+title}>
                     <td className='p-2 text-xs'>{id}</td>
                     <td className='p-2 text-xs'>{sort_num}</td>
                     <td className='p-2 text-xs'>{title}</td>
                     <td className='p-2 text-xs'>{types === 'article' ? '站內介紹' : '導出外部連結˙'}</td>
+                    <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
 
    
                     <td className='p-2 text-xs'>
