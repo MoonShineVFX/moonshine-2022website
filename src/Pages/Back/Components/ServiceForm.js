@@ -5,7 +5,11 @@ import { useForm } from 'react-hook-form';
 
 function ServiceForm({handleCreate,handleEdit}) {
   const {register, handleSubmit, reset, formState: { errors }} = useForm(
-    {defaultValues: { title: "", sort_num:"" , articleCheckbox:false,display:""}});
+    {defaultValues: { 
+      title: "", sort_num:"" , 
+      articleCheckbox:"",
+      display:"",
+    }});
 
   const [ isCheckbox , setIsCheckbox] = useState(false)
   const onSubmit = (data) => {
@@ -17,7 +21,6 @@ function ServiceForm({handleCreate,handleEdit}) {
       console.log('EDITTT')
       handleEdit(service.uid,data)
     }
-    
   };
   const [showModal, setShowModal] = useRecoilState(formDisplayState);
   const service = useRecoilValue(adminServiceState);
@@ -29,7 +32,20 @@ function ServiceForm({handleCreate,handleEdit}) {
 
   }
   useEffect(()=>{
-    formStatus === 'EDIT' ? reset(service && service) : reset()
+    formStatus === 'EDIT' ? 
+      reset(service && {
+              title: service.title,
+              params_name: service.params_name,
+              link:service.link,
+              sort_num: service.sort_num,
+              articleCheckbox: service.article === '1' ? setIsCheckbox(true)   : setIsCheckbox(false),
+              intro:service.intro,
+              display:service.display,
+              article_title:service.children ? service.children.article_title : "" ,
+              article_subtitle:service.children ? service.children.article_subtitle : "" ,
+              article_intro:service.children ? service.children.article_intro : "" ,
+            })   
+      : reset()
   },[])
   return (
     <div className={'w-full h-screen  absolute top-0 left-0 z-20 overflow-hidden'}>
@@ -114,17 +130,19 @@ function ServiceForm({handleCreate,handleEdit}) {
 
                     <input type="file" className="custom form-control border p-2" id="file" name="photo" {...register('file')} />
                   </div>
-                  <div className='border w-4/5 h-32 flex justify-center items-center'>
+                  <div className='flex justify-center items-center'>
                     {service.imgpath ?
-                     <img src={service ? service.imgpath :　"1"} className="img-fluid"  alt={service && service.imgpath} /> : 
-                     <div className='text-zinc-300 text-xs'>JPEG Image 1280*720 ~ 1920*1080 </div>
+                     <img src={service ? service.imgpath :　"1"} className="w-3/5"  alt={service && service.imgpath} /> : 
+                     <div className='border w-4/5 h-32 text-zinc-300 text-xs'>JPEG Image 1280*720 ~ 1920*1080 </div>
                     }
                 
                   </div>
                   <hr className='mt-3 mb-3'/>
                   <div className="mb-3 ">
                     <div className="flex items-center mb-4">
-                        <input  id="article-types-1" type="checkbox" name="article-types" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {...register("articleCheckbox")} onChange={()=>setIsCheckbox(!isCheckbox)} />
+                        <input  id="article-types-1" type="checkbox" name="article-types" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {...register("articleCheckbox")} onChange={(e)=>setIsCheckbox(e.target.checked)} 
+                        checked={isCheckbox}
+                        />
                         <label htmlFor="article-types-1" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">是否擴充內文</label>
                     </div>
                   </div>
@@ -160,7 +178,7 @@ function ServiceForm({handleCreate,handleEdit}) {
                       rows="6"
                       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                       placeholder="內文介紹"
-                      {...register('article_sintro')}
+                      {...register('article_intro')}
                     ></textarea>
                   </div>
                   

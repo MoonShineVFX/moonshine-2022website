@@ -17,7 +17,7 @@ import AdminHome from '../Pages/Back/Home.js'
 import AdminCateogry from '../Pages/Back/Category'
 import AdminAward from '../Pages/Back/Award'
 import AdminServices from '../Pages/Back/Services'
-
+import AdminAbout from '../Pages/Back/About'
 
 function App() {
   return (
@@ -38,6 +38,7 @@ function App() {
               <Route  path="category" element={<AdminCateogry/>} />
               <Route  path="award" element={<AdminAward/>} />
               <Route  path="service" element={<AdminServices/>} />
+              <Route  path="about" element={<AdminAbout/>} />
             </Route>
             
  

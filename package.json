@@ -30,6 +30,8 @@
     "react-scripts": "5.0.1",
     "recoil": "^0.7.3",
     "sass": "^1.52.1",
+    "slate": "^0.81.1",
+    "slate-react": "^0.81.0",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
   },
