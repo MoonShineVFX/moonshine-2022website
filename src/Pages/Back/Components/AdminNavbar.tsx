@@ -17,22 +17,29 @@ function AdminNavbar() {
                <span className="flex-1 ml-3 whitespace-nowrap">分類管理</span>
             </Link>
          </li>
-         <hr />
-         <Link to='/admin/about' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            About Page 
-         </Link>
-         <Link to='/admin/service' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            Services Page
-         </Link>
-         <Link to='/admin/contact' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-            Contact Page
-         </Link>
+         <li>
+            <Link to='/admin/service' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+               Services Page
+            </Link>
+         </li>
+         <li>
          <Link to='/admin/award' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             Award (Home)
          </Link>
+         </li>
+         <hr />
          <Link to='/admin/headers' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             Header 圖影
          </Link>
+         {/* <Link to='/admin/about' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            About Page 
+         </Link> */}
+
+         {/* <Link to='/admin/contact' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            Contact Page
+         </Link> */}
+
+
 
       </ul>
    </div>
