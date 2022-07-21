@@ -1,24 +1,32 @@
 import React,{useState,useEffect} from 'react'
 // import ImgHeader from '../../../Components/ImgHeader'
 import { motion,AnimatePresence  } from "framer-motion"
-import serviceData from '../Home/Services.json';
+
 import { BsShieldLockFill } from 'react-icons/bs';
 import { resolve } from 'path';
 import { Link , useSearchParams   } from "react-router-dom";
 
+//i18n
+import { useTranslation } from 'react-i18next';
+
+//helper
+import {getServiceForDashboard} from '../../../Helper/getfunction'
+// import serviceData from '../Home/Services.json';
+
 function Services() {
-  const {service} = serviceData
+  // const {service} = serviceData
+  const [serviceData, setServiceData] = useState([]);
   const [currentData , setCurrentData] = useState([])
   const [showBg , setShowBg] = useState(true)
   const [getParams, setParam] = useSearchParams()
   const q = getParams.getAll('q')
-
+  
 
   const handleClick = (dataId) =>{
     disapearElement()
       .then(res=>{
         console.log(res)
-        const results  =   service.find((d)=>{
+        const results  =   serviceData.find((d)=>{
           return d.id === dataId
         })
         setCurrentData(results)
@@ -44,20 +52,29 @@ function Services() {
   }
   const filterData = () =>{
     if( q.length !== 1){
-      setCurrentData(service[0])
-      setParam({q : service[0].params_name})
+      setCurrentData(serviceData[0])
+      setParam({q : serviceData[0].params_name})
     } else{
-      const data = service.filter(function (e){
+      const data = serviceData.filter(function (e){
         return e.params_name === q[0] ; 
       })
       setCurrentData(data[0])
     }
 
   }
-
+  console.log(serviceData)
   useEffect(()=>{
+   
     window.scrollTo(0, 0)
-    filterData()
+    getServiceForDashboard((res)=>{
+      console.log(res)
+      setServiceData(res)
+      
+    }).then(()=>{
+      // filterData()
+      //TODO
+    })
+    
   },[])
   return (
     <>
@@ -70,7 +87,7 @@ function Services() {
             <motion.div 
             key="bg"
             id="service_header" 
-            style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/service/' + currentData.image})`}} 
+            style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/service/' + "currentData.imgpath"})`}} 
             className="relative  w-full h-screen  top-0 bg-no-repeat bg-center bg-cover "
             initial={{ opacity: 0 , top:'10vh' }}
             animate={{ opacity: 1 , top:0 }}
@@ -131,14 +148,11 @@ function Services() {
         }
         
         </AnimatePresence>
-
-
-
       </div>
       <div className='flex  border-t  border-[#ffffff83] absolute bottom-0 w-full xs:flex-wrap  
        '>
         {
-          service.map((item,index)=>{
+          serviceData.map((item,index)=>{
             const {id, title,params_name} = item
             return(
               <div 

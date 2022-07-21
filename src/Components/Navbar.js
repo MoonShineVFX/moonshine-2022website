@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Link ,useLocation  } from "react-router-dom";
 function Navbar({data , toggleTrueFalse,socialmedia}) {
   const { t, i18n } = useTranslation();
+  console.log(i18n.language)
   const changeLanguage = (lng) => {
+    console.log(i18n.language)
       i18n.changeLanguage(lng);
   };
   const { pathname } = useLocation();
@@ -20,7 +22,7 @@ function Navbar({data , toggleTrueFalse,socialmedia}) {
       </div>
       <div className="navlist">
         <ul className='menu_list'>
-        { data?
+          { data?
             data.map((item,index)=>{
               return(
                 <li key={index}>
@@ -47,11 +49,14 @@ function Navbar({data , toggleTrueFalse,socialmedia}) {
                   </a> 
                 </li>
               )
-            }) : <div> </div>
+            }) : <div>loading </div>
           }
-
-        </ul>
-        <ul>
+          <li className= {"mx-3 "  + (i18n.language === 'zh-TW' ?' text-white  ' : ' text-zinc-500') } >
+            <p onClick={() => changeLanguage("zh-TW")}>繁</p>
+          </li>
+          <li className={""  + (i18n.language === 'zh-TW' ?' text-zinc-500  ' : ' text-white') }>
+            <p onClick={() => changeLanguage("en")}>EN</p>
+          </li>
 
         </ul>
       </div>

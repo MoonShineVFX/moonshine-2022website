@@ -35,11 +35,13 @@ function ServiceForm({handleCreate,handleEdit}) {
     formStatus === 'EDIT' ? 
       reset(service && {
               title: service.title,
+              title_cht: service.title_cht,
               params_name: service.params_name,
               link:service.link,
               sort_num: service.sort_num,
               articleCheckbox: service.article === '1' ? setIsCheckbox(true)   : setIsCheckbox(false),
               intro:service.intro,
+              intro_cht:service.intro_cht,
               display:service.display,
               article_title:service.children ? service.children.article_title : "" ,
               article_subtitle:service.children ? service.children.article_subtitle : "" ,
@@ -66,6 +68,18 @@ function ServiceForm({handleCreate,handleEdit}) {
                   />
                 </div>
                 <div>
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">單元名稱(中文)</label>
+                  <input
+                    type="text"
+                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                    placeholder="單元名稱(中文)"
+                    {...register('title_cht')}
+                  />
+                </div>
+
+              </div>
+              <div className="mb-3 flex gap-3">
+                <div>
                   <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">參數名稱(小寫無空格)</label>
                   <input
                     type="text"
@@ -74,7 +88,15 @@ function ServiceForm({handleCreate,handleEdit}) {
                     {...register('params_name')}
                   />
                 </div>
-
+                <div className="mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">排序(輸入1-999)</label>
+                  <input
+                    type="text"
+                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                    placeholder="排序"
+                    {...register('sort_num')}
+                  />
+                </div>
               </div>
               <div className="mb-3 ">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">官網連結(https網址)</label>
@@ -85,15 +107,7 @@ function ServiceForm({handleCreate,handleEdit}) {
                   {...register('link')}
                 />
               </div>
-              <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">排序(輸入1-999)</label>
-                <input
-                  type="text"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  placeholder="排序"
-                  {...register('sort_num')}
-                />
-              </div>
+
               <div className="mb-3">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">簡介</label>
                 <textarea
@@ -101,6 +115,15 @@ function ServiceForm({handleCreate,handleEdit}) {
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                   placeholder="介紹"
                   {...register('intro')}
+                ></textarea>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">介紹(中文)</label>
+                <textarea
+                  rows="6"
+                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                  placeholder="介紹(中文)"
+                  {...register('intro_cht')}
                 ></textarea>
               </div>
               <div className="mb-3">

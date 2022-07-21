@@ -69,9 +69,11 @@ function Services() {
       "id": Date.now().toString(36),
       "time_added": new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')  ,
       "title": data.title,
+      "title_cht": data.title_cht,
       "sort_num": data.sort_num ? data.sort_num : '666',
       "display":data.display ,
       "intro": data.intro,
+      "intro_cht": data.intro_cht,
       "params_name": data.params_name,
       "link": data.link,
       "article":"0"
@@ -88,9 +90,11 @@ function Services() {
     const imgFileName = Date.now()+'.png'
     let currentData = {
       "title": data.title,
+      "title_cht": data.title_cht,
       "sort_num": data.sort_num ,
       "display":data.display ,
       "intro": data.intro,
+      "intro_cht": data.intro_cht,
       "params_name": data.params_name,
       "link": data.link,
       "article" : data.articleCheckbox === true ? "1" :"0"
@@ -176,12 +180,12 @@ function Services() {
             {
               serviceData ?
               serviceData.map((item,index)=>{
-                const {uid,id, title, intro,sort_num,params_name,imgpath,display,article} =item
+                const {uid,id, title, intro,sort_num,params_name,imgpath,display,article,title_cht} =item
                 return(
                   <tr className=' hover:bg-zinc-200' key={id+title}>
                     <td className='p-2 text-xs'>{id}</td>
                     <td className='p-2 text-xs'>{sort_num}</td>
-                    <td className='p-2 text-xs'>{title}</td>
+                    <td className='p-2 text-xs'>{title} - {title_cht}</td>
                     <td className='p-2 text-xs'>{article === '1' ? '站內介紹' : '導出外部連結'}</td>
                     <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
 
