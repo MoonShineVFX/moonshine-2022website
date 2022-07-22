@@ -50,15 +50,15 @@ function Services() {
 
     })
   }
-  const filterData = () =>{
+  const filterData = (data) =>{
     if( q.length !== 1){
-      setCurrentData(serviceData[0])
-      setParam({q : serviceData[0].params_name})
+      setCurrentData(data[0])
+      setParam({q : data[0].params_name})
     } else{
-      const data = serviceData.filter(function (e){
+      const fdata = data.filter(function (e){
         return e.params_name === q[0] ; 
       })
-      setCurrentData(data[0])
+      setCurrentData(fdata[0])
     }
 
   }
@@ -69,10 +69,8 @@ function Services() {
     getServiceForDashboard((res)=>{
       console.log(res)
       setServiceData(res)
+      filterData(res)
       
-    }).then(()=>{
-      // filterData()
-      //TODO
     })
     
   },[])
@@ -83,11 +81,11 @@ function Services() {
       <div className='w-full h-screen  absolute  bg-gradient-to-t from-black z-10 '></div>
       <AnimatePresence>
         {
-          showBg && (
+          currentData && showBg && (
             <motion.div 
             key="bg"
             id="service_header" 
-            style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/service/' + "currentData.imgpath"})`}} 
+            style={{backgroundImage: `url(${currentData.imgpath})`}} 
             className="relative  w-full h-screen  top-0 bg-no-repeat bg-center bg-cover "
             initial={{ opacity: 0 , top:'10vh' }}
             animate={{ opacity: 1 , top:0 }}
@@ -101,7 +99,7 @@ function Services() {
       <div className='absolute top-[45%] left-[10%] w-2/5 z-20 xs:top-[10%] xs:w-4/5 '>
       <AnimatePresence>
         {
-          showBg && (
+          currentData && showBg && (
             <motion.h1 
               key='title'
               className='text-5xl mb-5 font-medium ' 
@@ -115,7 +113,7 @@ function Services() {
           )
         }
         {
-          showBg && (
+          currentData && showBg && (
             <motion.div 
             key='desc'
             className='text-base'
@@ -124,12 +122,12 @@ function Services() {
             exit={{ opacity: 0, y: '-2vw' }}
             transition={{delay:0.2 , duration: 0.5}}
           >
-            {currentData.desc}
+            {currentData.intro}
           </motion.div>
           )
         }
         {
-          currentData.types === 'link' ? 
+          currentData && currentData.link &&
          showBg && (
           <motion.a 
             key='link'
@@ -144,14 +142,14 @@ function Services() {
             Visit Website
           </motion.a>
 
-        ) : null
+        ) 
         }
         
         </AnimatePresence>
       </div>
       <div className='flex  border-t  border-[#ffffff83] absolute bottom-0 w-full xs:flex-wrap  
        '>
-        {
+        { serviceData &&
           serviceData.map((item,index)=>{
             const {id, title,params_name} = item
             return(
@@ -170,8 +168,8 @@ function Services() {
         }
       </div>
     </div>
-    {
-        currentData.types === 'article' ? 
+    { serviceData &&
+        currentData.article === '1' ? 
         <div className=''>
           <div className="text-center pt-16 md:pt-32">
             <p className="text-sm md:text-base text-green-500 font-bold"> {currentData.title}</p>

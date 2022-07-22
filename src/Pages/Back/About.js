@@ -37,7 +37,7 @@ function About() {
         </div>
         <div className='mt-3'>
           <button type="submit" className="py-2 px-4 bg-black text-white  rounded-md" onClick={handleSubmit(onSubmit)}>
-                    儲存編輯
+              儲存編輯
           </button>
         </div>
 

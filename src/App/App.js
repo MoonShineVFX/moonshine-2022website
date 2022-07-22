@@ -9,6 +9,7 @@ import DashboardPageLayout from '../Layouts/DashboardPageLayout'
 import Home from '../Pages/Front/Home/Home'
 import About from '../Pages/Front/About/About'
 import Work from '../Pages/Front/Work/Work'
+import DefaultWork from '../Pages/Front/DefaultWork/DefaultWork';
 import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
 import By_Category from '../Pages/Front/Work/By_Category';
@@ -28,7 +29,7 @@ function App() {
             <Route path="/"  element={ <PublicPageLayout/>}>
               <Route path="" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/work" element={<Work />} />
+              <Route path="/work" element={<DefaultWork />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/services" element={<Services />} />
               <Route path="/By_Category/:cid" element={<By_Category />} />
