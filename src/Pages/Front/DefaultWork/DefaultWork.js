@@ -79,7 +79,6 @@ function DefaultWork() {
                     initial={{ opacity: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration :0.8 }}
-                    layout
                     
                     className="bg-black w-full aspect-[16/10] relative rounded-md  transition cursor-pointer duration-200   xs:w-[25vw]   overflow-hidden group " 
                     
