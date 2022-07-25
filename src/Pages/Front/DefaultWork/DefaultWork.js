@@ -27,12 +27,11 @@ function DefaultWork() {
       
       return
     }
-    const filteredData =  workData.filter((value)=>{
-      return value.category === categoryID;
-    })
+    const filteredData =  workData.filter((value)=>
+      value.category.includes(categoryID)
+    )
     setCurrentCategory(categoryID)
     setFilteredWorkData(filteredData);
-    
     
   }
   useEffect(()=>{
@@ -58,7 +57,7 @@ function DefaultWork() {
             return(
               <li key={name+id} 
                   onClick={()=> filterCategory(id)} 
-                  className="text-zinc-500 cursor-pointer hover:text-white">
+                  className={"cursor-pointer hover:text-white " + (currentCategory === id ? ' text-white ' : 'text-zinc-500  ' )}>
                 {name }
               </li>
             )
@@ -67,7 +66,7 @@ function DefaultWork() {
         </ul>
       </div>
       <div id='workContainer'>
-        <motion.div layout className='w-11/12 grid grid-cols-5 gap-3 xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto'>
+        <motion.div className='w-11/12 grid grid-cols-5 gap-3 xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto'>
         <AnimatePresence>
           {filteredWorkData ? 
             filteredWorkData.map((item,index)=>{
@@ -75,12 +74,13 @@ function DefaultWork() {
               return(
                   display === "1" ? 
                   <motion.div 
-                    key={id}
-                    layout
+                    key={id+title}
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration :0.8 }}
+                    layout
+                    
                     className="bg-black w-full aspect-[16/10] relative rounded-md  transition cursor-pointer duration-200   xs:w-[25vw]   overflow-hidden group " 
                     
                     onClick={() => {
@@ -91,7 +91,7 @@ function DefaultWork() {
                       className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-75 group-hover:brightness-110 transition ease-linear  '
                       style={{backgroundImage : `url(${imgpath})`}}
                     ></div>  
-                    <div className="opacity-1 transition -translate-y-5 translate-x-2 group-hover:opacity-100 group-hover:-translate-y-6 text-xs  ">{title} </div>
+                    <div className="transition-all  translate-x-2  text-xs -translate-y-5 group-hover:-translate-y-full  ">{title} </div>
                   </motion.div> :""
                     
                 
