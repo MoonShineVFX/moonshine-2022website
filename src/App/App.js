@@ -1,7 +1,7 @@
 import './App.scss';
 import { BrowserRouter , Routes, Route} from 'react-router-dom';
 
-import PublicPageLayout from '..//Layouts/PublicPageLayout'
+import PublicPageLayout from '../Layouts/PublicPageLayout'
 import DashboardPageLayout from '../Layouts/DashboardPageLayout'
 
 
