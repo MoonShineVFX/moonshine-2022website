@@ -3,12 +3,12 @@ import ReactPlayer from 'react-player'
 import { motion } from "framer-motion"
 function Header() {
   return (
-    <div id="header" className='relative w-full h-[65vh] bg-no-repeat bg-center bg-cover xs:h-[35vh]'>
+    <div id="header" className='relative w-full h-[68vh] bg-no-repeat bg-center bg-cover xs:h-[35vh]'>
       <div className="vimeo-wrapper">
         {/* <iframe src="https://player.vimeo.com/video/706129402?background=1&autoplay=1&loop=1&byline=0&title=0"
                 frameBorder="0" allowFullScreen></iframe> */}
         <ReactPlayer
-          url='https://vimeo.com/706129402'
+          url='https://vimeo.com/734274794'
           className='react-player'
           playing
           muted
