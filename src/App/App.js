@@ -36,7 +36,7 @@ function App() {
 
             </Route>
             
-            <Route path="admin"  element={ <DashboardPageLayout/>}>
+            {/* <Route path="admin"  element={ <DashboardPageLayout/>}>
               <Route  path="" element={<AdminHome/>} />
               <Route  path="category" element={<AdminCateogry/>} />
               <Route  path="award" element={<AdminAward/>} />
@@ -44,7 +44,7 @@ function App() {
               <Route  path="about" element={<AdminAbout/>} />
               <Route  path="contact" element={<AminContact/>} />
               <Route  path="headers" element={<AdminHeader/>} />
-            </Route>
+            </Route> */}
             
  
           
