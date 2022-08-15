@@ -3,8 +3,11 @@ import { BrowserRouter , Routes, Route} from 'react-router-dom';
 
 import PublicPageLayout from '../Layouts/PublicPageLayout'
 import DashboardPageLayout from '../Layouts/DashboardPageLayout'
-
-
+import { AuthProvider } from "../Components/Auth";
+import PublicRoutes from '../Routes/PublicRoutes'
+import ProtectedRoutes from '../Routes/ProtectedRoutes'
+//login
+import Login from '../Components/Login'
 //pages
 import Home from '../Pages/Front/Home/Home'
 import About from '../Pages/Front/About/About'
@@ -22,8 +25,11 @@ import AdminAbout from '../Pages/Back/About'
 import AminContact from '../Pages/Back/Contact'
 import AdminHeader from '../Pages/Back/AdminHeader'
 
+
+
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Routes> 
             <Route path="/"  element={ <PublicPageLayout/>}>
@@ -36,7 +42,7 @@ function App() {
 
             </Route>
             
-            {/* <Route path="admin"  element={ <DashboardPageLayout/>}>
+            <Route path="admin"  element={ <ProtectedRoutes/>}>
               <Route  path="" element={<AdminHome/>} />
               <Route  path="category" element={<AdminCateogry/>} />
               <Route  path="award" element={<AdminAward/>} />
@@ -44,12 +50,18 @@ function App() {
               <Route  path="about" element={<AdminAbout/>} />
               <Route  path="contact" element={<AminContact/>} />
               <Route  path="headers" element={<AdminHeader/>} />
-            </Route> */}
+            </Route> 
+
+            <Route path="login" element={<PublicRoutes />}>
+              <Route path="/login" element={<Login />} />
+            </Route>
             
  
           
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
+
   );
 }
 

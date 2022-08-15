@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link ,useLocation  } from "react-router-dom";
+import {auth} from '../../../firebaseConfig/fireauth';
+import { signOut  } from "firebase/auth";
 function AdminNavbar() {
   return (
 <aside className="w-64 " aria-label="Sidebar">
@@ -31,6 +33,9 @@ function AdminNavbar() {
          <Link to='/admin/headers' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             Header 圖影
          </Link>
+         <li  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <button onClick={() => signOut(auth)} className="btn btn-primary">Sign out</button>
+         </li>
          {/* <Link to='/admin/about' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             About Page 
          </Link> */}
