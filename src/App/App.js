@@ -1,6 +1,8 @@
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import './App.scss';
 import { BrowserRouter , Routes, Route} from 'react-router-dom';
-
 import PublicPageLayout from '../Layouts/PublicPageLayout'
 import DashboardPageLayout from '../Layouts/DashboardPageLayout'
 import { AuthProvider } from "../Components/Auth";
@@ -28,6 +30,14 @@ import AdminHeader from '../Pages/Back/AdminHeader'
 
 
 function App() {
+  useEffect(() => {
+    setTimeout(function() {
+        AOS.init({
+          
+        });
+    }, 100);
+    // AOS.refresh()
+  }, []);
   return (
     <AuthProvider>
     <BrowserRouter>

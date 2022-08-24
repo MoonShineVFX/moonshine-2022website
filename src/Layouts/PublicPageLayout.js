@@ -12,8 +12,6 @@ import socialMediaData from '../Components/socialitemData.json'
 import { RecoilRoot } from 'recoil';
 
 
-
-
 function PublicPageLayout() {
   const {socialmedia} = socialMediaData
   const {navbar} =NavData
