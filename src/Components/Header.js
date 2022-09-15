@@ -4,6 +4,9 @@ import { motion } from "framer-motion"
 function Header() {
   return (
     <div id="header" className='relative w-full h-[68vh] bg-no-repeat bg-center bg-cover xs:h-[35vh]'>
+      <div className=' absolute bottom-40 w-40 right-14 md:w-20 md:right-9'>
+        <img src={ process.env.PUBLIC_URL + '/images/tpn-white.png'} alt="" className='w-full' />
+      </div>
       <div className="vimeo-wrapper">
         {/* <iframe src="https://player.vimeo.com/video/706129402?background=1&autoplay=1&loop=1&byline=0&title=0"
                 frameBorder="0" allowFullScreen></iframe> */}
