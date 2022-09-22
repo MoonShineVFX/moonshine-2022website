@@ -144,7 +144,7 @@ export const getNextWorksByCategoryAndLimits = async (cid,callback)=>{
  * 條件 display 全部 要給後台用(admin) 
  * **/ 
 export const getAllWorksForDashboard = async (callback)=>{
-  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(12))
+  const q = query(collection(db, "data"),orderBy('time_added' , 'desc'),limit(10))
   const data = await getDocs(q);
 
   mapDataWithImage('data',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){

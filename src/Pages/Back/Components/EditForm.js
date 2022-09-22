@@ -28,9 +28,9 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
     formStatus === 'EDIT' ? reset(work && work) : reset()
   },[])
   return (
-    <div className={'w-full h-screen  absolute top-0 left-0 z-20 overflow-hidden'}>
-      <div className=' opacity-30 absolute inset-0 bg-black ' onClick={handleClose}></div>
-      <div className=' relative w-4/5 bg-white mx-auto my-20 p-5 overflow-auto'>
+    <div className={'w-full h-screen  absolute top-0 left-0 z-20 '}>
+      <div className=' opacity-30 fixed inset-0 bg-black ' onClick={handleClose}></div>
+      <div className=' relative w-4/5 bg-white mx-auto my-10 p-5 overflow-auto '>
         <div className='text-xl text-center font-bold'>{formStatus === 'ADD' ? '新增作品' : '編輯作品'}</div>
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           <div className='flex gap-4'>
@@ -45,18 +45,8 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   {...register('title')}
                 />
               </div>
-              <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品年分</label>
-                <input
-                  type="text"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  id="exampleURL0"
-                  placeholder="作品年分"
-                  {...register('year_of_work')}
-                />
-              </div>
               <div className="relative mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品分類</label>
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">分類</label>
                 <select className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " id="category" {...register("category")}>
                   {categoryData.map((item,index)=>{
                     return(
@@ -65,18 +55,33 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   })}
                 </select>
               </div>
-              
-              <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品排序(輸入1-999)</label>
-                <input
-                  type="text"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  placeholder="排序"
-                  {...register('sort_num')}
-                />
+              <div className='flex gap-3'>
+                <div className="mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品年分</label>
+                  <input
+                    type="text"
+                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                    id="exampleURL0"
+                    placeholder="作品年分"
+                    {...register('year_of_work')}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">排序(1-999)</label>
+                  <input
+                    type="text"
+                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                    placeholder="排序"
+                    {...register('sort_num')}
+                  />
+                </div>
               </div>
+
+              
+
               <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">影片位置(2022開始已經可以直接貼上youtube or vimeo 網址)</label>
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">影片位置(直接貼上youtube or vimeo 網址)</label>
                 <input
                   type="text"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
@@ -84,28 +89,22 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   {...register('video_url')}
                 />
               </div>
-              <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">vimeo {formStatus === 'EDIT' && work.vimeo_id && <span>https://vimeo.com/{work.vimeo_id}</span> }</label>
-                
-                <input
-                  type="text"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  placeholder="影片位置"
-                  {...register('vimeo_id')}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
-                  youtube {formStatus === 'EDIT' && work.youtube_id && <span>https://www.youtube.com/watch?v={work.youtube_id}</span> }
-                  </label>
-                
-                <input
-                  type="text"
-                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  placeholder="影片位置"
-                  {...register('youtube_id')}
-                />
-              </div>
+              {work.vimeo_id &&
+                <div className="mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">這是原本的vimeo(新版網頁請直接更新貼在上欄) </label>
+                  <div>{formStatus === 'EDIT' && work.vimeo_id && <span>https://vimeo.com/{work.vimeo_id}</span> }</div>
+                </div>
+              }
+              {work.youtube_id &&
+                <div className="mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
+                    這是原本的youtube (新版網頁請直接更新貼在上欄) 
+                    </label>
+                    <div>{formStatus === 'EDIT' && work.youtube_id && <span>https://www.youtube.com/watch?v={work.youtube_id}</span> }</div>      
+                </div>
+              }
+
+
               <div className="mb-3">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
                   前台顯示 
