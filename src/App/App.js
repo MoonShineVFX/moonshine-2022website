@@ -5,6 +5,7 @@ import './App.scss';
 import { BrowserRouter , Routes, Route} from 'react-router-dom';
 import PublicPageLayout from '../Layouts/PublicPageLayout'
 import DashboardPageLayout from '../Layouts/DashboardPageLayout'
+import EmptyPageLayout from "../Layouts/EmptyPageLayout";
 import { AuthProvider } from "../Components/Auth";
 import PublicRoutes from '../Routes/PublicRoutes'
 import ProtectedRoutes from '../Routes/ProtectedRoutes'
@@ -18,6 +19,7 @@ import DefaultWork from '../Pages/Front/DefaultWork/DefaultWork';
 import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
 import By_Category from '../Pages/Front/Work/By_Category';
+import Ar_Preview from "../Pages/Front/Ar/Ar_Preview";
 //Back Pages
 import AdminHome from '../Pages/Back/Home.js'
 import AdminCateogry from '../Pages/Back/Category'
@@ -42,6 +44,7 @@ function App() {
     <AuthProvider>
     <BrowserRouter>
       <Routes> 
+      
             <Route path="/"  element={ <PublicPageLayout/>}>
               <Route path="" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -49,6 +52,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/services" element={<Services />} />
               <Route path="/By_Category/:cid" element={<By_Category />} />
+              
 
             </Route>
             
@@ -65,6 +69,10 @@ function App() {
             <Route path="login" element={<PublicRoutes />}>
               <Route path="/login" element={<Login />} />
             </Route>
+            <Route path="viewer" element={<EmptyPageLayout/> }>
+              <Route path="ar" element={<Ar_Preview />} />
+            </Route>
+
             
  
           
