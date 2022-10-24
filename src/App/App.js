@@ -20,6 +20,7 @@ import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
 import By_Category from '../Pages/Front/Work/By_Category';
 import Ar_Preview from "../Pages/Front/Ar/Ar_Preview";
+import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
 //Back Pages
 import AdminHome from '../Pages/Back/Home.js'
 import AdminCateogry from '../Pages/Back/Category'
@@ -47,6 +48,7 @@ function App() {
       
             <Route path="/"  element={ <PublicPageLayout/>}>
               <Route path="" element={<Home />} />
+              <Route path="/hc" element={<Home_mainCategory />} />
               <Route path="/about" element={<About />} />
               <Route path="/work" element={<DefaultWork />} />
               <Route path="/contact" element={<Contact />} />

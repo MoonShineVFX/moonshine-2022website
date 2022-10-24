@@ -111,6 +111,7 @@ function Category() {
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類ID</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>排序</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類名稱(英 - 中)</th>
+              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>狀態</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>編輯</th>
             </tr>
           </thead>
@@ -118,14 +119,14 @@ function Category() {
             {
               categoryData ?
               categoryData.map((item,index)=>{
-                const {uid,id, name, name_cht,sort_num} =item
+                const {uid,id, name, name_cht,sort_num,display} =item
                 return(
                   <tr className=' hover:bg-zinc-200' key={id+name}>
                     <td className='p-2 text-xs'>{id}</td>
                     <td className='p-2 text-xs'>{sort_num}</td>
                     <td className='p-2 text-xs'>{name} - {name_cht}</td>
 
-   
+                    <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
                     <td className='p-2 text-xs'>
                       <button 
                       className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '
