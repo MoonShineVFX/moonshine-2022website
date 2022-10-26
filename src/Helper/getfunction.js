@@ -81,7 +81,10 @@ const mapDataWithUid = async (data, callback)=>{
   const q = query(collection(db, "category"))
   const data = await getDocs(q);
   // mapCategoryData(data.docs.map(doc=> doc.data()))
-  callback(data.docs.map(doc=> doc.data()))
+  // callback(data.docs.map(doc=> doc.data()))
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
 }
 
 
