@@ -14,11 +14,13 @@ import {LoadingAnim} from '../../Helper/HtmlComponents'
 function Category() {
   const [categoryData, setCategoryData] = useState([]);
 
-
-
   const [showModal, setShowModal] = useRecoilState(formDisplayState);
   const [formStatus, setFormStatus] = useRecoilState(formStatusState);
   const [singleCategory, setSingleCategory] = useRecoilState(adminCategoryState);
+
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState(null);
+  const types = ["image/png", "image/jpeg", "image/jpg"];
 
   const onDelete = (uid)=>{
     confirmAlert({
@@ -66,6 +68,7 @@ function Category() {
       "time_added": new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')  ,
       "name": data.name,
       "name_cht": data.name_cht,
+      "video_url": data.video_url,
       "sort_num": data.sort_num ? data.sort_num : '666',
     }
     createCategory(currentData,function(res){
@@ -74,15 +77,43 @@ function Category() {
     })
   }
   const handleEditCategory = (uid,data) =>{
-    let currentData ={
+    let selectedFile = data.file[0];
+    // 設定圖檔重新命名
+    const imgFileName = Date.now()+'.jpg'
+    let currentDataWithoutImg ={
       "name": data.name,
       "name_cht": data.name_cht,
+      "video_url": data.video_url,
       "sort_num": data.sort_num ? data.sort_num : '666',
     }
-    updateCategory(uid,currentData,function(res){
-      console.log(res)
-      fetchCategoryDoneFun('編輯資料失敗，錯誤訊息:',res)
-    })
+    // 如果有圖檔存在 執行新增資料 否則不執行
+    if (selectedFile) {
+      if (types.includes(selectedFile.type)) {
+          setError(null);
+          setFile({
+            "filename":imgFileName,
+            "file":selectedFile,
+            "folder":'data/',
+            "maxWidth":500,
+            "maxHeight":283,
+            "compressFormat":"JPEG",
+            "quality":75
+          });
+      } else {
+          setFile(null);
+          setError("Please select an image file (png or jpg)");
+      }
+      updateCategory(uid,{...currentDataWithoutImg , "img": imgFileName },function(res){
+        console.log(res)
+        fetchCategoryDoneFun('編輯資料失敗，錯誤訊息:',res)
+
+      })
+    } else{
+      updateCategory(uid,currentDataWithoutImg,function(res){
+        console.log(res)
+        fetchCategoryDoneFun('編輯資料失敗，錯誤訊息:',res)
+      })
+    }
   }
   useEffect(()=>{
     getAllCategoryForDashboard((res)=>{

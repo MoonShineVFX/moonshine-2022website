@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 function CategoryForm({handleCreateCategory, handleEditCategory}) {
   const {register, handleSubmit, reset, formState: { errors }} = useForm(
-    {defaultValues: { name: "", name_cht: "",sort_num:""}});
+    {defaultValues: { name: "", name_cht: "",sort_num:"",video_url:""}});
   const onSubmit = (data) => {
     console.log(data)
     if(data.method === 'ADD'){
@@ -65,6 +65,15 @@ function CategoryForm({handleCreateCategory, handleEditCategory}) {
                 />
               </div>
               <div className="mb-3">
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">影片位置(直接貼上youtube or vimeo 網址)</label>
+                <input
+                  type="text"
+                  className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                  placeholder="影片位置"
+                  {...register('video_url')}
+                />
+              </div>
+              <div className="mb-3">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
                   前台顯示 
                   </label>
@@ -79,6 +88,21 @@ function CategoryForm({handleCreateCategory, handleEditCategory}) {
                   </div>
               </div>
 
+            </div>
+            <div className='left w-1/2'>
+              {
+                formStatus === 'EDIT' && 
+                <div className="mb-3 ">
+                  <div className='mb-3'>
+                    <h1 className='mb-2'>設定作品縮圖</h1>
+
+                    <input type="file" className="custom form-control border p-2" id="file" name="photo" {...register('file')} />
+                  </div>
+
+                  <img src={category ? category.imgpath :　"1"} className="img-fluid"  alt={category && category.imgpath} />
+                
+                </div>
+              }
             </div>
 
           </div>

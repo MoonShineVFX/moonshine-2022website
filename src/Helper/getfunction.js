@@ -210,7 +210,10 @@ export const deleteWork = async(uid,callback)=>{
  export const getAllCategoryForDashboard = async (callback)=>{
   const q = query(collection(db, "category"),orderBy('sort_num' , 'desc'))
   const data = await getDocs(q);
-  mapDataWithUid(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+  // mapDataWithUid(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
+  //   callback(res)
+  // })
+  mapDataWithImage('img_category',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
