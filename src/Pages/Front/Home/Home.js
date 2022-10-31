@@ -33,7 +33,7 @@ function Home() {
 
   return (
     <section id="home">
-      <Header />
+      <Header v_url='https://vimeo.com/734274794' />
       <div className="home_container">
         <Newest data={newestWorkData}/> 
         <Service data={service}/>

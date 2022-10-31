@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link ,useLocation  } from "react-router-dom";
 import { getCategory} from '../../../Helper/getfunction'
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
 import ReactPlayer from 'react-player';
@@ -39,9 +40,10 @@ function Home_mainCategory() {
         {
           categoryData ? 
           categoryData.map((item,index)=>{
-            const{id, name , name_cht,display,imgpath,cover_video } = item
+            const{id, name , name_cht,display,imgpath,cover_video,slug } = item
             return display === '1' ? 
-              <li key={name+id} 
+              <Link key={name+id} 
+                  to={"/works/"+slug}
                   className="cursor-pointer text-white text-4xl font-thin bg-no-repeat bg-cover bg-center flex justify-center items-center opacity-50 hover:opacity-100 hover:tracking-widest transition-all  "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
@@ -50,7 +52,7 @@ function Home_mainCategory() {
                 </div>
                 <div className=' absolute'> {name }</div>
                
-              </li>
+              </Link>
               :
               null
 

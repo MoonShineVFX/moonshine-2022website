@@ -29,6 +29,19 @@ export const getWorks = async (callback)=>{
     callback(res)
   })
 }
+//根據分類id取資料
+export const getWorksByCategoryCid = async (cid,callback)=>{
+  const q = query(collection(db, "data"), 
+    where("category", "==", cid),
+    orderBy('time_added' , 'desc'), 
+    where("display", "==", '1'))
+    ;
+  const data = await getDocs(q);
+
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
 
 
 // 處理作品的圖片路徑
@@ -78,7 +91,7 @@ const mapDataWithUid = async (data, callback)=>{
  * 不用處理圖片路徑的 直接 set
  * **/ 
  export const getCategory = async (callback)=>{
-  const q = query(collection(db, "category"))
+  const q = query(collection(db, "category"), where("display", "==", '1'))
   const data = await getDocs(q);
   // mapCategoryData(data.docs.map(doc=> doc.data()))
   // callback(data.docs.map(doc=> doc.data()))

@@ -53,8 +53,8 @@ function App() {
               <Route path="/work" element={<DefaultWork />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/By_Category/:cid" element={<By_Category />} />
-              
+              <Route path="/works/:name" element={<By_Category />} />
+
 
             </Route>
             

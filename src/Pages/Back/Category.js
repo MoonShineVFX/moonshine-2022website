@@ -62,13 +62,20 @@ function Category() {
       ]
     });
   }
+  function convertToSlug(Text) {
+    return Text.toLowerCase()
+               .replace(/ /g, '-')
+               .replace(/[^\w-]+/g, '');
+  }
   const handleCreateCategory = (data) =>{
     let currentData ={
       "id": Date.now().toString(36),
       "time_added": new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')  ,
       "name": data.name,
       "name_cht": data.name_cht,
+      "slug":convertToSlug(data.name),
       "video_url": data.video_url,
+      "cover_video":data.cover_video,
       "sort_num": data.sort_num ? data.sort_num : '666',
     }
     createCategory(currentData,function(res){
@@ -83,6 +90,8 @@ function Category() {
     let currentDataWithoutImg ={
       "name": data.name,
       "name_cht": data.name_cht,
+      "slug":convertToSlug(data.name),
+      "cover_video":data.cover_video,
       "video_url": data.video_url,
       "sort_num": data.sort_num ? data.sort_num : '666',
     }
@@ -142,6 +151,7 @@ function Category() {
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類ID</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>排序</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類名稱(英 - 中)</th>
+              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>Slug</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>狀態</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>編輯</th>
             </tr>
@@ -150,13 +160,13 @@ function Category() {
             {
               categoryData ?
               categoryData.map((item,index)=>{
-                const {uid,id, name, name_cht,sort_num,display} =item
+                const {uid,id, name, name_cht,sort_num,display,slug} =item
                 return(
                   <tr className=' hover:bg-zinc-200' key={id+name}>
                     <td className='p-2 text-xs'>{id}</td>
                     <td className='p-2 text-xs'>{sort_num}</td>
                     <td className='p-2 text-xs'>{name} - {name_cht}</td>
-
+                    <td className='p-2 text-xs'>{slug}</td>
                     <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
                     <td className='p-2 text-xs'>
                       <button 
