@@ -24,7 +24,7 @@ function Home_mainCategory() {
     }
     return(
       <video 
-        loop muted playsInline className='h-screen w-full object-cover align-middle' 
+        loop muted playsInline className='h-screen w-full object-cover align-middle md:max-h-[25vh] ' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -36,7 +36,7 @@ function Home_mainCategory() {
 
   return (
     <div>
-      <ul className='grid grid-cols-4 w-full h-screen'>
+      <ul className='grid grid-cols-4 w-full h-screen md:grid-cols-1 md:h-auto md:aspect-square md:p-6 md:mt-10'>
         {
           categoryData ? 
           categoryData.map((item,index)=>{
@@ -44,13 +44,13 @@ function Home_mainCategory() {
             return display === '1' ? 
               <Link key={name+id} 
                   to={"/works/"+slug}
-                  className="cursor-pointer text-white text-4xl font-thin bg-no-repeat bg-cover bg-center flex justify-center items-center opacity-50 hover:opacity-100 hover:tracking-widest transition-all  "
+                  className=" relative cursor-pointer text-white text-4xl font-thin bg-no-repeat bg-cover bg-center flex justify-center items-center opacity-50 hover:opacity-100 hover:tracking-widest transition-all md:text-xl md:opacity-80   "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
-                <div>
+     
                   <VideoContainer url={cover_video}/> 
-                </div>
-                <div className=' absolute'> {name }</div>
+
+                <div className=' absolute '> {name }</div>
                
               </Link>
               :
@@ -61,8 +61,8 @@ function Home_mainCategory() {
         }
         </ul>
 
-        <section id="about" className='w-[90%] mx-auto mt-24'>
-          <div className='w-1/2'>
+        <section id="about" className='w-[90%] mx-auto mt-24 md:mt-12'>
+          <div className='w-1/2 md:w-full'>
             <div className='text-3xl font-thin  mb-10'>About Moonshine</div>
             <div className='text-sm font-thin leading-7'>
               <div className='mb-6 '>MoonShine is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.</div>
@@ -73,28 +73,28 @@ function Home_mainCategory() {
               <div className='mb-6 '>We are committed to Research & Development : </div>
             </div>
           </div>
-          <div className='grid grid-cols-4 w-full'>
-            <div className=' relative group opacity-50 hover:opacity-100 transition-all cursor-pointer'>
+          <div className='grid grid-cols-4 w-full md:grid-cols-2'>
+            <div className=' relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha01.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all'>
+              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                 XR STUDIO
               </div>
             </div>
-            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer'>
+            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha02.png'} alt="" className='w-full object-cover '/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all'>
+              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
               MOONDREAM<br/>REALITY
               </div>
             </div>
-            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer'>
+            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha03.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all'>
+              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                 R & D
               </div>
             </div>
-            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer'>
+            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha04.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all'>
+              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                 EDUCATION
               </div>
             </div>
