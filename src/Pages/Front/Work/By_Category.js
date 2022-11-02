@@ -70,7 +70,7 @@ function By_Category() {
        <Header v_url={category && category.video_url } />
         <div>
           <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin text-xl'>
-          {category && 
+          {category && category.sub_category &&
             category.sub_category.map((item,index)=>{
               const{id, title , name_cht } = item
               return(
