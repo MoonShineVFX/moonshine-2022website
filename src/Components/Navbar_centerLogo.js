@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { FaVimeoV,FaLinkedin,FaFacebookF,FaInstagram,FaTimes } from "react-icons/fa";
 import { TfiClose } from "react-icons/tfi";
 import { useTranslation } from 'react-i18next';
-import { Link ,useLocation  } from "react-router-dom";
+import { Link ,useLocation,useNavigate  } from "react-router-dom";
 function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
   const { t, i18n } = useTranslation();
   const [navbar, setNavbar] = useState(false);
@@ -11,8 +11,12 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
     console.log(i18n.language)
       i18n.changeLanguage(lng);
   };
- 
+  let location = useLocation();
   const { pathname } = useLocation();
+  useEffect(()=>{
+    setNavbar(false)
+  },[location])
+  
   return (
     <div id="navbar" className=' fixed top-0 w-full z-30'>
       <div className='flex justify-between items-center mx-10 my-5'>

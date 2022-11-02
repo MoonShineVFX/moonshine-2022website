@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { getCategory,getWorksByCategoryCid} from '../../../Helper/getfunction'
-import ImgHeader from '../../../Components/ImgHeader'
 import Header from '../../../Components/Header'
 import { motion,AnimatePresence } from "framer-motion"
 import { useParams } from "react-router-dom";
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
-import { categoryState } from '../../../atoms/modalAtom';
+import { categoryState,modalState, movieState } from '../../../atoms/modalAtom';
 import {  useRecoilValue ,useRecoilState } from 'recoil';
+import Modal from '../../../Components/NetflixSlider/Modal';
 function By_Category() {
   let { cSlug} = useParams();
+  const isShowModal = useRecoilValue(modalState);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const [showModal, setShowModal] = useRecoilState(modalState);
+
   const [categoryData, setCategoryData] = useState([]);
   const [filteredWorkData, setFilteredWorkData] = useState([]);
   const [currentSubCategory, setCurrentSubCategory] = useState('ALL');
@@ -50,7 +54,6 @@ function By_Category() {
   }
 
   useEffect(()=>{
-
     if (category !== null) {
       console.log(category)
       hasCategoryDoGetWoks(category.id)
@@ -61,15 +64,13 @@ function By_Category() {
       console.log(category)
     }
 
-
-    
   },[])
   return (
     <section id="by_category">
-       <Header v_url={category.video_url} />
+       <Header v_url={category && category.video_url } />
         <div>
-          <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin'>
-          {category.sub_category ? 
+          <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin text-xl'>
+          {category && 
             category.sub_category.map((item,index)=>{
               const{id, title , name_cht } = item
               return(
@@ -81,15 +82,13 @@ function By_Category() {
               )
             })
             
-           : null
-           
            
            }
            </ul>
         </div>
 
         <div id='workContainer'>
-          <motion.div className={' grid grid-cols-5  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category.slug === 'vfx' ? ' w-10/12 gap-6 ' : ' w-11/12 gap-3')}>
+          <motion.div className={' grid grid-cols-5  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category && category.slug === 'vfx' ? ' w-10/12 gap-6 ' : ' w-11/12 gap-3')}>
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{
@@ -101,17 +100,17 @@ function By_Category() {
                   initial={{ opacity: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration :0.8 }}   
-                  className={"bg-black w-full  relative rounded-md  transition cursor-pointer duration-200 xs:w-[25vw] overflow-hidden group " + (category.slug === 'vfx' ? ' aspect-[10/15] ' : ' aspect-[16/10] ') }
+                  className={"bg-black w-full  relative rounded-md  transition cursor-pointer duration-200 xs:w-[25vw] overflow-hidden group " + (category && category.slug === 'vfx' ? ' aspect-[10/15] ' : ' aspect-[16/10] ') }
                   
                   onClick={() => {
-                    // setShowModal(true);
-                    // setCurrentMovie(item);
+                    setShowModal(true);
+                    setCurrentMovie(item);
                   }}>
                   <div
                     className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-75 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
-                  <div className={"transition-all translate-x-2 -translate-y-5 group-hover:-translate-y-full " + (category.slug === 'vfx' ? ' text-base  ' : ' text-xs ')}> {title} </div>
+                  <div className={"transition-all translate-x-2 -translate-y-5 group-hover:-translate-y-full " + (category && category.slug === 'vfx' ? ' text-base  ' : ' text-xs ')}> {title} </div>
                 </motion.div> 
               )
             })
@@ -121,7 +120,7 @@ function By_Category() {
           </motion.div>
         </div>
 
-
+        {isShowModal && <Modal />}
     </section>
   )
 }
