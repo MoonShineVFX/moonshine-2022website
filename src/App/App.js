@@ -53,7 +53,7 @@ function App() {
               <Route path="/work" element={<DefaultWork />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/works/:name" element={<By_Category />} />
+              <Route path="/works/:cSlug" element={<By_Category />} />
 
 
             </Route>

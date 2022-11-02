@@ -3,9 +3,12 @@ import { Link ,useLocation  } from "react-router-dom";
 import { getCategory} from '../../../Helper/getfunction'
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
 import ReactPlayer from 'react-player';
+import { useRecoilState } from 'recoil';
+import { categoryState } from '../../../atoms/modalAtom';
 function Home_mainCategory() {
 
   const [categoryData, setCategoryData] = useState([]);
+  const [currentCategory, setCurrentCategory] = useRecoilState(categoryState);
   useEffect(()=>{
     getCategory((res)=>{
       setCategoryData(res)
@@ -44,6 +47,11 @@ function Home_mainCategory() {
             return display === '1' ? 
               <Link key={name+id} 
                   to={"/works/"+slug}
+                  onClick={
+                    ()=>{
+                      setCurrentCategory(item)
+                    }
+                  }
                   className=" relative cursor-pointer text-white text-4xl font-thin bg-no-repeat bg-cover bg-center flex justify-center items-center opacity-50 hover:opacity-100 hover:tracking-widest transition-all md:text-xl md:opacity-80   "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >

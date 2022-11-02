@@ -75,7 +75,8 @@ function Home() {
       "sort_num": data.sort_num ? data.sort_num : '666',
       "display":data.display ,
       "year_of_work":data.yearofwork ? data.yearofwork : '2022',
-      "category":data.category ? data.category : '1'
+      "category":data.category ? data.category : '1',
+      "sub_category":data.sub_category ? data.sub_category : '1'
     }
     createWork(currentData,function(res){
       console.log(res)
@@ -95,6 +96,7 @@ function Home() {
       "display":data.display,
       "year_of_work":data.year_of_work ,
       "category":data.category ,
+      "sub_category":data.sub_category 
     }
     // 如果有圖檔存在 執行新增資料 否則不執行
     if (selectedFile) {
@@ -173,7 +175,7 @@ function Home() {
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>作品ID</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>排序</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>作品名稱</th>
-              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類</th>
+              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類-子分類</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>狀態</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>上傳日期</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>編輯</th>
@@ -183,7 +185,7 @@ function Home() {
             {
               workData ?
               workData.map((item,index)=>{
-                const {uid,id, display, title, time_added,category,sort_num} =item
+                const {uid,id, display, title, time_added,category,sort_num,sub_category} =item
                 return(
                   <tr className=' hover:bg-zinc-200' key={id+title}>
                     <td className='p-2 text-xs'>{id}</td>
@@ -194,6 +196,7 @@ function Home() {
                         if(item.id === category)
                           return <div key={item.id}>{item.name}</div>
                       })}
+                      {sub_category && sub_category}
                     </td>
                     <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
                     <td className='p-2 text-xs'>{time_added.toLocaleString()}</td>

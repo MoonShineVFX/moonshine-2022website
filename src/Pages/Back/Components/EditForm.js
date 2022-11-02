@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { constSelector, useRecoilState, useRecoilValue } from 'recoil';
 import { formDisplayState, workState,formStatusState } from '../atoms/fromTypes'
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 function EditForm({categoryData,handleCreateWork , handleEditWork}) {
   const {register, handleSubmit, reset, formState: { errors }} = useForm(
     {defaultValues: { title: "", intro: "",sort_num:"",youtube_id:"" ,year_of_work:"",video_url:"",vimeo_id:"", youtube_id:""}});
+  
   const onSubmit = (data) => {
     console.log(data)
     if(data.method === 'ADD'){
@@ -21,11 +22,19 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
   const [showModal, setShowModal] = useRecoilState(formDisplayState);
   const work = useRecoilValue(workState);
   const formStatus = useRecoilValue(formStatusState);
+  const [currentCategory, setCurrentCategory] = useState()
   const handleClose = () => {
     setShowModal(false);
   };
-  useEffect(()=>{
+  const filterCurrentCategory = (cid) =>{
+    const filteredCategory =  categoryData.filter((value)=> {
+      return value.id === cid
+    })
+    setCurrentCategory(filteredCategory[0])
+  }
+  useEffect(()=>{ 
     formStatus === 'EDIT' ? reset(work && work) : reset()
+    filterCurrentCategory(work.category)
   },[])
   return (
     <div className={'w-full h-screen  absolute top-0 left-0 z-20 '}>
@@ -55,6 +64,19 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   })}
                 </select>
               </div>
+              {currentCategory ?
+                <div className="relative mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">子分類</label>
+                  <select className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " id="category" {...register("sub_category")}>
+                    {currentCategory.sub_category ? currentCategory.sub_category.map((item,index)=>{
+                      return(
+                        <option key={item.id} value={item.id}>{item.title} </option>
+                      )
+                    }) : <option>沒有子分類</option>}
+                  </select>
+                </div> : <div>0</div>
+              }
+
               <div className='flex gap-3'>
                 <div className="mb-3">
                   <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品年分</label>
