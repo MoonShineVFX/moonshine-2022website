@@ -67,7 +67,7 @@ function By_Category() {
   },[])
   return (
     <section id="by_category">
-       <Header v_url={category && category.video_url } header_title={currentCategory.name} />
+       <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name} />
         <div>
           <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin text-xl'>
               <li
