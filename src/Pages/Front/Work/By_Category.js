@@ -21,8 +21,8 @@ function By_Category() {
   const category = useRecoilValue(categoryState);
   const filterCategory = (categoryID)=>{
     console.log(categoryID)
-    if(categoryID === '1'){
-      setCurrentSubCategory('1')
+    if(categoryID === 'ALL'){
+      setCurrentSubCategory('ALL')
       setFilteredWorkData(workData)
       
       return
@@ -67,9 +67,15 @@ function By_Category() {
   },[])
   return (
     <section id="by_category">
-       <Header v_url={category && category.video_url } />
+       <Header v_url={category && category.video_url } header_title={currentCategory.name} />
         <div>
           <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin text-xl'>
+              <li
+                onClick={()=> filterCategory('ALL')} 
+                className={"cursor-pointer hover:text-white  transition-all " + (currentSubCategory === 'ALL' ? ' text-white ' : 'text-zinc-500  ' )}>
+              
+                 ALL
+              </li>
           {category && category.sub_category &&
             category.sub_category.map((item,index)=>{
               const{id, title , name_cht } = item

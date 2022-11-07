@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
 import { motion } from "framer-motion"
-function Header({v_url}) {
+function Header({v_url,header_title}) {
   return (
     <div id="header" className='relative w-full h-[68vh] bg-no-repeat bg-center bg-cover xs:h-[35vh]'>
       <div className=' absolute bottom-40 w-40 right-14 md:w-20 md:right-9'>
@@ -21,10 +21,14 @@ function Header({v_url}) {
           config={{ vimeo: { playerOptions: { background: true }}}}
         />
       </div>
-      <div className="caption absolute  inset-0 flex flex-col justify-center items-center -translate-y-20">
+      <div className="caption absolute  inset-0 flex flex-col justify-center items-center -translate-y-20 ">
           {/* <img src={ process.env.PUBLIC_URL + '/images/MS_logo.svg'} alt="" className='w-1/3' /> */}
         {/* <div className="title">MOONSHINE</div> */}
         {/* <button type='button' className="header_playbtn" >play video</button> */}
+        <div className='text-white text-4xl font-thin'>
+        {header_title}
+        </div>
+        
       </div>
     
     </div>
