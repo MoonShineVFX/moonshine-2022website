@@ -47,8 +47,7 @@ function App() {
       <Routes> 
       
             <Route path="/"  element={ <PublicPageLayout/>}>
-              <Route path="" element={<Home />} />
-              <Route path="/hc" element={<Home_mainCategory />} />
+              <Route path="" element={<Home_mainCategory />} />
               <Route path="/about" element={<About />} />
               <Route path="/work" element={<DefaultWork />} />
               <Route path="/contact" element={<Contact />} />

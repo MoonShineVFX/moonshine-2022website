@@ -82,18 +82,22 @@ function Home_mainCategory() {
             </div>
           </div>
           <div className='grid grid-cols-4 w-full md:grid-cols-2'>
-            <div className=' relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
-              <img src={process.env.PUBLIC_URL+'/images/about/ha01.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
-                XR STUDIO
+            <a href="https://vpxrstudio.com/" target={"_blank"}>
+              <div className=' relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
+                <img src={process.env.PUBLIC_URL+'/images/about/ha01.png'} alt="" className='w-full object-cover'/>
+                <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+                  XR STUDIO
+                </div>
               </div>
-            </div>
-            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
-              <img src={process.env.PUBLIC_URL+'/images/about/ha02.png'} alt="" className='w-full object-cover '/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
-              MOONDREAM<br/>REALITY
+            </a>
+            <a href="https://moondreamreality.com/" target={"_blank"}>
+              <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
+                <img src={process.env.PUBLIC_URL+'/images/about/ha02.png'} alt="" className='w-full object-cover '/>
+                <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+                MOONDREAM<br/>REALITY
+                </div>
               </div>
-            </div>
+            </a>
             <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha03.png'} alt="" className='w-full object-cover'/>
               <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>

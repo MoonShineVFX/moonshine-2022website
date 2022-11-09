@@ -56,12 +56,12 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
             { data?
               data.map((item,index)=>{
                 return(
-                  <li key={index} className="text-5xl font-thin leading-relaxed">
+                  <li key={index} className="text-4xl font-thin leading-7">
                     <Link 
                       to={item.type}
                       className="hover:tracking-widest transition-all"
                     >
-                      {t(`${item.chtName}`)}
+                      {t(`${item.engName}`)}
                     </Link>
                   </li>
                 )
