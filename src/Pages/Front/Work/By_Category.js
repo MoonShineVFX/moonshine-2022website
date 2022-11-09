@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getCategory,getWorksByCategoryCid} from '../../../Helper/getfunction'
+import { getCategory,getWorksByCategoryCid,getWorksBySubCategoryCid} from '../../../Helper/getfunction'
 import Header from '../../../Components/Header'
 import { motion,AnimatePresence } from "framer-motion"
 import { useParams } from "react-router-dom";
@@ -35,19 +35,37 @@ function By_Category() {
     
   }
 
-
   const filterMainCateogry = (res) =>{
     const categoryItem = res.filter((item)=>{
       return item.slug === cSlug
     })
+    // if categoryItem not have sub_category just show this work
+    // if have sub_category show sub_category title and filter work
+    console.log(categoryItem)
     setCurrentCategory(categoryItem[0])
-    hasCategoryDoGetWoks(categoryItem[0].id)
+    if(!categoryItem[0].sub_category){
+      hasCategoryDoGetWoks({cid:categoryItem[0].id,is_Sub:false})
+    }else{
+      hasCategoryDoGetWoks({cid:categoryItem[0].id,is_Sub:true})
+      getWorkBySubCategory(category.sub_category[0].id)
+    }
+
+    
 
   }
-  const hasCategoryDoGetWoks =(cid) => {
-    console.log(cid)
+
+  const hasCategoryDoGetWoks =({cid,is_Sub}) => {
+    console.log(cid,is_Sub)
     getWorksByCategoryCid(cid,(res)=>{
+      
+      if(is_Sub === false){
+        setFilteredWorkData(res)
+      }
       setWorkData(res)
+    })
+  }
+  const getWorkBySubCategory = (scid)=>{
+    getWorksBySubCategoryCid(scid,(res)=>{
       setFilteredWorkData(res)
       console.log(res)
     })
@@ -56,7 +74,13 @@ function By_Category() {
   useEffect(()=>{
     if (category !== null) {
       console.log(category)
-      hasCategoryDoGetWoks(category.id)
+      if(!category.sub_category){
+        hasCategoryDoGetWoks({cid:category.id,is_Sub:false})
+      }else{
+        hasCategoryDoGetWoks({cid:category.id,is_Sub:true})
+        getWorkBySubCategory(category.sub_category[0].id)
+      }
+      
     }else{
       getCategory((res)=>{
         filterMainCateogry(res)
@@ -70,12 +94,6 @@ function By_Category() {
         <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name} />
         <div>
           <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin text-xl'>
-              <li
-                onClick={()=> filterCategory('ALL')} 
-                className={"cursor-pointer hover:text-white  transition-all " + (currentSubCategory === 'ALL' ? ' text-white ' : 'text-zinc-500  ' )}>
-              
-                 ALL
-              </li>
           {category && category.sub_category &&
             category.sub_category.map((item,index)=>{
               const{id, title , name_cht } = item

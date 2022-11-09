@@ -42,6 +42,19 @@ export const getWorksByCategoryCid = async (cid,callback)=>{
     callback(res)
   })
 }
+//根據分類id取資料
+export const getWorksBySubCategoryCid = async (scid,callback)=>{
+  const q = query(collection(db, "data"), 
+    where("sub_category", "==", scid),
+    orderBy('time_added' , 'desc'), 
+    where("display", "==", '1'))
+    ;
+  const data = await getDocs(q);
+
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
 
 
 // 處理作品的圖片路徑
