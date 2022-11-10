@@ -52,7 +52,7 @@ function Home_mainCategory() {
                       setCurrentCategory(item)
                     }
                   }
-                  className=" relative cursor-pointer text-white text-4xl font-thin bg-no-repeat bg-cover bg-center flex justify-center items-center opacity-50 hover:opacity-100 hover:tracking-widest transition-all md:text-xl md:opacity-80   "
+                  className=" relative cursor-pointer text-white text-4xl font-normal bg-no-repeat bg-cover bg-center flex justify-center items-center opacity-50 hover:opacity-100 hover:tracking-widest transition-all md:text-xl md:opacity-80   "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
      
@@ -71,8 +71,8 @@ function Home_mainCategory() {
 
         <section id="about" className='w-[90%] mx-auto mt-24 md:mt-12'>
           <div className='w-1/2 md:w-full'>
-            <div className='text-3xl font-thin  mb-10'>About Moonshine</div>
-            <div className='text-sm font-thin leading-7'>
+            <div className='text-3xl font-normal  mb-10'>About Moonshine</div>
+            <div className='text-sm font-normal leading-7'>
               <div className='mb-6 '>MoonShine is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.</div>
 
 
@@ -85,7 +85,7 @@ function Home_mainCategory() {
             <a href="https://vpxrstudio.com/" target={"_blank"}>
               <div className=' relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
                 <img src={process.env.PUBLIC_URL+'/images/about/ha01.png'} alt="" className='w-full object-cover'/>
-                <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+                <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                   XR STUDIO
                 </div>
               </div>
@@ -93,20 +93,20 @@ function Home_mainCategory() {
             <a href="https://moondreamreality.com/" target={"_blank"}>
               <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
                 <img src={process.env.PUBLIC_URL+'/images/about/ha02.png'} alt="" className='w-full object-cover '/>
-                <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+                <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                 MOONDREAM<br/>REALITY
                 </div>
               </div>
             </a>
             <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha03.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+              <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                 R & D
               </div>
             </div>
             <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
               <img src={process.env.PUBLIC_URL+'/images/about/ha04.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-thin group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+              <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
                 EDUCATION
               </div>
             </div>

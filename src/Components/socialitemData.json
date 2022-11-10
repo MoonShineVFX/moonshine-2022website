@@ -3,31 +3,32 @@
     {
       "id":1,
       "image":"104logo_200x200.png",
-      "link":"https://www.google.com"
+      "link":"https://www.google.com",
+      "title":"104JOB"
     },
     {
       "id":2,
       "image":"vimeo.svg",
       "link":"https://www.google.com",
-      "faicons":"FaVimeoV"
+      "title":"VIMEO"
     },
     {
       "id":3,
       "image":"linkin.svg",
       "link":"https://www.google.com",
-      "faicons":"FaLinkedin"
+      "title":"LinkedIn"
     },
     {
       "id":4,
       "image":"fb.svg",
       "link":"https://www.google.com",
-      "faicons":"FaFacebookF"
+      "title":"FACEBOOK"
     },
     {
       "id":5,
       "image":"ins.svg",
       "link":"https://www.google.com",
-      "faicons":"FaInstagram"
+      "title":"Instagram"
     }
   ]
 }

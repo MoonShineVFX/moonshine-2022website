@@ -20,7 +20,6 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
   return (
     <div id="navbar" className=' fixed top-0 w-full z-30'>
       <div className='flex justify-between items-center mx-10 my-5'>
-        <div></div>
         <div className=" ">
           <Link
             to="/"
@@ -52,11 +51,11 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
 
           </div>
           
-          <ul className='flex flex-col items-center mb-11 gap-10' >
+          <ul className='flex flex-col items-center mb-5 gap-10' >
             { data?
               data.map((item,index)=>{
                 return(
-                  <li key={index} className="text-4xl font-thin leading-7">
+                  <li key={index} className="text-3xl font-normal leading-7">
                     <Link 
                       to={item.type}
                       className="hover:tracking-widest transition-all"
@@ -72,11 +71,11 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
             {
               socialmedia.length ? 
               socialmedia.map((item,index)=>{
-                const {id,image, link}=item
+                const {id,image, link,title}=item
                 return(
-                  <li key={id} className="social hover:-translate-y-1 transition w-7">
-                    <a href={link} target="_blank" rel="noreferrer">
-                      <img src={process.env.PUBLIC_URL+ '/images/socialicon/' + image} alt="" className=''/>
+                  <li key={id} className="social hover:-translate-y-1 transition">
+                    <a href={link} target="_blank" rel="noreferrer" className='text-xl uppercase'>
+                      {title}
                     </a> 
                   </li>
                 )
