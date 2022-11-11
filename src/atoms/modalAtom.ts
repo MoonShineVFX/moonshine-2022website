@@ -21,3 +21,12 @@ export const categoryState = atom({
   key: 'categoryState',
   default: null,
 });
+
+export const videoModalState = atom({
+  key: 'videoModalState',
+  default: false,
+});
+export const videoState = atom({
+  key: 'videoState',
+  default: null,
+});

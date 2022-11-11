@@ -67,12 +67,13 @@ function Home_mainCategory() {
 
           }): <LoadingAnim />
         }
+        <div className='scroll-down'></div>
         </ul>
 
         <section id="about" className='w-[90%] mx-auto mt-24 md:mt-12'>
           <div className='w-1/2 md:w-full'>
-            <div className='text-3xl font-normal  mb-10'>About Moonshine</div>
-            <div className='text-sm font-normal leading-7'>
+            <div className='text-4xl font-normal  mb-10'>About Moonshine</div>
+            <div className='text-base font-normal leading-7'>
               <div className='mb-6 '>MoonShine is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.</div>
 
 
@@ -83,30 +84,30 @@ function Home_mainCategory() {
           </div>
           <div className='grid grid-cols-4 w-full md:grid-cols-2'>
             <a href="https://vpxrstudio.com/" target={"_blank"}>
-              <div className=' relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
-                <img src={process.env.PUBLIC_URL+'/images/about/ha01.png'} alt="" className='w-full object-cover'/>
-                <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+              <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center'>
+                <img src={process.env.PUBLIC_URL+'/images/about/ha01.png'} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/>
+                <div className=' absolute  w-full text-center text-2xl font-normal group-hover:-translate-y-2 transition-all md:text-sm md:break-all md:bottom-2 '>
                   XR STUDIO
                 </div>
               </div>
             </a>
             <a href="https://moondreamreality.com/" target={"_blank"}>
-              <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
-                <img src={process.env.PUBLIC_URL+'/images/about/ha02.png'} alt="" className='w-full object-cover '/>
-                <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+              <div className='relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center'>
+                <img src={process.env.PUBLIC_URL+'/images/about/ha02.png'} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/>
+                <div className=' absolute w-full text-center text-2xl font-normal group-hover:-translate-y-2 transition-all md:text-sm md:break-all md:bottom-2'>
                 MOONDREAM<br/>REALITY
                 </div>
               </div>
             </a>
-            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
-              <img src={process.env.PUBLIC_URL+'/images/about/ha03.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+            <div className='relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center'>
+              <img src={process.env.PUBLIC_URL+'/images/about/ha03.png'} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/>
+              <div className=' absolute  w-full text-center text-2xl font-normal group-hover:-translate-y-2 transition-all md:text-sm md:break-all md:bottom-2'>
                 R & D
               </div>
             </div>
-            <div className='relative group opacity-50 hover:opacity-100 transition-all cursor-pointer md:opacity-100'>
-              <img src={process.env.PUBLIC_URL+'/images/about/ha04.png'} alt="" className='w-full object-cover'/>
-              <div className=' absolute bottom-10 w-full text-center text-2xl font-normal group-hover:bottom-14 transition-all md:text-sm md:break-all md:bottom-2'>
+            <div className='relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center'>
+              <img src={process.env.PUBLIC_URL+'/images/about/ha04.png'} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/>
+              <div className=' absolute w-full text-center text-2xl font-normal group-hover:-translate-y-2 transition-all md:text-sm md:break-all md:bottom-2'>
                 EDUCATION
               </div>
             </div>

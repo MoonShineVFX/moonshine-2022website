@@ -1,10 +1,16 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
 import { motion } from "framer-motion"
+import { categoryState,videoModalState, videoState } from '../atoms/modalAtom';
+import {  useRecoilValue ,useRecoilState } from 'recoil';
+import VideoModal from './NetflixSlider/VideoModal';
 function Header({v_url,header_title}) {
+  const isShowModal = useRecoilValue(videoModalState);
+  const [currentVideo, setCurrentVideo] = useRecoilState(videoState);
+  const [showModal, setShowModal] = useRecoilState(videoModalState);
   return (
     <div id="header" className='relative w-full h-[68vh] bg-no-repeat bg-center bg-cover xs:h-[35vh]'>
-      <div className=' absolute bottom-40 w-40 right-14 md:w-20 md:right-9'>
+      <div className=' absolute bottom-10 w-40 right-10 md:w-20 md:right-9'>
         <img src={ process.env.PUBLIC_URL + '/images/tpn-white.png'} alt="" className='w-full' />
       </div>
       <div className="vimeo-wrapper">
@@ -21,15 +27,24 @@ function Header({v_url,header_title}) {
           config={{ vimeo: { playerOptions: { background: true }}}}
         />
       </div>
-      <div className="caption absolute  inset-0 flex flex-col justify-center items-center -translate-y-20 ">
+      <div className='absolute bottom-5 left-5 bg-zinc-800 hover:bg-zinc-900 px-4 py-2 rounded-md cursor-pointer font-normal'
+        onClick={() => {
+          setShowModal(true);
+          setCurrentVideo(v_url);
+        }}
+      >
+        PLAY FULL VIDEO       
+      </div>
+      <div className="caption absolute   flex flex-col justify-center items-center bottom-0 ">
           {/* <img src={ process.env.PUBLIC_URL + '/images/MS_logo.svg'} alt="" className='w-1/3' /> */}
         {/* <div className="title">MOONSHINE</div> */}
         {/* <button type='button' className="header_playbtn" >play video</button> */}
         <div className='text-white text-4xl font-thin'>
-        {header_title}
+        {/* {header_title} */}
         </div>
         
       </div>
+      {isShowModal && <VideoModal />}
     
     </div>
   )

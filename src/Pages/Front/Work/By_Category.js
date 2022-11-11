@@ -15,27 +15,28 @@ function By_Category() {
 
   const [categoryData, setCategoryData] = useState([]);
   const [filteredWorkData, setFilteredWorkData] = useState([]);
-  const [currentSubCategory, setCurrentSubCategory] = useState('ALL');
+  const [currentSubCategory, setCurrentSubCategory] = useState('');
   const [currentCategory, setCurrentCategory] = useRecoilState(categoryState)
   const [workData, setWorkData] = useState([]);
   const category = useRecoilValue(categoryState);
-  const filterCategory = (categoryID)=>{
-    console.log(categoryID)
-    if(categoryID === 'ALL'){
+  const filterCategory = (item)=>{
+    // console.log(categoryID)
+    if(item.id === 'ALL'){
       setCurrentSubCategory('ALL')
       setFilteredWorkData(workData)
       
       return
     }
     const filteredData =  workData.filter((value)=>{ 
-      return value.sub_category === categoryID
+      return value.sub_category === item.id
     })
-    setCurrentSubCategory(categoryID)
+    setCurrentSubCategory(item)
     setFilteredWorkData(filteredData);
     
   }
 
   const filterMainCateogry = (res) =>{
+    console.log(res)
     const categoryItem = res.filter((item)=>{
       return item.slug === cSlug
     })
@@ -47,23 +48,25 @@ function By_Category() {
       hasCategoryDoGetWoks({cid:categoryItem[0].id,is_Sub:false})
     }else{
       hasCategoryDoGetWoks({cid:categoryItem[0].id,is_Sub:true})
-      getWorkBySubCategory(category.sub_category[0].id)
+      getWorkBySubCategory(categoryItem[0].sub_category[0].id)
+      setCurrentSubCategory(categoryItem[0].sub_category[0])
     }
 
     
 
   }
 
+  //go firebase api 
   const hasCategoryDoGetWoks =({cid,is_Sub}) => {
     console.log(cid,is_Sub)
     getWorksByCategoryCid(cid,(res)=>{
-      
       if(is_Sub === false){
         setFilteredWorkData(res)
       }
       setWorkData(res)
     })
   }
+  //go firebase api 
   const getWorkBySubCategory = (scid)=>{
     getWorksBySubCategoryCid(scid,(res)=>{
       setFilteredWorkData(res)
@@ -79,13 +82,13 @@ function By_Category() {
       }else{
         hasCategoryDoGetWoks({cid:category.id,is_Sub:true})
         getWorkBySubCategory(category.sub_category[0].id)
+        setCurrentSubCategory(category.sub_category[0])
       }
       
     }else{
       getCategory((res)=>{
         filterMainCateogry(res)
       })
-      console.log(category)
     }
 
   },[])
@@ -93,14 +96,18 @@ function By_Category() {
     <section id="by_category">
         <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name} />
         <div>
-          <ul className='flex justify-center items-center gap-5 h-24 uppercase font-thin text-xl'>
+          <div className='text-3xl text-center mt-8'>
+           {currentCategory && currentCategory.name}
+          </div>
+          <ul className='flex justify-center items-center gap-5 h-16 uppercase font-thin text-xl'>
           {category && category.sub_category &&
             category.sub_category.map((item,index)=>{
               const{id, title , name_cht } = item
+              
               return(
                 <li key={id} 
-                    onClick={()=> filterCategory(id)} 
-                    className={"cursor-pointer hover:text-white  transition-all " + (currentSubCategory === id ? ' text-white ' : 'text-zinc-500  ' )}>
+                    onClick={()=> filterCategory(item)} 
+                    className={"cursor-pointer hover:text-white  transition-all " + (currentSubCategory.id === id ? ' text-white ' : 'text-zinc-500  ' )}>
                   {title }
                 </li>
               )
@@ -110,7 +117,7 @@ function By_Category() {
         </div>
 
         <div id='workContainer'>
-          <motion.div className={' grid grid-cols-5  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category && category.slug === 'vfx' ? ' w-10/12 gap-6 ' : ' w-11/12 gap-3')}>
+          <motion.div className={' grid grid-cols-3  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category && category.slug === 'vfx' ? ' w-10/12 gap-0 ' : ' w-11/12 gap-0')}>
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{
@@ -122,7 +129,7 @@ function By_Category() {
                   initial={{ opacity: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration :0.8 }}   
-                  className={"bg-black w-full  relative rounded-md  transition cursor-pointer duration-200 xs:w-[25vw] overflow-hidden group " + (category && category.slug === 'vfx' ? ' aspect-[10/15] ' : ' aspect-[16/10] ') }
+                  className={"bg-black w-full  relative  transition cursor-pointer duration-200 xs:w-[25vw] overflow-hidden group " + (category && currentSubCategory.id === 'vfx01' ? ' aspect-[10/15] ' : ' aspect-[16/10] ') }
                   
                   onClick={() => {
                     setShowModal(true);
@@ -132,7 +139,7 @@ function By_Category() {
                     className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-75 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
-                  <div className={"transition-all translate-x-2 -translate-y-5 group-hover:-translate-y-full " + (category && category.slug === 'vfx' ? ' text-base  ' : ' text-xs ')}> {title} </div>
+                  <div className={"transition-all translate-x-2 -translate-y-8 group-hover:-translate-y-full " + (category && currentSubCategory.id === 'vfx01' ? ' text-base  ' : ' text-base ')}> {title} </div>
                 </motion.div> 
               )
             })
