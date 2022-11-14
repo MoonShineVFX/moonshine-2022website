@@ -27,7 +27,7 @@ function Header({v_url,header_title}) {
           config={{ vimeo: { playerOptions: { background: true }}}}
         />
       </div>
-      <div className='absolute bottom-5 left-5 bg-zinc-800 hover:bg-zinc-900 px-4 py-2 rounded-md cursor-pointer font-normal'
+      <div className='absolute bottom-5 left-5 bg-zinc-800 hover:bg-zinc-900 px-4 py-2 rounded-md cursor-pointer font-normal hidden'
         onClick={() => {
           setShowModal(true);
           setCurrentVideo(v_url);

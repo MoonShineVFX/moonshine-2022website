@@ -31,6 +31,7 @@
     "react-quill": "^1.3.5",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.5",
     "recoil": "^0.7.3",
     "sass": "^1.52.1",
     "typescript": "^4.7.3",

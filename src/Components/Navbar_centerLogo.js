@@ -1,11 +1,16 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useRef} from 'react'
 import { FaVimeoV,FaLinkedin,FaFacebookF,FaInstagram,FaTimes } from "react-icons/fa";
 import { TfiClose } from "react-icons/tfi";
 import { useTranslation } from 'react-i18next';
 import { Link ,useLocation,useNavigate  } from "react-router-dom";
-function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
+import { CSSTransition } from 'react-transition-group';
+function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   const { t, i18n } = useTranslation();
   const [navbar, setNavbar] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
+  const nodeRef = useRef(null);
+  const [stickyClass, setStickyClass] = useState('bg-transparent');
   console.log(i18n.language)
   const changeLanguage = (lng) => {
     console.log(i18n.language)
@@ -13,12 +18,24 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
   };
   let location = useLocation();
   const { pathname } = useLocation();
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      windowHeight > 300 ? setStickyClass('bg-black') : setStickyClass('bg-transparent');
+    }
+  };
   useEffect(()=>{
     setNavbar(false)
+
+    window.addEventListener('scroll', stickNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', stickNavbar);
+    };
   },[location])
   
   return (
-    <div id="navbar" className=' fixed top-0 w-full z-30'>
+    <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ${stickyClass} `}>
       <div className='flex justify-between items-center mx-10 my-5'>
         <div className=" ">
           <Link
@@ -28,7 +45,7 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
           </Link>
 
         </div>
-        <div className='' onClick={()=>{setNavbar(!navbar)}}>
+        <div className='' onClick={()=>{setShowMessage(true)}}>
           <div className=" rounded-full  w-8 h-7 p-1 flex flex-col justify-between group cursor-pointer">
             <span className="block w-full h-0.5 bg-gray-100 group-hover:w-7 transition-all"></span>
             <span className="block w-full h-0.5 bg-gray-100 group-hover:w-7 transition-all"></span>
@@ -36,13 +53,18 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
           </div>
         </div>
       </div>
-      {
-        navbar && 
-        <div className="fixed top-0 w-full bg-black  h-screen flex flex-col justify-center gap-11">
-          <div className=' absolute top-9 right-9 cursor-pointer' onClick={()=>{setNavbar(!navbar)}}>
+      <CSSTransition
+        in={showMessage}
+        nodeRef={nodeRef}
+        timeout={300}
+        classNames="bigNav"
+        unmountOnExit
+      >
+        <div className="fixed top-0 w-full bg-black  h-screen flex flex-col justify-center items-center gap-11" ref={nodeRef}>
+          <div className=' absolute top-9 right-9 cursor-pointer' onClick={()=>{setShowMessage(false)}}>
             <TfiClose size={32} className="ml-auto" /> 
           </div>
-          <div className="block mb-11 mt-11">
+          <div className="block mb-16 mt-11">
             <Link
               to="/"
             >
@@ -50,12 +72,28 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
             </Link>
 
           </div>
-          
-          <ul className='flex flex-col items-center mb-5 gap-10' >
+          <ul className='flex flex-col items-center  mb-5 gap-10' >
+            { nav_Work?
+              nav_Work.map((item,index)=>{
+                return(
+                  <li key={index} className="text-3xl font-light leading-7">
+                    <Link 
+                      to={item.type}
+                      className="hover:tracking-widest text-zinc-400 transition-all"
+                    >
+                      {t(`${item.engName}`)}
+                    </Link>
+                  </li>
+                )
+              }): ""
+            }
+          </ul>
+          <div className='w-5 h-1 bg-white '></div>
+          <ul className='flex flex-col items-center  mb-5 gap-10' >
             { data?
               data.map((item,index)=>{
                 return(
-                  <li key={index} className="text-3xl font-normal leading-7">
+                  <li key={index} className="text-3xl font-light leading-7">
                     <Link 
                       to={item.type}
                       className="hover:tracking-widest transition-all"
@@ -74,7 +112,7 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
                 const {id,image, link,title}=item
                 return(
                   <li key={id} className="social hover:-translate-y-1 transition">
-                    <a href={link} target="_blank" rel="noreferrer" className='text-xl uppercase'>
+                    <a href={link} target="_blank" rel="noreferrer" className='text-lg uppercase'>
                       {title}
                     </a> 
                   </li>
@@ -90,7 +128,7 @@ function Navbar_centerLogo({data , toggleTrueFalse,socialmedia}) {
 
           </ul>
         </div>
-      }
+      </CSSTransition>
       
 
 

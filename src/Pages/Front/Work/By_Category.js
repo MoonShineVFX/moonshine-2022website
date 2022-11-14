@@ -52,8 +52,6 @@ function By_Category() {
       setCurrentSubCategory(categoryItem[0].sub_category[0])
     }
 
-    
-
   }
 
   //go firebase api 
@@ -139,7 +137,7 @@ function By_Category() {
                     className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-75 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
-                  <div className={"transition-all translate-x-2 -translate-y-8 group-hover:-translate-y-full " + (category && currentSubCategory.id === 'vfx01' ? ' text-base  ' : ' text-base ')}> {title} </div>
+                  <div className={"transition-all translate-x-4 -translate-y-10 group-hover:-translate-y-14 " + (category && currentSubCategory.id === 'vfx01' ? ' text-base  ' : ' text-base ')}> {title} </div>
                 </motion.div> 
               )
             })
