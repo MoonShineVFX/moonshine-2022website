@@ -22,32 +22,6 @@ function Home_mainCategory() {
       
     })
   },[])
-  const mainCData = [
-    {
-      title:"XR STUDIO",
-      link:"https://vpxrstudio.com/",
-      cover_image:"ha01.png",
-      cover_video:"ha01.mp4",
-    },
-    {
-      title:"MOONDREAM REALITY",
-      link:"https://moondreamreality.com/",
-      cover_image:"ha02.png",
-      cover_video:"ha02.mp4",
-    },
-    {
-      title:"R & D",
-      link:"https://vpxrstudio.com/",
-      cover_image:"ha03.png",
-      cover_video:"ha03.mp4",
-    },
-    {
-      title:"EDUCATION",
-      link:"https://vpxrstudio.com/",
-      cover_image:"ha04.png",
-      cover_video:"ha04.mp4",
-    }
-  ]
 
   const VideoContainer = ({url}) =>{
     const videoRef = React.useRef(null);

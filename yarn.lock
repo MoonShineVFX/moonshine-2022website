@@ -907,6 +907,14 @@
     "@babel/helper-create-regexp-features-plugin" "^7.16.7"
     "@babel/helper-plugin-utils" "^7.16.7"
 
+"@babel/polyfill@^7.2.5":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.12.1.tgz#1f2d6371d1261bbd961f3c5d5909150e12d0bd96"
+  integrity sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==
+  dependencies:
+    core-js "^2.6.5"
+    regenerator-runtime "^0.13.4"
+
 "@babel/preset-env@^7.11.0", "@babel/preset-env@^7.12.1", "@babel/preset-env@^7.16.4":
   version "7.18.0"
   resolved "https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.18.0.tgz"
@@ -1664,6 +1672,14 @@
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.2.tgz#6d05fa126104c9907573364dc04147b89b530e15"
   integrity sha512-zThUKcqIU6utWzM93uEvhlh8qj8A5LMPFJPvk/ODb+8GSSif19xM2Lw1M2ijyBy8+6skSkQBbavPzOU5Oh/8tQ==
+
+"@fullpage/react-fullpage@^0.1.30":
+  version "0.1.30"
+  resolved "https://registry.yarnpkg.com/@fullpage/react-fullpage/-/react-fullpage-0.1.30.tgz#ba74b5b0bd1077f21c71dcad9b432f4dd0f2da22"
+  integrity sha512-MjZohl/jpHsE5riuAgHifFpue+2zROrC+GgEzOnHEgkEAdLP4MGv43sCjIKHX+3hyH+rOKu87EaiQfCTrNmqGw==
+  dependencies:
+    "@babel/polyfill" "^7.2.5"
+    fullpage.js "^4.0.14"
 
 "@google/model-viewer@^2.0.2":
   version "2.0.2"
@@ -3942,6 +3958,11 @@ core-js@3.6.5:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
 
+core-js@^2.6.5:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
+
 core-js@^3.19.2:
   version "3.22.6"
   resolved "https://registry.npmjs.org/core-js/-/core-js-3.22.6.tgz"
@@ -5293,6 +5314,11 @@ fsevents@^2.3.2, fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+
+fullpage.js@^4.0.14:
+  version "4.0.14"
+  resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-4.0.14.tgz#e9a185b772ba522b20929d717bf6bce251b2542c"
+  integrity sha512-vWo6846aDby/P4j6U4OZ5tVSbxxdAmPBL/AOumtZ7Ea2wcT7umBVw54RLhROlARPUpFSqUJopXLTfHVilSw+VA==
 
 function-bind@^1.1.1:
   version "1.1.1"
