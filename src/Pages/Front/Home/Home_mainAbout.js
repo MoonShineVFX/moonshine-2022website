@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link ,useLocation  } from "react-router-dom";
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
-import { Transition,TransitionGroup,CSSTransition } from 'react-transition-group'
+import { Transition,TransitionGroup,SwitchTransition } from 'react-transition-group'
 import { FiArrowRightCircle } from "react-icons/fi";
-
 function Home_mainAbout() {
-  
   const FadeChanger = ({url}) =>{
     const [currentUrl, setCurrentUrl] = useState(url)
     const duration = 500
@@ -20,23 +18,22 @@ function Home_mainAbout() {
     const transitionStyles = {
       entering: { opacity: 0 },
       entered: { opacity: 0.4 },
-      exiting: { opacity: 0.4 },
+      exiting: { opacity: 0 },
       exited: { opacity: 0 }
     }
 
     return(
       <Transition
         in={url === currentUrl}
-        onEnter={() => console.log('enter')}
+        onEnter={() => {
+          console.log('enter') 
+          
+        }}
         onEntering={() => console.log('entering')}
         onEntered={() => console.log('entered')}
         onExit={() => console.log('exit')}
         onExiting={() => console.log('exiting')}
-        onExited={() => {
-          console.log('onexit')
-          setCurrentUrl(url)
-          
-        }}
+        onExited={() => setCurrentUrl(url)}
         timeout={duration}
         
       >
@@ -61,7 +58,6 @@ function Home_mainAbout() {
     if(count < imgdata.length-1){
       setCount(count => count + 1);
     }else{
-      console.log('play')
       setCount(0)
     }
   }
@@ -70,7 +66,7 @@ function Home_mainAbout() {
   useEffect(()=>{
     const timerId = setInterval(() => {
       incNum()
-    }, 8000);
+    }, 2000);
 
     return () => clearInterval(timerId);
   },[count])
@@ -79,19 +75,18 @@ function Home_mainAbout() {
 
 
   return (
-    <div className='w-full relative'>
-      <TransitionGroup>
-        {/* <FadeChanger url={image}/> */}
-        <CSSTransition
-          classNames="slide"                                    
-          timeout={{ enter: 1000, exit: 1000 }}  
-        >
-          <div
-            className='w-full h-screen absolute top-0 left-0 z-0 bg-no-repeat bg-center bg-cover opacity-40'
-            style={{backgroundImage: `url(${image})`}}
-          > </div>
-        </CSSTransition>
-      </TransitionGroup>
+    <div className='w-full relative' id="about">
+      {
+        imgdata.map((item,index)=>{
+          return(
+            <div 
+              key={index}
+              className={' absolute w-full h-screen top-0 bg-cover bg-center bg-no-repeat opacity-0 ' + 'img-'+index}
+              style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/'+ item})`}}
+            ></div>
+          )
+        })
+      }
       <div className=' absolute z-10 flex flex-col justify-center h-screen px-12'>
         <div className='text-base font-light'>WELCOME TO THE MOONSHINE</div>
         <div className='text-5xl font-light w-4/5 py-4 leading-slug'>Creation and Illumination, attained by MoonShine's animation and visual effects.</div>
