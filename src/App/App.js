@@ -30,7 +30,7 @@ import AdminAbout from '../Pages/Back/About'
 import AminContact from '../Pages/Back/Contact'
 import AdminHeader from '../Pages/Back/AdminHeader'
 
-
+import Fullpage from "../Pages/Front/Home/Fullpage";
 
 function App() {
   useEffect(() => {
@@ -47,7 +47,7 @@ function App() {
       <Routes> 
       
             <Route path="/"  element={ <PublicPageLayout/>}>
-              <Route path="" element={<Home_mainCategory />} />
+              <Route path="" element={<Fullpage />} />
               <Route path="/about" element={<About />} />
               <Route path="/work" element={<DefaultWork />} />
               <Route path="/contact" element={<Contact />} />

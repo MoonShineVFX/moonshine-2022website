@@ -84,3 +84,19 @@
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
+
+/* ANIMATIONS */
+.slide-enter {
+  opacity: 0;
+}
+.slide-enter-active {
+  opacity: 0.4;
+  transition: opacity 1000ms ease-in-out;
+}
+.slide-exit {
+  opacity: 0.4;
+}
+.slide-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in-out;
+}
