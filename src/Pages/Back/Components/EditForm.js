@@ -120,20 +120,24 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
                   {...register('video_url')}
                 />
               </div>
-              {work.vimeo_id &&
-                <div className="mb-3">
-                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">這是原本的vimeo(新版網頁請直接更新貼在上欄) </label>
-                  <div>{formStatus === 'EDIT' && work.vimeo_id && <span>https://vimeo.com/{work.vimeo_id}</span> }</div>
-                </div>
+              {formStatus === 'EDIT' && 
+                work.vimeo_id &&
+                  <div className="mb-3">
+                    <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">這是原本的vimeo(新版網頁請直接更新貼在上欄) </label>
+                    <div>{formStatus === 'EDIT' && work.vimeo_id && <span>https://vimeo.com/{work.vimeo_id}</span> }</div>
+                  </div>
               }
-              {work.youtube_id &&
-                <div className="mb-3">
-                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
-                    這是原本的youtube (新版網頁請直接更新貼在上欄) 
-                    </label>
-                    <div>{formStatus === 'EDIT' && work.youtube_id && <span>https://www.youtube.com/watch?v={work.youtube_id}</span> }</div>      
-                </div>
+              {formStatus === 'EDIT' && 
+                work.youtube_id &&
+                  <div className="mb-3">
+                    <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
+                      這是原本的youtube (新版網頁請直接更新貼在上欄) 
+                      </label>
+                      <div>{formStatus === 'EDIT' && work.youtube_id && <span>https://www.youtube.com/watch?v={work.youtube_id}</span> }</div>      
+                  </div>
+              
               }
+
 
 
               <div className="mb-3">
