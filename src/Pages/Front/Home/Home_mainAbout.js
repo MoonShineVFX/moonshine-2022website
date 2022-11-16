@@ -89,8 +89,8 @@ function Home_mainAbout() {
       }
       <div className=' absolute z-10 flex flex-col justify-center h-screen px-12 '>
         <div className='text-base font-light'>WELCOME TO THE MOONSHINE</div>
-        <div className='text-5xl font-light w-4/5 py-4 leading-slug'>Creation and Illumination, attained by MoonShine's animation and visual effects.</div>
-        <div className='text-lg w-2/4 font-light text-zinc-100'>Being dream makers, we dedicate to providing all-around image service, breaking the limitations of creation by technology, and bringing the high quality to the world.</div>
+        <div className='text-3xl md:text-5xl font-light md:w-4/5 py-4 leading-slug'>Creation and Illumination, attained by MoonShine's animation and visual effects.</div>
+        <div className='text-lg md:w-2/4 font-light text-zinc-100'>Being dream makers, we dedicate to providing all-around image service, breaking the limitations of creation by technology, and bringing the high quality to the world.</div>
         <Link
           to="/about" 
           className='text-base font-normal  mb-10  group text-zinc-400 flex items-center mt-6 border rounded-full px-3 py-2 w-44 '> 

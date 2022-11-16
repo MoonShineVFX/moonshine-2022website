@@ -4,7 +4,11 @@ import { TfiClose } from "react-icons/tfi";
 import { useTranslation } from 'react-i18next';
 import { Link ,useLocation,useNavigate  } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
+import { sectionState } from '../atoms/modalAtom';
+import {  useRecoilValue ,useRecoilState } from 'recoil';
 function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
+  const currentSection = useRecoilValue(sectionState)
+  console.log(currentSection)
   const { t, i18n } = useTranslation();
   const [navbar, setNavbar] = useState(false);
   const [showButton, setShowButton] = useState(true);
@@ -26,13 +30,17 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   };
   useEffect(()=>{
     setNavbar(false)
-
+    if(currentSection > 0){
+      setStickyClass('bg-black') 
+    }else{
+      setStickyClass('bg-transparent')
+    }
     window.addEventListener('scroll', stickNavbar);
 
     return () => {
       window.removeEventListener('scroll', stickNavbar);
     };
-  },[location])
+  },[location,currentSection])
   
   return (
     <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ${stickyClass} `}>
@@ -45,6 +53,45 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
           </Link>
 
         </div>
+        {stickyClass === 'bg-black' ?
+          <div className='flex gap-10'>
+            <ul className='flex items-center gap-10  text-base' >
+              { nav_Work?
+                nav_Work.map((item,index)=>{
+                  return(
+                    <li key={index} className=" font-light ">
+                      <Link 
+                        to={item.type}
+                        className="hover:tracking-widest text-zinc-400 hover:text-zinc-100 transition-all"
+                      >
+                        {t(`${item.engName}`)}
+                      </Link>
+                    </li>
+                  )
+                }): ""
+              }
+            </ul>
+            <ul className='flex items-center gap-10 text-base capitalize' >
+            { data?
+              data.map((item,index)=>{
+                return(
+                  <li key={index} className=" font-light ">
+                    <Link 
+                      to={item.type}
+                      className="hover:tracking-widest hover:text-zinc-100 transition-all text-zinc-400 "
+                    >
+                      {t(`${item.engName}`)}
+                    </Link>
+                  </li>
+                )
+              }): ""
+            }
+          </ul>
+          </div>
+          :
+          null
+
+        }
         <div className='' onClick={()=>{setShowMessage(true)}}>
           <div className=" rounded-full  w-8 h-7 p-1 flex flex-col justify-between group cursor-pointer">
             <span className="block w-full h-0.5 bg-gray-100 group-hover:w-7 transition-all"></span>
@@ -105,7 +152,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
               }): ""
             }
           </ul>
-          <ul className='flex items-center justify-center gap-24'>
+          <ul className='flex items-center justify-center md:gap-24 flex-wrap gap-10'>
             {
               socialmedia.length ? 
               socialmedia.map((item,index)=>{

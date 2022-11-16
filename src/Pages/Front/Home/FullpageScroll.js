@@ -7,10 +7,11 @@ import Home_mainService from './Home_mainService';
 import Footer from '../../../Components/Footer';
 import footerData from '../../../Components/footer.json'
 import socialMediaData from '../../../Components/socialitemData.json'
-
+import { sectionState } from '../../../atoms/modalAtom';
+import { useRecoilState } from 'recoil';
 function FullpageScroll(){
   const {socialmedia} = socialMediaData
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useRecoilState(sectionState);
 
   return(
     <ReactFullpage
@@ -18,6 +19,10 @@ function FullpageScroll(){
       licenseKey = {'VKGDI-QLS3J-S8IPJ-NAEY6-JXCCJ'}
       navigation
       scrollingSpeed = {600} /* Options here */
+      onLeave={(section, origin, destination, direction)=>{
+        console.log(origin.index)
+        setCurrentPage(origin.index)
+      }}
 
       render={({ state, fullpageApi }) => {
         return (

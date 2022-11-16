@@ -41,14 +41,14 @@ function Home_mainService() {
   return (
     <div className='pt-0'>
       <section id="about" className='w-full mx-auto mt-24  md:mt-12'>
-        <div className='w-full md:w-4/5 text-center md:my-20 md:mx-auto ' >
-          <div className='text-xl lg:text-2xl font-thin mb-6'>
+        <div className='w-4/5 md:w-4/5 text-center md:my-20 mx-auto ' >
+          <div className='text-2xl lg:text-2xl font-thin md:mb-6'>
             Besides the creative content,we integrate the virtual production,MR,R&D and education,<br />letting a moonlight shine on the the heart of the industry. 
           </div>
 
 
         </div>
-        <div className='grid md:grid-cols-4 w-full grid-cols-2 mt-20'>
+        <div className='grid md:grid-cols-4 w-full grid-cols-2 mt-10 md:mt-20'>
           {serviceData &&
           serviceData.map((item,index)=>{
             const {title , link , cover_video,start_time} = item

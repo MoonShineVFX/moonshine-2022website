@@ -30,3 +30,9 @@ export const videoState = atom({
   key: 'videoState',
   default: null,
 });
+
+
+export const sectionState = atom({
+  key: 'sectionState',
+  default: 0,
+});
