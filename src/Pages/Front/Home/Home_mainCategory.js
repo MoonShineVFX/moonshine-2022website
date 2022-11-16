@@ -27,7 +27,8 @@ function Home_mainCategory() {
     }
     return(
       <video 
-        loop muted playsInline className='h-screen w-full object-cover align-middle md:max-h-[25vh]  opacity-50 hover:opacity-100' 
+        loop muted playsInline 
+        className='md:h-screen w-full object-cover align-middle max-h-[25vh] md:max-h-screen opacity-50 hover:opacity-100' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -39,7 +40,7 @@ function Home_mainCategory() {
 
   return (
     <div>
-      <ul className='grid grid-cols-4 w-full h-screen md:grid-cols-1 md:h-auto md:aspect-square md:p-6 md:mt-10'>
+      <ul className='grid md:grid-cols-4 w-full md:h-screen grid-cols-1 h-auto aspect-square p-6 mt-10 md:p-0 md:mt-0 relative'>
         {
           categoryData ? 
           categoryData.map((item,index)=>{
@@ -52,7 +53,7 @@ function Home_mainCategory() {
                       setCurrentCategory(item)
                     }
                   }
-                  className=" relative cursor-pointer text-white text-3xl bg-no-repeat bg-cover bg-center flex justify-center items-center hover:tracking-widest transition-all md:text-xl md:opacity-80   "
+                  className=" relative cursor-pointer text-white md:text-3xl bg-no-repeat bg-cover bg-center flex justify-center items-center hover:tracking-widest transition-all text-xl md:opacity-80   "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
      
