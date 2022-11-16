@@ -112,3 +112,11 @@
     opacity: 0;
   }
 }
+.fp-watermark{
+  display: none;
+}
+
+#fp-nav ul li a span, 
+.fp-slidesNav ul li a span{
+  background: #cccccc !important;
+}

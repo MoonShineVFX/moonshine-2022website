@@ -39,10 +39,10 @@ function Home_mainService() {
 
 
   return (
-    <div className='pt-20'>
+    <div className='pt-0'>
       <section id="about" className='w-full mx-auto mt-24  md:mt-12'>
-        <div className='w-full md:w-full text-center md:my-20' >
-          <div className='text-xl lg:text-3xl font-thin mb-6'>
+        <div className='w-full md:w-4/5 text-center md:my-20 md:mx-auto ' >
+          <div className='text-xl lg:text-2xl font-thin mb-6'>
             Besides the creative content,we integrate the virtual production,MR,R&D and education,<br />letting a moonlight shine on the the heart of the industry. 
           </div>
 
