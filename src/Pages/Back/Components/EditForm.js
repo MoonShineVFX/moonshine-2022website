@@ -38,7 +38,10 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
   }
   useEffect(()=>{ 
     formStatus === 'EDIT' ? reset(work && work) : reset()
-    filterCurrentCategory(work.category)
+    if(work){
+      filterCurrentCategory(work.category)
+    }
+    
   },[])
   return (
     <div className={'w-full h-screen  absolute top-0 left-0 z-20 '}>
