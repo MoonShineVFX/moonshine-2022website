@@ -15,7 +15,6 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   const [showMessage, setShowMessage] = useState(false);
   const nodeRef = useRef(null);
   const [stickyClass, setStickyClass] = useState('bg-transparent');
-  console.log(i18n.language)
   const changeLanguage = (lng) => {
     console.log(i18n.language)
       i18n.changeLanguage(lng);
@@ -60,12 +59,13 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
                 nav_Work.map((item,index)=>{
                   return(
                     <li key={index} className=" font-light ">
-                      <Link 
-                        to={item.type}
+                      <a 
+                        // to={item.type}
+                        href={'/works/'+item.type}
                         className="hover:tracking-widest text-zinc-400 hover:text-zinc-100 transition-all"
                       >
                         {t(`${item.engName}`)}
-                      </Link>
+                      </a>
                     </li>
                   )
                 }): ""
@@ -124,12 +124,12 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
               nav_Work.map((item,index)=>{
                 return(
                   <li key={index} className="text-3xl font-light leading-7">
-                    <Link 
-                      to={item.type}
+                    <a 
+                      href={'/works/'+item.type}
                       className="hover:tracking-widest text-zinc-400 transition-all"
                     >
                       {t(`${item.engName}`)}
-                    </Link>
+                    </a>
                   </li>
                 )
               }): ""

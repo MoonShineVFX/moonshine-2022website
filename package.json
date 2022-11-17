@@ -35,6 +35,7 @@
     "react-transition-group": "^4.4.5",
     "recoil": "^0.7.3",
     "sass": "^1.52.1",
+    "swiper": "^8.4.4",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
   },

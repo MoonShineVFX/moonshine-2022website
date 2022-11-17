@@ -93,11 +93,12 @@ function By_Category() {
   return (
     <section id="by_category">
         <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name} />
-        <div>
-          <div className='text-3xl text-center mt-8'>
+        <div className='mx-20 my-7'>
+          <div className='text-3xl text-left mt-10  font-light'>
            {currentCategory && currentCategory.name}
           </div>
-          <ul className='flex justify-center items-center gap-5 h-16 uppercase font-thin text-xl'>
+          <div className='h-[1px] w-[60px] bg-white mt-12 mb-3'></div>
+          <ul className='flex justify-start items-center gap-5 h-16 uppercase font-light text-lg'>
           {category && category.sub_category &&
             category.sub_category.map((item,index)=>{
               const{id, title , name_cht } = item
@@ -115,7 +116,7 @@ function By_Category() {
         </div>
 
         <div id='workContainer'>
-          <motion.div className={' grid grid-cols-3  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category && category.slug === 'vfx' ? ' w-10/12 gap-0 ' : ' w-11/12 gap-0')}>
+          <motion.div className={' grid grid-cols-3  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category && category.slug === 'vfx' ? ' w-full gap-0 ' : ' w-full gap-0')}>
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{
@@ -137,7 +138,7 @@ function By_Category() {
                     className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-75 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
-                  <div className={"transition-all translate-x-4 -translate-y-10 group-hover:-translate-y-14 " + (category && currentSubCategory.id === 'vfx01' ? ' text-base  ' : ' text-base ')}> {title} </div>
+                  <div className={"transition-all  group-hover:bottom-9 font-light absolute  bottom-8 left-8" + (category && currentSubCategory.id === 'vfx01' ? ' text-lg  ' : ' text-lg ')}> {title} </div>
                 </motion.div> 
               )
             })
