@@ -28,7 +28,7 @@ function Home_mainCategory() {
     return(
       <video 
         loop muted playsInline 
-        className='md:h-screen w-full object-cover object-center max-h-[23vh] md:max-h-screen opacity-50 hover:opacity-100' 
+        className='md:h-screen w-full object-cover object-center max-h-[23vh] md:max-h-screen opacity-40 hover:opacity-100' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}

@@ -3,7 +3,7 @@ import React from 'react'
 function Footer({footerData,socialmedia}) {
   const {footer} = footerData
   return (
-    <div className="flex flex-col justify-center items-center mt-12 mb-16 ">
+    <div className="flex flex-col justify-center items-center pt-24 mb-16 ">
       <div className="flex flex-wrap w-4/5 justify-center md:flex-row gap-10 md:gap-20 ">
         {socialmedia.length >0 ? 
           socialmedia.map((item,index)=>{

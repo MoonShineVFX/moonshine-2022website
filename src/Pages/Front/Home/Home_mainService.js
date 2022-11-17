@@ -27,7 +27,7 @@ function Home_mainService() {
     }
     return(
       <video 
-        loop muted playsInline className='w-full aspect-[412/485] object-cover align-middle  opacity-50 hover:opacity-100' 
+        loop muted playsInline className='w-full h-full object-cover align-middle  opacity-40 hover:opacity-100' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -39,22 +39,22 @@ function Home_mainService() {
 
 
   return (
-    <div className='pt-0'>
-      <section id="about" className='w-full mx-auto mt-24  md:mt-12'>
-        <div className='w-4/5 md:w-4/5 text-center md:my-20 mx-auto ' >
-          <div className='text-2xl lg:text-2xl font-thin md:mb-6'>
+    <div className='pt-0 h-screen'>
+      <section id="about" className='w-full mx-auto pt-24  md:pt-22 flex flex-col justify-between h-full'>
+        <div className='w-4/5 md:w-4/5 text-center md:my-16 mx-auto h-[15vh] flex items-center justify-center' >
+          <div className='text-2xl lg:text-2xl font-thin md:mb-0'>
             Besides the creative content,we integrate the virtual production,MR,R&D and education,<br />letting a moonlight shine on the the heart of the industry. 
           </div>
 
 
         </div>
-        <div className='grid md:grid-cols-4 w-full grid-cols-2 mt-10 md:mt-20'>
+        <div className='grid md:grid-cols-4 w-full grid-cols-2  h-[55vh]  inset-0 '>
           {serviceData &&
           serviceData.map((item,index)=>{
             const {title , link , cover_video,start_time} = item
             return(
               <a key={index} href={link} target={"_blank"}>
-                <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center'>
+                <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center h-full'>
                   {/* <img src={process.env.PUBLIC_URL+'/images/about/'+ cover_image} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/> */}
                   <AboutVideoContainer url={cover_video} start_time={start_time}/> 
                   <div className=' absolute  w-full text-center md:text-2xl font-light group-hover:-translate-y-2 transition-all text-sm md:break-all  '>
