@@ -29,7 +29,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
     }
   };
   useEffect(()=>{
-    setNavbar(false)
+    setShowMessage(false)
     if(currentSection > 0){
       setStickyClass('bg-black') 
     }else{
