@@ -59,7 +59,7 @@ function Home_mainCategory() {
      
                   <VideoContainer url={cover_video} /> 
 
-                <div className=' absolute font-semibold uppercase '> {name }</div>
+                <div className=' absolute font-bold uppercase '> {name }</div>
                
               </Link>
               :
