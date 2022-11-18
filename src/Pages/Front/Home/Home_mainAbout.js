@@ -93,7 +93,7 @@ function Home_mainAbout() {
         <div className='text-lg md:w-2/4 font-light text-zinc-100'>Being dream makers, we dedicate to providing all-around image service, breaking the limitations of creation by technology, and bringing the high quality to the world.</div>
         <Link
           to="/about" 
-          className='text-base font-normal  mb-10  group text-zinc-400 flex items-center mt-6 border rounded-full px-3 py-2 w-44 '> 
+          className='text-base font-normal  mb-10  group text-zinc-400 flex items-center mt-6 border rounded-full px-3 py-2 w-[190px] '> 
             <span className='group-hover:text-zinc-100 transition-all'>About Moonshine </span>  <FiArrowRightCircle className='ml-2 group-hover:translate-x-1 group-hover:text-zinc-100  transition-all'/> 
         </Link>
       </div>
