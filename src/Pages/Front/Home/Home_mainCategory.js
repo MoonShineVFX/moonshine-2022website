@@ -53,7 +53,7 @@ function Home_mainCategory() {
                       setCurrentCategory(item)
                     }
                   }
-                  className=" relative cursor-pointer text-2xl text-white md:text-xl bg-no-repeat bg-cover bg-center flex justify-center items-center tracking-wider hover:tracking-widest transition-all    "
+                  className=" relative cursor-pointer text-2xl text-white md:text-xl bg-no-repeat bg-cover bg-center flex justify-center items-center tracking-wider hover:tracking-[.25em] transition-all    "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
      

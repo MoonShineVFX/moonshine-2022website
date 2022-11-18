@@ -57,7 +57,7 @@ function Home_mainService() {
                 <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center h-full'>
                   {/* <img src={process.env.PUBLIC_URL+'/images/about/'+ cover_image} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/> */}
                   <AboutVideoContainer url={cover_video} start_time={start_time}/> 
-                  <div className=' absolute  w-full text-center md:text-2xl font-light group-hover:-translate-y-2 transition-all text-sm md:break-all  '>
+                  <div className=' absolute  w-full text-center md:text-xl font-semibold uppercase  group-hover:-translate-y-2 transition-all text-sm md:break-all  '>
                     {title}
                   </div>
                 </div>
