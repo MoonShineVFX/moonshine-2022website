@@ -53,13 +53,13 @@ function Home_mainCategory() {
                       setCurrentCategory(item)
                     }
                   }
-                  className=" relative cursor-pointer text-3xl text-white md:text-3xl bg-no-repeat bg-cover bg-center flex justify-center items-center hover:tracking-widest transition-all md:opacity-80   "
+                  className=" relative cursor-pointer text-2xl text-white md:text-lg bg-no-repeat bg-cover bg-center flex justify-center items-center tracking-wider hover:tracking-widest transition-all md:opacity-80   "
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
      
                   <VideoContainer url={cover_video} /> 
 
-                <div className=' absolute font-light'> {name }</div>
+                <div className=' absolute font-semibold uppercase '> {name }</div>
                
               </Link>
               :
