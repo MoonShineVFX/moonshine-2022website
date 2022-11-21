@@ -126,7 +126,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
                   <li key={index} className="text-3xl font-light leading-7">
                     <a 
                       href={'/works/'+item.type}
-                      className="hover:tracking-widest text-zinc-400 transition-all"
+                      className="hover:tracking-widest hover:text-white text-zinc-400 transition-all"
                     >
                       {t(`${item.engName}`)}
                     </a>

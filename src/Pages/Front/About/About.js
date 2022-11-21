@@ -12,9 +12,9 @@ function About() {
     'bg_about07.png',
   ];
   return (
-    <div id="about" className=''>
+    <div>
       <SwiperBgImages imgData={bgimages}/>
-      <div className="w-11/12 mx-auto mt-20 z-10 relative">
+      <div className="mt-20 z-10 relative">
         <div className="w-3/4 mb-20 xs:w-full mx-auto " data-aos="fade" data-aos-duration="1500">
           <h1 className='text-2xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MoonShine's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
@@ -74,6 +74,35 @@ function About() {
           </div>
         </div>
 
+      </div>
+      <div>
+        <div className="w-3/4 mt-20 xs:w-full mx-auto " data-aos="fade" data-aos-duration="1500">
+          <h1 className='text-2xl font-light xs:text-2xl leading-normal ' >Locations</h1>
+          <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
+          <div className="text-lg mt-5 font-light">
+            <div className='flex gap-10'>
+              <div>
+                <div className=' text-xl mb-5'>TAIPEI</div>
+                <div className=' text-sm'>
+                  02-2785-7037 <br />
+                  info@moonshine.tw <br />
+                  3F, No.481, Sec. 6, Zhongxiao E. Rd., Nangang Dist., Taipei City 115, Taiwan (R.O.C.)
+                </div>
+              </div>
+              <div>
+                <div className=' text-xl mb-5'>KAOHSIUNG</div>
+                <div className=' text-sm'>
+                  Tel   <br />
+                  Email   <br />
+                  Address 
+                </div>
+              </div>
+            </div>
+            <div className="mb-6"></div>
+
+          </div>
+
+        </div>
       </div>
 
 
