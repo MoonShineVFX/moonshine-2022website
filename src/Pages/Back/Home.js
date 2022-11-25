@@ -109,7 +109,7 @@ function Home() {
             "maxWidth":640 ,
             "maxHeight":360,
             "compressFormat":"WEBP",
-            "quality":100
+            "quality":95
           });
       } else {
           setFile(null);
