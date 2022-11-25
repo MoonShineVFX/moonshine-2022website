@@ -108,7 +108,7 @@ function Home() {
             "folder":'data/',
             "maxWidth":640 ,
             "maxHeight":360,
-            "compressFormat":"JPEG",
+            "compressFormat":"WEBP",
             "quality":80
           });
       } else {
