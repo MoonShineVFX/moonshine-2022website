@@ -135,7 +135,7 @@ function By_Category() {
                     setCurrentMovie(item);
                   }}>
                   <div
-                    className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-75 group-hover:brightness-110 transition ease-linear  '
+                    className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-90 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
                   <div className={"transition-all  group-hover:bottom-9 font-light absolute  bottom-8 left-8" + (category && currentSubCategory.id === 'vfx01' ? ' text-lg  ' : ' text-lg ')}> {title} </div>
