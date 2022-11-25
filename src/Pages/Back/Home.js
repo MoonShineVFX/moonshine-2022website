@@ -109,7 +109,7 @@ function Home() {
             "maxWidth":640 ,
             "maxHeight":360,
             "compressFormat":"JPEG",
-            "quality":100
+            "quality":80
           });
       } else {
           setFile(null);
