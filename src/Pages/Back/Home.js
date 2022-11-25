@@ -24,7 +24,7 @@ function Home() {
 
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
-  const types = ["image/png", "image/jpeg", "image/jpg"];
+  const types = ["image/png", "image/jpeg", "image/jpg","image/avif"];
   // 若setFile有資料會執行檔案上傳
   const { progress, url } = useStorage(file);
 
