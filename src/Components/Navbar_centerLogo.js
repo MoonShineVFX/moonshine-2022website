@@ -14,7 +14,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const nodeRef = useRef(null);
-  const [stickyClass, setStickyClass] = useState('bg-transparent');
+  const [stickyClass, setStickyClass] = useState(false);
   const changeLanguage = (lng) => {
     console.log(i18n.language)
       i18n.changeLanguage(lng);
@@ -24,7 +24,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
-      windowHeight > 300 ? setStickyClass('bg-black') : setStickyClass('bg-transparent');
+      windowHeight > 300 ? setStickyClass(true) : setStickyClass(false);
     }
   };
   useEffect(()=>{
@@ -42,7 +42,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   },[location,currentSection])
   
   return (
-    <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ${stickyClass} `}>
+    <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ` + (stickyClass ? ' bg-black'  : ' bg-transparent'  )}>
       <div className='flex justify-between items-center mx-10 my-5'>
         <div className=" ">
           <Link
@@ -52,8 +52,8 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
           </Link>
 
         </div>
-        {stickyClass === 'bg-black' ?
-          <div className='flex gap-10'>
+
+          <div className={'flex gap-10 transition-all delay-300  ' + (stickyClass ? ' translate-y-0 '  : '  -translate-y-20 '  )}>
             <ul className='flex items-center gap-10  text-base' >
               { nav_Work?
                 nav_Work.map((item,index)=>{
@@ -88,10 +88,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
             }
           </ul>
           </div>
-          :
-          null
 
-        }
         <div className='' onClick={()=>{setShowMessage(true)}}>
           <div className=" rounded-full  w-8 h-7 p-1 flex flex-col justify-between group cursor-pointer">
             <span className="block w-full h-0.5 bg-gray-100 group-hover:w-7 transition-all"></span>

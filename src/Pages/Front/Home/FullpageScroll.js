@@ -7,6 +7,7 @@ import Home_mainService from './Home_mainService';
 import Footer from '../../../Components/Footer';
 import footerData from '../../../Components/footer.json'
 import socialMediaData from '../../../Components/socialitemData.json'
+import partnerjsonData from '../../../Components/partnerItem.json'
 import { sectionState } from '../../../atoms/modalAtom';
 import { useRecoilState } from 'recoil';
 function FullpageScroll(){
@@ -37,7 +38,7 @@ function FullpageScroll(){
               <Home_mainService />
             </div>
             <div className='section fp-auto-height'>
-              <Footer footerData={footerData} socialmedia={socialmedia}/>
+              <Footer footerData={footerData} socialmedia={socialmedia} partnerjsonData={partnerjsonData}/>
             </div>
           </ReactFullpage.Wrapper>
         );

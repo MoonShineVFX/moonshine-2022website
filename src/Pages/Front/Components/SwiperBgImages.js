@@ -15,7 +15,7 @@ function SwiperBgImages({imgData}) {
         loop={true}
         height={'300'}
         modules={[EffectFade,Autoplay]}
-        className="mySwiper h-[65vh]"
+        className="mySwiper h-[80vh]"
       >
         {
           imgData.map((item,index)=>{
