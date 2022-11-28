@@ -22,6 +22,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   let location = useLocation();
   const { pathname } = useLocation();
   const stickNavbar = () => {
+    console.log('scroll')
     if (window !== undefined) {
       let windowHeight = window.scrollY;
       windowHeight > 300 ? setStickyClass(true) : setStickyClass(false);
@@ -30,9 +31,9 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   useEffect(()=>{
     setShowMessage(false)
     if(currentSection > 0){
-      setStickyClass('bg-black') 
+      setStickyClass(true) 
     }else{
-      setStickyClass('bg-transparent')
+      setStickyClass(false)
     }
     window.addEventListener('scroll', stickNavbar);
 
@@ -42,7 +43,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   },[location,currentSection])
   
   return (
-    <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ` + (stickyClass ? ' bg-black'  : ' bg-transparent'  )}>
+    <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ` + (stickyClass === true ? ' bg-black '  : ' bg-transparent '  )}>
       <div className='flex justify-between items-center mx-10 my-5'>
         <div className=" ">
           <Link
@@ -53,7 +54,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
 
         </div>
 
-          <div className={'flex gap-10 transition-all delay-300  ' + (stickyClass ? ' translate-y-0 '  : '  -translate-y-20 '  )}>
+          <div className={'flex gap-10 transition-all delay-300  ' + (stickyClass === true  ? ' translate-y-0 '  : '  -translate-y-20 '  )}>
             <ul className='flex items-center gap-10  text-base' >
               { nav_Work?
                 nav_Work.map((item,index)=>{

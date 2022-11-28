@@ -2,7 +2,6 @@ import React from 'react'
 import PartnerMarquee from './PartnerMarquee'
 function Footer({footerData,socialmedia,partnerjsonData}) {
   const {footer} = footerData
-  console.log(partnerjsonData)
   return (
     <div className="flex flex-col justify-center items-center pt-24 mb-16 ">
       {
