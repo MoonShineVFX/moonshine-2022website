@@ -13,7 +13,7 @@ function Footer({footerData,socialmedia,partnerjsonData}) {
             const {id ,image , link, title} = item
             return(
               <div key={id} className="social">
-                <a href={link} target="_blank" rel="noreferrer" className='text-base uppercase text-zinc-500 hover:text-zinc-100'>
+                <a href={link} target="_blank" rel="noreferrer" className='text-base text-zinc-500 hover:text-zinc-100'>
                   {title}
                 </a> 
               </div>

@@ -157,7 +157,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
                 const {id,image, link,title}=item
                 return(
                   <li key={id} className="social hover:-translate-y-1 transition">
-                    <a href={link} target="_blank" rel="noreferrer" className='text-lg uppercase'>
+                    <a href={link} target="_blank" rel="noreferrer" className='text-base'>
                       {title}
                     </a> 
                   </li>

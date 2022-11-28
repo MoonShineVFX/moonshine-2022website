@@ -15,15 +15,15 @@ function About() {
     <div>
       <SwiperBgImages imgData={bgimages}/>
       <div className="mt-20 z-10 relative">
-        <div className="w-3/4 mb-20 xs:w-full mx-auto " data-aos="fade" data-aos-duration="1500">
+        <div className="w-3/4 mb-20 xs:w-full mx-auto " >
           <h1 className='text-3xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MoonShine's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
-          <div className="text-lg mt-5 font-light">
+          <div className="text-lg mt-5 font-light" data-aos="fade" data-aos-duration="1500">
             MoonShine Animation is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.
             <div className="mb-6"></div>
             Founded in 2012, MoonShine Animation has been through some challenges, and have done some cool things with our talents. We believe in the value of transparency and equity and constantly strive to deliver great work to the world.
           </div>
-          <div className="mb-14 mt-36">
+          <div className="mb-14 mt-36" data-aos="fade" data-aos-duration="1500">
             <div className="text-2xl font-light">
              Our Strength
             </div>
