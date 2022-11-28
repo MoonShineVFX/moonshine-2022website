@@ -14,7 +14,7 @@ function About() {
   return (
     <div>
       <SwiperBgImages imgData={bgimages}/>
-      <div className="mt-20 z-10 relative">
+      <div className="mt-16 z-10 relative">
         <div className="w-3/4 mb-20 xs:w-full mx-auto " >
           <h1 className='text-3xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MoonShine's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
