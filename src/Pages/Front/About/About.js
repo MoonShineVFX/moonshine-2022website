@@ -24,7 +24,7 @@ function About() {
             Founded in 2012, MoonShine Animation has been through some challenges, and have done some cool things with our talents. We believe in the value of transparency and equity and constantly strive to deliver great work to the world.
           </div>
           <div className="mb-14 mt-36" data-aos="fade" data-aos-duration="1500">
-            <div className="text-2xl font-light">
+            <div className="text-3xl font-light">
              Our Strength
             </div>
             <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
@@ -46,7 +46,7 @@ function About() {
           </div>
          
           <div className='p-10 w-2/3'>
-            <div className='text-2xl font-bold'>SOLID PIPELINE</div> 
+            <div className='text-2xl font-bold'>Solid Pipeline</div> 
             <div className='text-lg text-zinc-300 mt-3 font-light'>
               From pre-production to post production, MoonShine has developed a mature production process.
             </div> 
@@ -54,7 +54,7 @@ function About() {
         </div>
         <div className='flex   text-white w-full' data-aos="fade-up" data-aos-duration="1500">
           <div className='p-10 w-2/3'>
-            <div className='text-2xl font-bold'>ASSURED QUALITY</div> 
+            <div className='text-2xl font-bold'>Assured Quality</div> 
             <div className='text-lg text-zinc-300   mt-3 font-light'>
               FWe strive for constantly making great visual works.
             </div> 
@@ -81,7 +81,7 @@ function About() {
             <img src={process.env.PUBLIC_URL+'/images/about/about-s03.png'} alt="" />
           </div>          
           <div className='p-10 w-2/3'>
-            <div className='text-2xl font-bold'>DIVERSITY WORKS</div> 
+            <div className='text-2xl font-bold'>Diversity Works</div> 
             <div className='text-lg text-zinc-300  mt-3 font-light'>
               Virtual, digital, realistic…We demonstrate different style in all formats.
             </div> 
@@ -89,7 +89,7 @@ function About() {
         </div>
         <div className='flex   text-white w-full' data-aos="fade-up" data-aos-duration="1500">
           <div className='p-10 w-2/3'>
-            <div className='text-2xl font-bold'>RESEARCH DEVELOPMENT</div> 
+            <div className='text-2xl font-bold'>Research Development</div> 
             <div className='text-lg text-zinc-300  mt-3 font-light'>
               With our talented R&D technologists, we have developed our own tools and effects.
             </div> 
