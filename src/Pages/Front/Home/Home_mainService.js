@@ -43,7 +43,7 @@ function Home_mainService() {
       <section id="about" className='w-full mx-auto pt-24  md:pt-22 flex flex-col justify-between h-full'>
         <div className='w-4/5 md:w-4/5 md:my-16 mx-auto h-[15vh] flex items-center justify-center' >
           <div className='text-3xl font-bold w-3/5'>
-            FIND OUT MORE
+            Find Out More
           </div>
           <div className='text-lg font-light md:mb-0 text-zinc-100'>
             In addition to content creation, we provide virtual production, MR immersive interaction, technology development, and eduction, aiming to explore all possibilities in image and animation.

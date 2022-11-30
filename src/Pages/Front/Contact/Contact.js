@@ -49,7 +49,7 @@ function Contact() {
       <Header v_url="https://vimeo.com/342892008" start_time="3s"  />
       
       <div className="w-5/6 mx-auto -mt-60 z-10 relative">
-        <h1 className='text-2xl font-bold mb-5' >{t('section_title7')}</h1>
+        <h1 className='text-3xl font-bold mb-5' >Contact</h1>
         <div id="map" className="mt30">
           <LoadScript
             googleMapsApiKey="AIzaSyCY5JQ3g9D70gnfALdxc8z18XD7AtNw3wM"
