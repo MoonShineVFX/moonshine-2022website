@@ -15,7 +15,7 @@ function About() {
     <div>
       <SwiperBgImages imgData={bgimages}/>
       <div className="mt-16 z-10 relative">
-        <div className="w-3/4 mb-20 xs:w-full mx-auto " >
+        <div className="w-4/5 mb-20 xs:w-full mx-auto " >
           <h1 className='text-3xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MOONSHINE's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
           <div className="text-lg mt-5 font-light" data-aos="fade" data-aos-duration="1500">
@@ -112,9 +112,9 @@ function About() {
           <h1 className=' xs:text-2xl leading-normal text-3xl md:text-3xl font-bold md:w-full py-4 leading-slug mb-10' >Locations</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
           <div className="text-lg mt-5 font-light">
-            <div className='flex gap-10'>
+            <div className='flex gap-20'>
               <div>
-                <div className=' text-xl mb-5'>TAIPEI</div>
+                <div className=' text-xl mb-5 font-bold'>TAIPEI</div>
                 <div className=' text-sm'>
                   02-2785-7037 <br />
                   info@moonshine.tw <br />
@@ -122,14 +122,14 @@ function About() {
                 </div>
               </div>
               <div>
-                <div className=' text-xl mb-5'>KAOHSIUNG</div>
+                <div className=' text-xl mb-5 font-bold'>KAOHSIUNG</div>
                 <div className=' text-sm'>
                   info@moonshine.tw   <br />
                   A5CF., No. 1, Zhen'ai Rd., Yancheng Dist., Kaohsiung City 803003 , Taiwan (R.O.C.) 
                 </div>
               </div>
               <div>
-                <div className=' text-xl mb-5'>MONTREAL</div>
+                <div className=' text-xl mb-5 font-bold'>MONTREAL</div>
                 <div className=' text-sm'>
                   Producer@moonshine.tw<br />
                   1330 Rue Olier, apt 101, Montreal, QC H3C 1W4, Canada 

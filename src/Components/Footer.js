@@ -7,7 +7,15 @@ function Footer({footerData,socialmedia,partnerjsonData}) {
       {
         partnerjsonData &&  <PartnerMarquee  partnerData={partnerjsonData}/>
       }
-      <div className="flex flex-wrap justify-center mx-auto md:flex-row gap-10 mt-20">
+      {
+        partnerjsonData &&
+        <div className='flex border-t w-4/5 justify-between mt-10 pt-3 text-sm text-zinc-200'>
+          <div><a href="/contact">TAIPEI</a> </div>
+          <div><a href="/contact">KAOHSIUNG</a></div>
+          <div><a href="/contact">MONTREAL</a></div>
+        </div>
+      }
+      <div className="flex flex-wrap justify-between mx-auto md:flex-row mt-10 w-4/5">
         {socialmedia.length >0 ? 
           socialmedia.map((item,index)=>{
             const {id ,image , link, title} = item
@@ -22,8 +30,8 @@ function Footer({footerData,socialmedia,partnerjsonData}) {
         }
         
       </div>
-      
-      <div className="flex  gap-8 mt-5 flex-col ">
+
+      <div className="flex  gap-8 mt-5 flex-col hidden">
         {partnerjsonData && 
           <div className="contact_info mt-16">
             <div className="infoArea flex xs:flex-wrap gap-12 text-sm text-zinc-400  ">
@@ -42,9 +50,9 @@ function Footer({footerData,socialmedia,partnerjsonData}) {
             </div>
           </div>
         }
-        <div className="text-sm text-zinc-400 text-center ">{footer.copyright}</div> 
+       
       </div>
-      
+      <div className=" text-xs text-zinc-400 text-center mt-10">{footer.copyright}</div> 
     </div>  
   )
 }
