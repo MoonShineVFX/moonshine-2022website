@@ -4,10 +4,11 @@ import { motion } from "framer-motion"
 import { categoryState,videoModalState, videoState } from '../atoms/modalAtom';
 import {  useRecoilValue ,useRecoilState } from 'recoil';
 import VideoModal from './NetflixSlider/VideoModal';
-function Header({v_url,header_title}) {
+function Header({v_url,header_title,start_time}) {
   const isShowModal = useRecoilValue(videoModalState);
   const [currentVideo, setCurrentVideo] = useRecoilState(videoState);
   const [showModal, setShowModal] = useRecoilState(videoModalState);
+  const player = React.createRef()
   return (
     <div id="header" className='relative w-full h-[68vh] bg-no-repeat bg-center bg-cover xs:h-[35vh]'>
       <div className=' absolute bottom-10 w-40 right-10 md:w-20 md:right-9'>
@@ -25,6 +26,12 @@ function Header({v_url,header_title}) {
           width='100vw'
           height='56.25vw'
           config={{ vimeo: { playerOptions: { background: true }}}}
+          ref={player}
+          onReady={()=>{
+            if(start_time){
+              player.current.seekTo(3)
+            }
+          }}
         />
       </div>
       <div className='absolute bottom-5 left-5 bg-zinc-800 hover:bg-zinc-900 px-4 py-2 rounded-md cursor-pointer font-normal hidden'

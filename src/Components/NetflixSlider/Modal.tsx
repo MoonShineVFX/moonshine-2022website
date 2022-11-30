@@ -27,7 +27,7 @@ function Modal() {
         </button>
         <div className="relative aspect-video">
           <ReactPlayer
-            url={movie.vimeo_id ? `https://vimeo.com/${movie.vimeo_id}` : `https://www.youtube.com/watch?v=${movie.youtube_id}`}
+            url={movie.vimeo_id ? `https://vimeo.com/${movie.vimeo_id}` : `${movie.video_url}`}
             width="100%"
             height="100%"
             style={{ position: 'absolute', top: '0', left: '0' }}

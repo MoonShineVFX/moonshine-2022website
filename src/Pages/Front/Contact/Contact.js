@@ -46,7 +46,7 @@ function Contact() {
   };
   return (
     <section id="contact">
-      <Header v_url="https://vimeo.com/342892008" start_time="3s"  />
+      <Header v_url="https://vimeo.com/342892008" start_time="3"  />
       
       <div className="w-5/6 mx-auto -mt-60 z-10 relative">
         <h1 className='text-3xl font-bold mb-5' >Contact</h1>
