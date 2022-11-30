@@ -41,9 +41,12 @@ function Home_mainService() {
   return (
     <div className='pt-0 h-screen'>
       <section id="about" className='w-full mx-auto pt-24  md:pt-22 flex flex-col justify-between h-full'>
-        <div className='w-4/5 md:w-4/5 text-center md:my-16 mx-auto h-[15vh] flex items-center justify-center' >
-          <div className='text-2xl lg:text-2xl font-thin md:mb-0'>
-            Besides the creative content,we integrate the virtual production,MR,R&D and education,<br />letting a moonlight shine on the the heart of the industry. 
+        <div className='w-4/5 md:w-4/5 md:my-16 mx-auto h-[15vh] flex items-center justify-center' >
+          <div className='text-3xl font-bold w-3/5'>
+            FIND OUT MORE
+          </div>
+          <div className='text-lg font-light md:mb-0 text-zinc-100'>
+            In addition to content creation, we provide virtual production, MR immersive interaction, technology development, and eduction, aiming to explore all possibilities in image and animation.
           </div>
 
 
@@ -57,7 +60,7 @@ function Home_mainService() {
                 <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center h-full'>
                   {/* <img src={process.env.PUBLIC_URL+'/images/about/'+ cover_image} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/> */}
                   <AboutVideoContainer url={cover_video} start_time={start_time}/> 
-                  <div className=' absolute  w-full text-center  font-bold uppercase  group-hover:-translate-y-2 transition-all text-[1.2rem] tracking-[.15em] md:break-all  '>
+                  <div className=' absolute  w-full text-center  font-bold uppercase  group-hover:tracking-[.25em] transition-all text-[1.2rem] tracking-[.15em] md:break-all  '>
                     {title}
                   </div>
                 </div>

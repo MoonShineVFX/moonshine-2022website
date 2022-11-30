@@ -16,12 +16,12 @@ function About() {
       <SwiperBgImages imgData={bgimages}/>
       <div className="mt-16 z-10 relative">
         <div className="w-3/4 mb-20 xs:w-full mx-auto " >
-          <h1 className='text-3xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MoonShine's animation and visual effects.</h1>
+          <h1 className='text-3xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MOONSHINE's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
           <div className="text-lg mt-5 font-light" data-aos="fade" data-aos-duration="1500">
-            MoonShine Animation is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.
+          MOONSHINE Studio is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.
             <div className="mb-6"></div>
-            Founded in 2012, MoonShine Animation has been through some challenges, and have done some cool things with our talents. We believe in the value of transparency and equity and constantly strive to deliver great work to the world.
+            Founded in 2012, MOONSHINE Studio has been through some challenges, and have done some cool things with our talents. We believe in the value of transparency and equity and constantly strive to deliver great work to the world.
           </div>
           <div className="mb-14 mt-36" data-aos="fade" data-aos-duration="1500">
             <div className="text-3xl font-light">
@@ -29,7 +29,7 @@ function About() {
             </div>
             <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
             <div className="text-lg mt-5 font-light">
-              MoonShine is a team consisted of diverse artists: directors, project managers, animators, compositors, research developers and designers.
+            MOONSHINE is a team consisted of diverse artists: directors, project managers, animators, compositors, research developers and designers.
               <div className="mb-6"></div>
               We offer 360-degree service from concept to screen. Being an integrated company, we are able to execute a project from script writing to concept art, from story board to animatic, from shoot to post-production.
             </div>
@@ -48,7 +48,7 @@ function About() {
           <div className='w-2/3'>
             <div className='text-2xl font-bold'>Solid Pipeline</div> 
             <div className='text-lg text-zinc-300 mt-3 font-light'>
-              From pre-production to post production, MoonShine has developed a mature production process.
+              From pre-production to post production, MOONSHINE has developed a mature production process.
             </div> 
           </div>
         </div>
@@ -124,9 +124,15 @@ function About() {
               <div>
                 <div className=' text-xl mb-5'>KAOHSIUNG</div>
                 <div className=' text-sm'>
-                  Tel   <br />
-                  Email   <br />
-                  Address 
+                  info@moonshine.tw   <br />
+                  A5CF., No. 1, Zhen'ai Rd., Yancheng Dist., Kaohsiung City 803003 , Taiwan (R.O.C.) 
+                </div>
+              </div>
+              <div>
+                <div className=' text-xl mb-5'>MONTREAL</div>
+                <div className=' text-sm'>
+                  Producer@moonshine.tw<br />
+                  1330 Rue Olier, apt 101, Montreal, QC H3C 1W4, Canada 
                 </div>
               </div>
             </div>

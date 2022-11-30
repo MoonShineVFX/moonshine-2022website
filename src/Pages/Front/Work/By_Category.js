@@ -116,7 +116,7 @@ function By_Category() {
         </div>
 
         <div id='workContainer'>
-          <motion.div className={' grid grid-cols-3  xs:grid-cols-3 xs:w-5/6 xs:mx-auto mx-auto ' + (category && category.slug === 'vfx' ? ' w-full gap-0 ' : ' w-full gap-0')}>
+          <motion.div className={' grid xs:w-5/6 xs:mx-auto mx-auto transition-all ' + (category && currentSubCategory.id === 'vfx01' ? ' grid-cols-4' : ' grid-cols-3')}>
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{
@@ -127,15 +127,15 @@ function By_Category() {
                   animate={{ opacity: 1 }}
                   initial={{ opacity: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration :0.8 }}   
-                  className={"bg-black w-full  relative  transition cursor-pointer duration-200 xs:w-[25vw] overflow-hidden group " + (category && currentSubCategory.id === 'vfx01' ? ' aspect-[10/15] ' : ' aspect-[16/10] ') }
+                  transition={{ duration :0.1 }}   
+                  className={"bg-black w-full  relative  transition-all cursor-pointer xs:w-[25vw] overflow-hidden group " + (category && currentSubCategory.id === 'vfx01' ? ' aspect-[483/700] ' : ' aspect-[16/10] ') }
                   
                   onClick={() => {
                     setShowModal(true);
                     setCurrentMovie(item);
                   }}>
                   <div
-                    className='bg-center bg-cover bg-no-repeat  w-full h-full group-hover:scale-125 brightness-90 group-hover:brightness-110 transition ease-linear  '
+                    className='bg-center bg-cover bg-no-repeat  w-full h-full duration-[200ms] group-hover:scale-110 brightness-90 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
                   <div className={"transition-all  group-hover:bottom-9 font-light absolute  bottom-8 left-8" + (category && currentSubCategory.id === 'vfx01' ? ' text-lg  ' : ' text-lg ')}> {title} </div>

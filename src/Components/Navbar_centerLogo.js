@@ -63,7 +63,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
                       <a 
                         // to={item.type}
                         href={'/works/'+item.type}
-                        className="hover:tracking-widest text-zinc-400 hover:text-zinc-100 transition-all"
+                        className="hover:tracking-widest text-[1rem] font-bold text-zinc-400 hover:text-zinc-100 transition-all"
                       >
                         {t(`${item.engName}`)}
                       </a>
@@ -79,7 +79,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
                   <li key={index} className=" font-light ">
                     <Link 
                       to={item.type}
-                      className="hover:tracking-widest hover:text-zinc-100 transition-all text-zinc-400 "
+                      className="hover:tracking-widest text-[1rem] font-bold hover:text-zinc-100 transition-all text-zinc-400 "
                     >
                       {t(`${item.engName}`)}
                     </Link>
@@ -121,7 +121,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
             { nav_Work?
               nav_Work.map((item,index)=>{
                 return(
-                  <li key={index} className="text-3xl font-light leading-7">
+                  <li key={index} className="text-[1.4rem] font-bold  leading-7">
                     <a 
                       href={'/works/'+item.type}
                       className="hover:tracking-widest hover:text-white text-zinc-400 transition-all"
@@ -138,7 +138,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
             { data?
               data.map((item,index)=>{
                 return(
-                  <li key={index} className="text-3xl font-light leading-7">
+                  <li key={index} className="text-[1.4rem] font-bold leading-7">
                     <Link 
                       to={item.type}
                       className="hover:tracking-widest transition-all"

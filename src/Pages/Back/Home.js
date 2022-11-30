@@ -101,16 +101,30 @@ function Home() {
     // 如果有圖檔存在 執行新增資料 否則不執行
     if (selectedFile) {
       if (types.includes(selectedFile.type)) {
+
           setError(null);
-          setFile({
-            "filename":imgFileName,
-            "file":selectedFile,
-            "folder":'data/',
-            "maxWidth":640 ,
-            "maxHeight":360,
-            "compressFormat":"WEBP",
-            "quality":95
-          });
+          if(data.sub_category ==='vfx01'){
+            setFile({
+              "filename":imgFileName,
+              "file":selectedFile,
+              "folder":'data/',
+              "maxWidth": 500,
+              "maxHeight":700,
+              "compressFormat":"WEBP",
+              "quality":95
+            });
+          }else{
+            setFile({
+              "filename":imgFileName,
+              "file":selectedFile,
+              "folder":'data/',
+              "maxWidth":640 ,
+              "maxHeight":360,
+              "compressFormat":"WEBP",
+              "quality":95
+            });
+          }
+          
       } else {
           setFile(null);
           setError("Please select an image file (png or jpg)");

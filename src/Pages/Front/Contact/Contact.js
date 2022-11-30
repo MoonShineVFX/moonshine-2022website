@@ -2,6 +2,7 @@ import React from 'react'
 import { GoogleMap, LoadScript ,Marker} from '@react-google-maps/api';
 import { useTranslation } from 'react-i18next';
 import ImgHeader from '../../../Components/ImgHeader'
+import Header from '../../../Components/Header';
 function Contact() {
   const { t } = useTranslation();
   const containerStyle = {
@@ -45,7 +46,7 @@ function Contact() {
   };
   return (
     <section id="contact">
-      <ImgHeader imgPath={'work01.png'} />
+      <Header v_url="https://vimeo.com/342892008" start_time="3s"  />
       
       <div className="w-5/6 mx-auto -mt-60 z-10 relative">
         <h1 className='text-2xl font-bold mb-5' >{t('section_title7')}</h1>
@@ -75,20 +76,35 @@ function Contact() {
           </LoadScript>
         </div>
         <div className="contact_info mt-16">
-          <div className="infoArea flex xs:flex-wrap">
-            <div className="infoContent flex-auto">
-                <p className='text-gray-200'>Tel</p>
-                <p>+886-2-27857037</p>
+          <div className="text-lg mt-5 font-light">
+            <div className='flex gap-20'>
+              <div>
+                <div className=' text-xl mb-5 font-bold'>TAIPEI</div>
+                <div className=' text-sm'>
+                  02-2785-7037 <br />
+                  info@moonshine.tw <br />
+                  3F, No.481, Sec. 6, Zhongxiao E. Rd., Nangang Dist., Taipei City 115, Taiwan (R.O.C.)
+                </div>
+              </div>
+              <div>
+                <div className=' text-xl mb-5 font-bold'>KAOHSIUNG</div>
+                <div className=' text-sm'>
+                  info@moonshine.tw   <br />
+                  A5CF., No. 1, Zhen'ai Rd., Yancheng Dist., Kaohsiung City 803003 , Taiwan (R.O.C.) 
+                </div>
+              </div>
+              <div>
+                <div className=' text-xl mb-5 font-bold'>MONTREAL</div>
+                <div className=' text-sm'>
+                  Producer@moonshine.tw<br />
+                  1330 Rue Olier, apt 101, Montreal, QC H3C 1W4, Canada 
+                </div>
+              </div>
             </div>
-            <div className="infoContent flex-auto">
-                <p className='text-gray-200'>Email</p>
-                <p>info@moonshine.tw</p>
-            </div>
-            <div className="infoContent flex-auto xs:mt-12">
-                <p className='text-gray-200'>Address</p>
-                <p>{t('address')}</p>
-            </div>
+            <div className="mb-6"></div>
+
           </div>
+         
         </div>
       </div>
 
