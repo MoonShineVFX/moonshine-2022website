@@ -28,7 +28,7 @@ function Home_mainCategory() {
     return(
       <video 
         loop muted playsInline 
-        className='md:h-screen w-full object-cover object-center max-h-[23vh] md:max-h-screen opacity-40 hover:opacity-100' 
+        className='md:h-screen w-full object-cover object-center max-h-[25vh]  lg:max-h-screen opacity-40 hover:opacity-100' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -40,7 +40,7 @@ function Home_mainCategory() {
 
   return (
     <div>
-      <ul className='grid md:grid-cols-4 w-full md:h-screen grid-cols-1 h-auto aspect-square mt-0 md:p-0 md:mt-0 relative'>
+      <ul className='grid lg:grid-cols-4 w-full md:h-screen grid-cols-1 h-auto aspect-square mt-0 md:p-0 md:mt-0 relative'>
         {
           categoryData ? 
           categoryData.map((item,index)=>{

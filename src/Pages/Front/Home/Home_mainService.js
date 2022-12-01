@@ -40,9 +40,9 @@ function Home_mainService() {
 
   return (
     <div className='pt-0 h-screen'>
-      <section id="about" className='w-full mx-auto pt-24  md:pt-22 flex flex-col justify-between h-full'>
-        <div className='w-4/5 md:w-4/5 md:my-16 mx-auto h-[15vh] flex items-center justify-center' >
-          <div className='text-3xl font-bold w-3/5'>
+      <section id="about" className='w-full mx-auto  pt-[100px]  md:pt-22 flex flex-col justify-between h-full'>
+        <div className='w-5/6 lg:w-4/5 md:my-16 mx-auto lg:h-[15vh] flex flex-col lg:flex-row justify-start items-start lg:items-center lg:justify-center' >
+          <div className='text-3xl font-bold  w-4/5 lg:w-3/5 mb-3 lg:mb-0'>
             Find Out More
           </div>
           <div className='text-lg font-light md:mb-0 text-zinc-100'>
@@ -51,7 +51,7 @@ function Home_mainService() {
 
 
         </div>
-        <div className='grid md:grid-cols-4 w-full grid-cols-2  h-[55vh]  inset-0 '>
+        <div className='grid lg:grid-cols-4 w-full grid-cols-2 h-[50vh] lg:h-[55vh] inset-0 '>
           {serviceData &&
           serviceData.map((item,index)=>{
             const {title , link , cover_video,start_time} = item

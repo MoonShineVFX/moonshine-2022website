@@ -116,7 +116,7 @@ function By_Category() {
         </div>
 
         <div id='workContainer'>
-          <motion.div className={' grid xs:w-5/6 xs:mx-auto mx-auto transition-all ' + (category && currentSubCategory.id === 'vfx01' ? ' grid-cols-4' : ' grid-cols-3')}>
+          <motion.div className={' grid xs:w-5/6 xs:mx-auto mx-auto transition-all ' + (category && currentSubCategory.id === 'vfx01' ? ' grid-cols-2 lg:grid-cols-4' : ' grid-cols-2 lg:grid-cols-3')}>
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{

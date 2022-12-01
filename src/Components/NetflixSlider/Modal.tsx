@@ -25,7 +25,7 @@ function Modal() {
           >
           <HiOutlineX className="h-6 w-6" />
         </button>
-        <div className="relative aspect-video">
+        <div className="relative aspect-video bg-black">
           <ReactPlayer
             url={movie.vimeo_id ? `https://vimeo.com/${movie.vimeo_id}` : `${movie.video_url}`}
             width="100%"
