@@ -44,7 +44,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   
   return (
     <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ` + (stickyClass === true ? ' bg-black '  : ' bg-transparent '  )}>
-      <div className='flex justify-between items-center mx-10 my-5'>
+      <div className='flex justify-between items-center mx-4 md:mx-10 my-5'>
         <div className=" ">
           <Link
             to="/"
@@ -54,7 +54,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
 
         </div>
 
-          <div className={'flex gap-10 transition-all delay-300  ' + (stickyClass === true  ? ' translate-y-0 '  : '  -translate-y-20 '  )}>
+          <div className={' gap-10 transition-all delay-300 hidden md:flex  ' + (stickyClass === true  ? ' translate-y-0 '  : '  -translate-y-20 '  )}>
             <ul className='flex items-center gap-10  text-base' >
               { nav_Work?
                 nav_Work.map((item,index)=>{
@@ -150,7 +150,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
               }): ""
             }
           </ul>
-          <ul className='flex items-center justify-center md:gap-24 flex-wrap gap-10'>
+          <ul className='flex items-center justify-center  gap-8  lg:gap-24 flex-wrap mx-10 md:mx-0'>
             {
               socialmedia.length ? 
               socialmedia.map((item,index)=>{
