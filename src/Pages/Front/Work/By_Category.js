@@ -93,7 +93,7 @@ function By_Category() {
   return (
     <section id="by_category">
         <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name} />
-        <div className='mx-20 my-7'>
+        <div className='mx-5 lg:mx-20 my-7'>
           <div className='text-3xl text-left mt-10  font-light'>
            {currentCategory && currentCategory.name}
           </div>
@@ -116,7 +116,7 @@ function By_Category() {
         </div>
 
         <div id='workContainer'>
-          <motion.div className={' grid xs:w-5/6 xs:mx-auto mx-auto transition-all ' + (category && currentSubCategory.id === 'vfx01' ? ' grid-cols-2 lg:grid-cols-4' : ' grid-cols-2 lg:grid-cols-3')}>
+          <motion.div className={' grid xs:w-5/6 xs:mx-auto mx-auto transition-all ' + (category && currentSubCategory.id === 'vfx01' ? ' grid-cols-2 lg:grid-cols-4' : ' grid-cols-1 lg:grid-cols-3')}>
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{
@@ -138,7 +138,7 @@ function By_Category() {
                     className='bg-center bg-cover bg-no-repeat  w-full h-full duration-[200ms] group-hover:scale-110 brightness-90 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
-                  <div className={"transition-all  group-hover:bottom-9 font-light absolute  bottom-8 left-8" + (category && currentSubCategory.id === 'vfx01' ? ' text-lg  ' : ' text-lg ')}> {title} </div>
+                  <div className={"transition-all  group-hover:bottom-9 font-light absolute left-2 bottom-2  lg:bottom-8 lg:left-8 text-base lg:text-lg" }> {title} </div>
                 </motion.div> 
               )
             })
