@@ -138,7 +138,7 @@ function By_Category() {
                     className='bg-center bg-cover bg-no-repeat  w-full h-full duration-[200ms] group-hover:scale-110 brightness-90 group-hover:brightness-110 transition ease-linear  '
                     style={{backgroundImage : `url(${imgpath})`}}
                   ></div>  
-                  <div className={"transition-all  group-hover:bottom-9 font-light absolute left-2 bottom-2  lg:bottom-8 lg:left-8 text-base lg:text-lg" }> {title} </div>
+                  <div className={"transition-all  group-hover:bottom-9 group-hover:opacity-100 opacity-0 font-light absolute left-2 bottom-2 text-shadow  lg:bottom-8 lg:left-8 text-base lg:text-lg" }> {title} </div>
                 </motion.div> 
               )
             })

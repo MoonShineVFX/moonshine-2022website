@@ -56,7 +56,7 @@ function About() {
           <div className='w-2/3'>
             <div className='text-2xl font-bold'>Assured Quality</div> 
             <div className='text-lg text-zinc-300   mt-3 font-light'>
-              FWe strive for constantly making great visual works.
+              We strive for constantly making great visual works.
             </div> 
           </div>
           <div className='w-4/6 relative'>
