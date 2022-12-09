@@ -8,13 +8,27 @@ function SwipeAwardPerView({awardData,animationStart}) {
     <div className=' relative w-11/12'>
        <div className=' px-12 text-3xl md:text-3xl font-bold md:w-full py-4 leading-slug mb-10'>Awards</div>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={1}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
         className="mySwiper"
+        breakpoints={{
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        }}
       >
         {
           awardData.map((item,index)=>{
