@@ -8,10 +8,12 @@ import Footer from '../../../Components/Footer';
 import footerData from '../../../Components/footer.json'
 import socialMediaData from '../../../Components/socialitemData.json'
 import partnerjsonData from '../../../Components/partnerItem.json'
+import awardjsonData from '../../../Components/awardItem.json'
 import { sectionState } from '../../../atoms/modalAtom';
 import { useRecoilState } from 'recoil';
 function FullpageScroll(){
   const {socialmedia} = socialMediaData
+  const {award} = awardjsonData
   const [currentPage, setCurrentPage] = useRecoilState(sectionState);
 
   return(
@@ -38,7 +40,7 @@ function FullpageScroll(){
               <Home_mainService />
             </div>
             <div className='section fp-auto-height'>
-              <Footer footerData={footerData} socialmedia={socialmedia} partnerjsonData={partnerjsonData}/>
+              <Footer footerData={footerData} socialmedia={socialmedia} awardData={award}/>
             </div>
           </ReactFullpage.Wrapper>
         );

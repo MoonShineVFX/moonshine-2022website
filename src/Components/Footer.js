@@ -1,11 +1,13 @@
 import React from 'react'
 import PartnerMarquee from './PartnerMarquee'
-function Footer({footerData,socialmedia,partnerjsonData}) {
+import SwipeAwardPerView from './SwipeAwardPerView'
+function Footer({footerData,socialmedia,partnerjsonData,awardData}) {
   const {footer} = footerData
   return (
     <div className="flex flex-col items-center pt-24 mb-16 w-full mx-auto ">
+
       {
-        partnerjsonData &&  <PartnerMarquee  partnerData={partnerjsonData}/>
+        awardData && <SwipeAwardPerView awardData={awardData} />
       }
       
       <div className="flex flex-wrap justify-between mx-auto md:flex-row mt-10 w-4/5 border-t pt-4">
@@ -25,7 +27,7 @@ function Footer({footerData,socialmedia,partnerjsonData}) {
       </div>
 
       <div className="flex gap-8 mt-8 flex-col ">
-        {partnerjsonData && 
+        {awardData && 
           <div className="contact_info mt-0">
             <a href="/contact" className='text-zinc-400 hover:text-zinc-100'>Contact Us</a>
           </div>

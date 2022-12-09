@@ -83,7 +83,7 @@ function About() {
           <div className='w-2/3'>
             <div className='text-2xl font-bold'>Diversity Works</div> 
             <div className='text-lg text-zinc-300  mt-3 font-light'>
-              Virtual, digital, realistic…We demonstrate different style in all formats.
+              Virtual, digital, realistic…We demonstrate different styles in all formats.
             </div> 
           </div>
         </div>
