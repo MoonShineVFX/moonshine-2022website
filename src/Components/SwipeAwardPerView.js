@@ -22,7 +22,7 @@ function SwipeAwardPerView({awardData,animationStart}) {
               <SwiperSlide key={'a0'+index}>
                 <div 
                   className={'flex flex-col justify-center items-center text-center pb-14 transition-all duration-1000 ' + (animationStart ? ' translate-y-0 opacity-100 ' : 'translate-y-[50px] opacity-0' )} 
-                  style={{ 'transition-delay': `${index * 500}ms`}}
+                  style={animationStart ? { 'transition-delay': `${index * 500}ms`} : { 'transition-delay': `0ms`}}
                   >
                   <div><img src={process.env.PUBLIC_URL+'/images/award/'+ item.image} alt="" /></div>
                   <div className='text-[1.2rem] font-bold mb-3'>{item.title}</div>
