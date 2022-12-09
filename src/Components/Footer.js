@@ -1,13 +1,17 @@
 import React from 'react'
 import PartnerMarquee from './PartnerMarquee'
 import SwipeAwardPerView from './SwipeAwardPerView'
+import { sectionState } from '../atoms/modalAtom';
+import {  useRecoilValue } from 'recoil';
 function Footer({footerData,socialmedia,partnerjsonData,awardData}) {
+  const currentSection = useRecoilValue(sectionState)
+  console.log(currentSection)
   const {footer} = footerData
   return (
     <div className="flex flex-col items-center pt-24 mb-16 w-full mx-auto ">
 
       {
-        awardData && <SwipeAwardPerView awardData={awardData} />
+        awardData && <SwipeAwardPerView awardData={awardData}  animationStart= {currentSection === 3 ? true : false} />
       }
       
       <div className="flex flex-wrap justify-between mx-auto md:flex-row mt-24 w-4/5 border-t pt-4">
@@ -15,7 +19,7 @@ function Footer({footerData,socialmedia,partnerjsonData,awardData}) {
           socialmedia.map((item,index)=>{
             const {id ,image , link, title} = item
             return(
-              <div key={id} className="social">
+              <div key={title+id} className="social">
                 <a href={link} target="_blank" rel="noreferrer" className='text-base text-zinc-400 hover:text-zinc-100'>
                   {title}
                 </a> 
