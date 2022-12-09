@@ -5,14 +5,7 @@
       "image":"logo01.png",
       "title":"STARLUX AIRLINE - Star Wonderers",
       "awardtitle":"41th The Telly Awards",
-      "subtitle":"Branded Content Craft-Fully Animated piece/Branded Content Craft-Art Direction/Branded Content General-Travel"
-    },
-    {
-      "id":7,
-      "image":"logo01.png",
-      "title":"STARLUX AIRLINE - Star Wonderers",
-      "awardtitle":"41th The Telly Awards",
-      "subtitle":"Branded Content Craft-Visual Effects/Branded Content Craft-3D Animation / Branded Content Craft-Use of Animation"
+      "subtitle":"Branded Content Craft-Fully Animated piece \nBranded Content Craft-Art Direction \nBranded Content General-Travel"
     },
     {
       "id":2,
@@ -20,6 +13,13 @@
       "title":"The Last Queen",
       "awardtitle":"79th Venice International Film Festival",
       "subtitle":"Giornate degli Autori Award"
+    },
+    {
+      "id":7,
+      "image":"logo01.png",
+      "title":"STARLUX AIRLINE - Star Wonderers",
+      "awardtitle":"41th The Telly Awards",
+      "subtitle":"Branded Content Craft-Visual Effects \nBranded Content Craft-3D Animation \nBranded Content Craft-Use of Animation"
     },
     {
       "id":3,
@@ -37,14 +37,14 @@
     },
     {
       "id":5,
-      "image":"logo05.png",
+      "image":"logo08.png",
       "title":"ROG 2021 Brand Video",
       "awardtitle":"2022 Red Dot Design Awards ",
       "subtitle":"Film & Animation"
     },
     {
       "id":6,
-      "image":"logo06.png",
+      "image":"logo08.png",
       "title":"ROG Zephyrus Duo 16 Product Video",
       "awardtitle":"2022 Red Dot Design Awards",
       "subtitle":"Film & Animation"

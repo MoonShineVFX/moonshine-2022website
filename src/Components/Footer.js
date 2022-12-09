@@ -10,7 +10,7 @@ function Footer({footerData,socialmedia,partnerjsonData,awardData}) {
         awardData && <SwipeAwardPerView awardData={awardData} />
       }
       
-      <div className="flex flex-wrap justify-between mx-auto md:flex-row mt-10 w-4/5 border-t pt-4">
+      <div className="flex flex-wrap justify-between mx-auto md:flex-row mt-24 w-4/5 border-t pt-4">
         {socialmedia.length >0 ? 
           socialmedia.map((item,index)=>{
             const {id ,image , link, title} = item

@@ -56,7 +56,7 @@ function Home_mainService() {
           serviceData.map((item,index)=>{
             const {title , link , cover_video,start_time} = item
             return(
-              <a key={index} href={link} target={"_blank"}>
+              <a key={'service0'+index} href={link} target={"_blank"}>
                 <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center h-full'>
                   {/* <img src={process.env.PUBLIC_URL+'/images/about/'+ cover_image} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/> */}
                   <AboutVideoContainer url={cover_video} start_time={start_time}/> 

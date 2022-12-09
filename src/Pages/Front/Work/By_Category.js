@@ -92,7 +92,7 @@ function By_Category() {
   },[])
   return (
     <section id="by_category">
-        <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name} />
+        <Header v_url={category && category.video_url } header_title={currentCategory && currentCategory.name}  tpa_display={true}/>
         <div className='mx-5 lg:mx-20 my-7'>
           <div className='text-3xl text-left mt-10  font-light'>
            {currentCategory && currentCategory.name}

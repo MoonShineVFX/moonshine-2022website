@@ -80,7 +80,7 @@ function Home_mainAbout() {
         imgdata.map((item,index)=>{
           return(
             <div 
-              key={index}
+              key={'about0'+index}
               className={' absolute w-full h-screen top-0 bg-cover bg-center bg-no-repeat opacity-0 ' + 'img-'+index}
               style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/'+ item})`}}
             ></div>
