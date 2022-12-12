@@ -117,7 +117,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
             </Link>
 
           </div>
-          <ul className='flex flex-col items-center  mb-5 gap-10' >
+          <ul className='flex flex-col items-center  mb-5 gap-5 md:gap-10' >
             { nav_Work?
               nav_Work.map((item,index)=>{
                 return(
@@ -134,7 +134,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
             }
           </ul>
           <div className='w-5 h-1 bg-white '></div>
-          <ul className='flex flex-col items-center  mb-5 gap-10' >
+          <ul className='flex flex-col items-center  mb-5 gap-5 lg:gap-10' >
             { data?
               data.map((item,index)=>{
                 return(
@@ -150,7 +150,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
               }): ""
             }
           </ul>
-          <ul className='flex items-center justify-center  gap-8  lg:gap-24 flex-wrap mx-10 md:mx-0'>
+          <ul className='flex items-center justify-center  gap-8  lg:gap-20 flex-wrap mx-10 md:mx-0'>
             {
               socialmedia.length ? 
               socialmedia.map((item,index)=>{
