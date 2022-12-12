@@ -28,7 +28,7 @@ function Home_mainCategory() {
     return(
       <video 
         loop muted playsInline 
-        className='md:h-screen w-full object-cover object-center max-h-[25vh]  lg:max-h-screen opacity-40 hover:opacity-100' 
+        className='md:h-screen  max-h-[25vh] w-full object-cover object-center  lg:max-h-screen opacity-40 hover:opacity-100 hidden lg:block' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -44,7 +44,7 @@ function Home_mainCategory() {
         {
           categoryData ? 
           categoryData.map((item,index)=>{
-            const{id, name, name_cht, display, imgpath, cover_video, slug } = item
+            const{id, name, name_cht, display, imgpath, cover_video, slug,video_poster } = item
             return display === '1' ? 
               <Link key={name+id} 
                   to={"/works/"+slug}
@@ -57,7 +57,11 @@ function Home_mainCategory() {
                   // style={{backgroundImage : `url(${imgpath})`}}
               >
      
-                  <VideoContainer url={cover_video} /> 
+                  <VideoContainer url={cover_video}  /> 
+                  <div className='video_img_cover block lg:hidden bg-center bg-cover bg-no-repeat h-screen  max-h-[25vh] w-full brightness-75'
+                    style={{backgroundImage : `url(${process.env.PUBLIC_URL+'/images/home/'+video_poster})`}}
+                  >
+                  </div>
 
                 <div className=' absolute font-bold uppercase text-[1.2rem]'> {name }</div>
                

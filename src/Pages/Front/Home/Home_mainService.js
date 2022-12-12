@@ -27,7 +27,7 @@ function Home_mainService() {
     }
     return(
       <video 
-        loop muted playsInline className='w-full h-full object-cover align-middle  opacity-40 hover:opacity-100' 
+        loop muted playsInline className='w-full h-full object-cover align-middle  opacity-40 hover:opacity-100 hidden lg:block' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -54,12 +54,16 @@ function Home_mainService() {
         <div className='grid lg:grid-cols-4 w-full grid-cols-2 h-[50vh] lg:h-[55vh] inset-0 '>
           {serviceData &&
           serviceData.map((item,index)=>{
-            const {title , link , cover_video,start_time} = item
+            const {title , link , cover_video,start_time,video_poster} = item
             return(
               <a key={'service0'+index} href={link} target={"_blank"}>
                 <div className=' relative group  transition-all cursor-pointer md:opacity-100 flex justify-center items-center h-full'>
                   {/* <img src={process.env.PUBLIC_URL+'/images/about/'+ cover_image} alt="" className='w-full object-cover opacity-50 group-hover:opacity-100 transition-all'/> */}
                   <AboutVideoContainer url={cover_video} start_time={start_time}/> 
+                  <div className='video_img_cover block lg:hidden bg-center bg-cover bg-no-repeat h-screen  max-h-[25vh] w-full brightness-75'
+                    style={{backgroundImage : `url(${process.env.PUBLIC_URL+'/images/service/'+video_poster})`}}
+                  >
+                  </div>
                   <div className=' absolute  w-full text-center  font-bold uppercase  group-hover:tracking-[.25em] transition-all text-[1.2rem] tracking-[.15em] md:break-all  '>
                     {title}
                   </div>
