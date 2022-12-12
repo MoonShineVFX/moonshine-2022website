@@ -77,7 +77,7 @@ function Contact() {
         </div>
         <div className="contact_info mt-16">
           <div className="text-lg mt-5 font-light">
-            <div className='flex gap-20'>
+            <div className='flex flex-col lg:flex-row gap-20'>
               <div>
                 <div className=' text-xl mb-5 font-bold'>TAIPEI</div>
                 <div className=' text-sm'>

@@ -15,8 +15,8 @@ function About() {
     <div>
       <SwiperBgImages imgData={bgimages}/>
       <div className="mt-16 z-10 relative">
-        <div className="w-4/5 mb-20 xs:w-full mx-auto " >
-          <h1 className='text-3xl font-light xs:text-2xl leading-normal ' >Creation and Illumination, attained by MOONSHINE's animation and visual effects.</h1>
+        <div className="w-11/12 lg:w-4/5 mb-20  mx-auto " >
+          <h1 className='text-2xl lg:text-3xl font-light  leading-normal ' >Creation and Illumination, attained by MOONSHINE's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
           <div className="text-lg mt-5 font-light" data-aos="fade" data-aos-duration="1500">
           MOONSHINE Studio is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.
@@ -36,30 +36,30 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="about_content flex flex-col w-3/4 mx-auto gap-20">
-        <div className='flex   text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
-          <div className='w-4/6 relative'>
+      <div className="about_content flex flex-col w-10/12 lg:w-3/4 mx-auto gap-20">
+        <div className='flex flex-col md:flex-row   text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
+          <div className='lg;w-4/6 relative'>
             <div 
               className=' absolute top-0 w-full h-full' 
               style={{background: `linear-gradient(90deg,#000,transparent 35%,transparent 65%,#000)`}}></div>
             <img src={process.env.PUBLIC_URL+'/images/about/about-s01.png'} alt=""  />
           </div>
          
-          <div className='w-2/3'>
+          <div className='lg:w-2/3 mt-6 lg:mt-0'>
             <div className='text-2xl font-bold'>Solid Pipeline</div> 
             <div className='text-lg text-zinc-300 mt-3 font-light'>
               From pre-production to post production, MOONSHINE has developed a mature production process.
             </div> 
           </div>
         </div>
-        <div className='flex   text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
-          <div className='w-2/3'>
+        <div className='flex flex-col md:flex-row  text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
+          <div className='lg:w-2/3 mt-6 lg:mt-0 order-2 md:order-1'>
             <div className='text-2xl font-bold'>Assured Quality</div> 
             <div className='text-lg text-zinc-300   mt-3 font-light'>
               We strive for constantly making great visual works.
             </div> 
           </div>
-          <div className='w-4/6 relative'>
+          <div className='lg:w-4/6 relative order-1 md:order-2'>
             <div 
               className=' absolute top-0 w-full h-full' 
               style={{background: `linear-gradient(90deg,#000,transparent 35%,transparent 65%,#000)`}}></div>
@@ -70,8 +70,8 @@ function About() {
           </div>
           
         </div>
-        <div className='flex   text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
-          <div className='w-4/6 relative'>
+        <div className='flex flex-col md:flex-row  text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
+          <div className='lg:w-4/6 relative'>
             <div 
               className=' absolute top-0 w-full h-full' 
               style={{background: `linear-gradient(90deg,#000,transparent 35%,transparent 65%,#000)`}}></div>
@@ -80,21 +80,21 @@ function About() {
               style={{background: `linear-gradient(1turn,#000,transparent 50%,transparent 65%,#000)`}}></div>
             <img src={process.env.PUBLIC_URL+'/images/about/about-s03.png'} alt="" />
           </div>          
-          <div className='w-2/3'>
+          <div className='lg:w-2/3 mt-6 lg:mt-0'>
             <div className='text-2xl font-bold'>Diversity Works</div> 
             <div className='text-lg text-zinc-300  mt-3 font-light'>
               Virtual, digital, realistic…We demonstrate different styles in all formats.
             </div> 
           </div>
         </div>
-        <div className='flex   text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
-          <div className='w-2/3'>
+        <div className='flex flex-col md:flex-row  text-white w-full items-center' data-aos="fade-up" data-aos-duration="1500">
+          <div className='lg:w-2/3 mt-6 lg:mt-0 order-2 md:order-1'>
             <div className='text-2xl font-bold'>Research Development</div> 
             <div className='text-lg text-zinc-300  mt-3 font-light'>
               With our talented R&D technologists, we have developed our own tools and effects.
             </div> 
           </div>
-          <div className='w-4/6 relative'>
+          <div className='lg:w-4/6 relative order-1 md:order-2'>
             <div 
               className=' absolute top-0 w-full h-full' 
               style={{background: `linear-gradient(90deg,#000,transparent 35%,transparent 65%,#000)`}}></div>
@@ -108,11 +108,11 @@ function About() {
 
       </div>
       <div>
-        <div className="w-3/4 mt-20 xs:w-full mx-auto " data-aos="fade" data-aos-duration="1500">
+        <div className="w-10/12 lg:w-3/4 mt-20  mx-auto " data-aos="fade" data-aos-duration="1500">
           <h1 className=' xs:text-2xl leading-normal text-3xl md:text-3xl font-bold md:w-full py-4 leading-slug mb-10' >Locations</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
           <div className="text-lg mt-5 font-light">
-            <div className='flex gap-20'>
+            <div className='flex flex-col lg:flex-row  gap-20'>
               <div>
                 <div className=' text-xl mb-5 font-bold'>TAIPEI</div>
                 <div className=' text-sm'>

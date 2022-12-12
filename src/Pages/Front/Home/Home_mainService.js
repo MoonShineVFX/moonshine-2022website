@@ -3,8 +3,10 @@ import { Link ,useLocation  } from "react-router-dom";
 import { getServiceForDashboard} from '../../../Helper/getfunction'
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
 import { FiArrowRightCircle } from "react-icons/fi";
+import { sectionState } from '../../../atoms/modalAtom';
+import {  useRecoilValue } from 'recoil';
 function Home_mainService() {
-
+  const currentSection = useRecoilValue(sectionState)
   const [categoryData, setCategoryData] = useState([]);
   const [serviceData, setServiceData] = useState([]);
   useEffect(()=>{
@@ -27,7 +29,7 @@ function Home_mainService() {
     }
     return(
       <video 
-        loop muted playsInline className='w-full h-full object-cover align-middle  opacity-40 hover:opacity-100 hidden lg:block' 
+        loop muted playsInline className='w-full h-full object-cover align-middle  brightness-75 hover:brightness-100 hidden lg:block' 
         ref={videoRef}
         onMouseOver={handlePlay}
         onMouseOut={handleStop}
@@ -41,7 +43,7 @@ function Home_mainService() {
   return (
     <div className='pt-0 h-screen'>
       <section id="about" className='w-full mx-auto  pt-[100px]  md:pt-22 flex flex-col justify-between h-full'>
-        <div className='w-5/6 lg:w-4/5 md:my-16 mx-auto lg:h-[15vh] flex flex-col lg:flex-row justify-start items-start lg:items-center lg:justify-center' >
+        <div className={'w-5/6 lg:w-4/5 md:my-16 mx-auto lg:h-[15vh] flex flex-col lg:flex-row justify-start items-start lg:items-center lg:justify-cente transition-all delay-300 duration-1000 ' + (currentSection === 2 ? ' opacity-100 ' : ' opacity-0 ' )} >
           <div className='text-3xl font-bold  w-4/5 lg:w-3/5 mb-3 lg:mb-0'>
             Find Out More
           </div>

@@ -109,7 +109,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
           <div className=' absolute top-9 right-9 cursor-pointer' onClick={()=>{setShowMessage(false)}}>
             <TfiClose size={32} className="ml-auto" /> 
           </div>
-          <div className="block mb-16 mt-11">
+          <div className="block mb-5 mt-6 lg:mb-16 lg:mt-11">
             <Link
               to="/"
             >

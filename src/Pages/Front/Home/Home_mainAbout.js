@@ -3,6 +3,8 @@ import { Link ,useLocation  } from "react-router-dom";
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
 import { Transition,TransitionGroup,SwitchTransition } from 'react-transition-group'
 import { FiArrowRightCircle } from "react-icons/fi";
+import { sectionState } from '../../../atoms/modalAtom';
+import {  useRecoilValue } from 'recoil';
 function Home_mainAbout() {
   const FadeChanger = ({url}) =>{
     const [currentUrl, setCurrentUrl] = useState(url)
@@ -52,6 +54,7 @@ function Home_mainAbout() {
   const imgdata = [ "slogan1.png", "slogan2.png","slogan3.png","slogan4.png","slogan5.png"]
   const [num , setNum]=useState(0)
   const [count, setCount] = useState(0);
+  const currentSection = useRecoilValue(sectionState)
 
 
   const incNum = () => {
@@ -87,7 +90,7 @@ function Home_mainAbout() {
           )
         })
       }
-      <div className=' absolute z-10 flex flex-col justify-center h-screen px-12 '>
+      <div className={' absolute z-10 flex flex-col justify-center h-screen px-12 transition-all delay-300 duration-1000 ' + (currentSection === 1 ? ' opacity-100 ' : ' opacity-0 ' )}>
         <div className='text-[0.8rem] font-bold uppercase tracking-[.15em]'>WELCOME TO MOONSHINE</div>
         <div className='text-3xl md:text-3xl font-bold md:w-full py-4 leading-slug'>Creation and Illumination, attained by MOONSHINE's animation <br /> and visual effects.</div>
         <div className='text-lg md:w-2/4 font-light text-zinc-100 my-5'>As dream makers, we dedicate to providing all-around image service, breaking the limitations of creation by technology, and bringing the high quality to the world letting a moonlight shine on the the heart of the industry.</div>
