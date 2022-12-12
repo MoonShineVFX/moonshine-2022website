@@ -24,6 +24,7 @@ function Header({v_url,header_title,start_time,tpa_display}) {
           url={v_url}
           className='react-player'
           playing
+          playsinline
           muted
           loop
           width='100vw'
