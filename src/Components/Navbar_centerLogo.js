@@ -49,7 +49,7 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
           <Link
             to="/"
           >
-            <img src={process.env.PUBLIC_URL+'/images/logo.png'} alt="" />
+            <img src={process.env.PUBLIC_URL+'/images/mslogo2022.svg'} alt=""  className='max-w-full '/>
           </Link>
 
         </div>
