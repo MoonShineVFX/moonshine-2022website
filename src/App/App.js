@@ -21,6 +21,7 @@ import Contact from '../Pages/Front/Contact/Contact'
 import By_Category from '../Pages/Front/Work/By_Category';
 import Ar_Preview from "../Pages/Front/Ar/Ar_Preview";
 import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
+import WatchArticle from "../Components/WatchArticle";
 //Back Pages
 import AdminHome from '../Pages/Back/Home.js'
 import AdminCateogry from '../Pages/Back/Category'
@@ -53,6 +54,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/services" element={<Services />} />
               <Route path="/works/:cSlug" element={<By_Category />} />
+              <Route path="/watcharticle/:workid" element={<WatchArticle />} />
 
 
             </Route>

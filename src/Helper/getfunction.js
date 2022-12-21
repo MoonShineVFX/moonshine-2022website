@@ -42,6 +42,23 @@ export const getWorksByCategoryCid = async (cid,callback)=>{
     callback(res)
   })
 }
+
+//由id取得單筆作品
+export const getWorkByidForArticle = async (id,callback)=>{
+  const q = query(collection(db, "data"),where("id", "==", id))
+  const data = await getDocs(q);
+  console.log(data)
+  // mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
+  //   callback(res)
+  // })
+  data.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    const docData = doc.data()
+    callback(doc.data())
+    // const imgsArray = docData.article.article_images
+    // console.log(doc.id, " => ", doc.data());
+  });
+}
 //根據分類id取資料
 export const getWorksBySubCategoryCid = async (scid,callback)=>{
   const q = query(collection(db, "data"), 

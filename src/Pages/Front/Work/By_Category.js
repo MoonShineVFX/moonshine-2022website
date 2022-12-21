@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { getCategory,getWorksByCategoryCid,getWorksBySubCategoryCid} from '../../../Helper/getfunction'
 import Header from '../../../Components/Header'
 import { motion,AnimatePresence } from "framer-motion"
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { LoadingAnim } from '../../../Helper/HtmlComponents';
 import { categoryState,modalState, movieState } from '../../../atoms/modalAtom';
 import {  useRecoilValue ,useRecoilState } from 'recoil';
 import Modal from '../../../Components/NetflixSlider/Modal';
 function By_Category() {
   let { cSlug} = useParams();
+  const navigate = useNavigate();
   const isShowModal = useRecoilValue(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -120,7 +121,7 @@ function By_Category() {
           <AnimatePresence>
           {filteredWorkData ?
             filteredWorkData.map((item,index)=>{
-              const {id,title ,img,imgpath,display} = item
+              const {id,title ,img,imgpath,display,article} = item
               return(
                 <motion.div 
                   key={id+title}
@@ -131,8 +132,13 @@ function By_Category() {
                   className={"bg-black w-full  relative  transition-all cursor-pointer xs:w-[25vw] overflow-hidden group " + (category && currentSubCategory.id === 'vfx01' ? ' aspect-[483/700] ' : ' aspect-[16/10] ') }
                   
                   onClick={() => {
-                    setShowModal(true);
-                    setCurrentMovie(item);
+                    if(article){
+                      navigate('/watcharticle/'+id, {replace: true})
+                    }else{
+                      setShowModal(true);
+                      setCurrentMovie(item);
+                    }
+
                   }}>
                   <div
                     className='bg-center bg-cover bg-no-repeat  w-full h-full duration-[200ms] group-hover:scale-110 brightness-90 group-hover:brightness-110 transition ease-linear  '
