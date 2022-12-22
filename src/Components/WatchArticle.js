@@ -32,6 +32,24 @@ function WatchArticle() {
 									/>
 							
 							</div>
+							<div className='text-xs my-16'>
+								Year : {data.year_of_work}
+							</div>
+							<div className='text-base my-10 leading-8'>
+								{data.article.article_text}
+							</div>
+							<div className='flex flex-col gap-10'>
+								{data.article.article_images.map((item,index)=>{
+									return(
+										<div>
+											<img src={'https://storage.googleapis.com/web-moonshine-2022.appspot.com/img_article/'+item} alt="" />
+										</div>
+									)
+								})}
+							</div>
+							<div className=' whitespace-pre-line text-base my-10 leading-8'>
+								  {data.intro}
+							</div>
 						</div>
 
 					: <div>Loading..</div>
@@ -42,3 +60,6 @@ function WatchArticle() {
 }
 
 export default WatchArticle
+
+
+
