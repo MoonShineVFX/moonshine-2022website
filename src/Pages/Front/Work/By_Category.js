@@ -133,9 +133,8 @@ function By_Category() {
                   
                   onClick={() => {
                     if(article){
-                      // navigate('/watcharticle/'+id, {replace: true})
-                      setShowModal(true);
-                      setCurrentMovie(item);
+                      navigate('/watcharticle/'+id, {replace: true})
+
                     }else{
                       setShowModal(true);
                       setCurrentMovie(item);
