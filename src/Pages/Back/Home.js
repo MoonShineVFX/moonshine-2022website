@@ -76,7 +76,9 @@ function Home() {
       "display":data.display ,
       "year_of_work":data.yearofwork ? data.yearofwork : '2022',
       "category":data.category ? data.category : '1',
-      "sub_category":data.sub_category ? data.sub_category : '1'
+      "sub_category":data.sub_category ? data.sub_category : '1',
+      "article":data.article?data.article: false ,
+      "article_text": data.article_text,
     }
     createWork(currentData,function(res){
       console.log(res)
@@ -96,7 +98,9 @@ function Home() {
       "display":data.display,
       "year_of_work":data.year_of_work ,
       "category":data.category ,
-      "sub_category":data.sub_category 
+      "sub_category":data.sub_category ,
+      "article":data.article ,
+      "article_text": data.article_text,
     }
     // 如果有圖檔存在 執行新增資料 否則不執行
     if (selectedFile) {

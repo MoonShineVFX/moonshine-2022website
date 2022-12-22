@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 function EditForm({categoryData,handleCreateWork , handleEditWork}) {
   const {register, handleSubmit, reset, formState: { errors }} = useForm(
-    {defaultValues: { title: "", intro: "",sort_num:"",youtube_id:"" ,year_of_work:"",video_url:"",vimeo_id:"", youtube_id:""}});
+    {defaultValues: { title: "", intro: "",sort_num:"",youtube_id:"" ,year_of_work:"",video_url:"",vimeo_id:"", youtube_id:"",article:false}});
   
   const onSubmit = (data) => {
     console.log(data)
@@ -141,8 +141,6 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
               
               }
 
-
-
               <div className="mb-3">
                 <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">
                   前台顯示 
@@ -162,14 +160,36 @@ function EditForm({categoryData,handleCreateWork , handleEditWork}) {
             </div>
             <div className='left w-1/2'>
               <div className="mb-3">
-                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品介紹</label>
+                <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">Credit</label>
                 <textarea
                   rows="6"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
-                  placeholder="作品介紹"
+                  placeholder="Credit"
                   {...register('intro')}
                 ></textarea>
               </div>
+              <div className="mb-3">
+                <input
+                  name="isArticle"
+                  type="checkbox"
+                  {...register('article')}
+                  className="mr-2"
+                />
+                 互動作品介紹頁面
+
+              </div>
+              {work.article &&
+                <div className="mb-3">
+                  <label htmlFor="exampleURL0" className="form-label inline-block mb-2 text-gray-700">作品介紹</label>
+                  <textarea
+                    rows="6"
+                    className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+                    placeholder="作品介紹"
+                    {...register('article_text')}
+                  ></textarea>
+                </div>
+              }
+
               {
                 formStatus === 'EDIT' && 
                 <div className="mb-3 ">
