@@ -133,7 +133,7 @@ function By_Category() {
                   
                   onClick={() => {
                     if(article){
-                      navigate('/watcharticle/'+id, {replace: true})
+                      navigate('/watcharticle/'+id)
 
                     }else{
                       setShowModal(true);
