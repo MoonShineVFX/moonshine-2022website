@@ -40,7 +40,7 @@ function WatchArticle() {
 							}
 
 							{data.article_images&& 
-								<div className=' flex flex-wrap gap-y-10'>
+								<div className=' flex flex-wrap gap-y-10 justify-between'>
 									{data.article_images.map((item,index)=>{
 										return(
 											<div className='' data-aos="fade-up" data-aos-duration="1500">
