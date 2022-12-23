@@ -36,14 +36,14 @@ function WatchArticle() {
 					/>
       	</div>
 			}
-			<div className='w-8/12 mx-auto'>
+			<div className='w-10/12 lg:w-8/12 mx-auto'>
 				{
 					data ?
 						<div className='flex justify-center flex-col items-center relative'>
-							<div className='text-3xl font-normal mt-20 mb-6'>{data.title}</div>
+							<div className=' text-lg lg:text-3xl font-normal mt-10 lg:mt-20 mb-6'>{data.title}</div>
 
 							{data.article_text &&
-								<div className='text-base my-20 leading-8' data-aos="fade-up" data-aos-duration="1500">
+								<div className='text-base my-10 leading-normal lg:my-20 lg:leading-8' data-aos="fade-up" data-aos-duration="1500">
 									{data.article_text}
 								</div>
 							}

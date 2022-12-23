@@ -100,7 +100,7 @@ function Home() {
       "category":data.category ,
       "sub_category":data.sub_category ,
       "article":data.article ,
-      "article_text": data.article_text,
+      "article_text": data.article_text?data.article_text : '',
     }
     // 如果有圖檔存在 執行新增資料 否則不執行
     if (selectedFile) {
