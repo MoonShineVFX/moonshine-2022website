@@ -263,7 +263,7 @@ function Home() {
             <div className='p-y px-3 bg-slate-200 hover:bg-slate-300 cursor-pointer  rounded-full'  onClick={()=>setSubCategoryDisaply('all')}>全部</div>
             {
               currentFilterCategory &&
-              currentFilterCategory.sub_category.map((item,index)=>{
+              currentFilterCategory.sub_category ? currentFilterCategory.sub_category.map((item,index)=>{
                 return(
                   <div 
                     key={item.id} className='p-y px-3 bg-slate-200 hover:bg-slate-300 cursor-pointer  rounded-full'
@@ -271,7 +271,7 @@ function Home() {
                   >
                     {item.title} </div>
                 )
-              })
+              }): <div>沒有子分類</div>
             }
           </div>
 
