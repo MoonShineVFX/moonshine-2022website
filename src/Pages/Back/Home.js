@@ -271,7 +271,7 @@ function Home() {
                   >
                     {item.title} </div>
                 )
-              }): <div>沒有子分類</div>
+              }): <div className='text-xs text-gray-400'>沒有子分類</div>
             }
           </div>
 
