@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,Suspense } from 'react'
 import { useRecoilState } from 'recoil';
 import { formDisplayState,formStatusState,workState } from './atoms/fromTypes';
 
@@ -9,15 +9,16 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 //helper
-import {getAllWorksForDashboard ,getCategory, getNextWorkForDashboard,getPrevWorkForDashboard,createWork,deleteWork,updateWork} from '../../Helper/getfunction'
+import {getAllWorksForDashboard ,getCategory,getWorksByCategoryForDashboard, getNextWorkForDashboard,getPrevWorkForDashboard,createWork,deleteWork,updateWork} from '../../Helper/getfunction'
 import {LoadingAnim} from '../../Helper/HtmlComponents'
 //檔案上傳方法
 import { useStorage } from "../../Helper/useStorage";
+import { useForm } from 'react-hook-form';
 
 function Home() {
   const [workData, setWorkData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
-
+  const {register, handleSubmit, reset, formState: { errors }} = useForm();
   const [showModal, setShowModal] = useRecoilState(formDisplayState);
   const [formStatus, setFormStatus] = useRecoilState(formStatusState);
   const [singleWork, setSingleWork] = useRecoilState(workState);
@@ -27,7 +28,59 @@ function Home() {
   const types = ["image/png", "image/jpeg", "image/jpg","image/avif"];
   // 若setFile有資料會執行檔案上傳
   const { progress, url } = useStorage(file);
+  const [currentFilterCategory, setCurrentFilterCategory] = useState()
+  const [currentFilterCategoryId, setCurrentFilterCategoryId] = useState('2')
+  const [subCategoryDisplay , setSubCategoryDisaply] = useState('all')
+  const handleChange = (e)=>{
+    console.log(e.target.value)
+    setCurrentFilterCategoryId(e.target.value)
+    filterCurrentCategory(e.target.value)
+    getWorksByCategoryForDashboard(e.target.value,(res)=>{
+      setWorkData(res)
+    })
+    setSubCategoryDisaply('all')
+  }
+  const filterCurrentCategory = (cid) =>{
+    const filteredCategory =  categoryData.filter((value)=> {
+      return value.id === cid
+    })
+    setCurrentFilterCategory(filteredCategory[0])
+  }
 
+  //得知子分類名稱後顯示在表格上
+  const filterCurrentSubCategory = (cid,subcid) =>{
+  
+    if(cid === undefined) return  
+    if(subcid === undefined) return  
+    // console.log(cid,subcid)
+    
+    let filteredCategory =  categoryData.filter((value)=> {
+      return value.id === cid
+    })
+    console.log(filteredCategory)
+    let filteredSubCategory= filteredCategory[0].sub_category.filter((value)=> {
+      return value.id === subcid
+    })
+    return <div className='font-bold'>- {filteredSubCategory[0].title}</div>
+    
+  }
+  const SubCategory = ({name,cid,subcid,categoryData})=>{
+
+    if(subcid === undefined) return  
+    if(categoryData.length === 0) return
+    // console.log(cid,subcid)
+    // console.log(name+categoryData.length)
+    // return name+categoryData.length
+    
+    let filteredCategory =  categoryData.filter((value)=> {
+      return value.id === cid
+    })
+    let filteredSubCategory= filteredCategory[0].sub_category.filter((value)=> {
+      return value.id === subcid
+    })
+    return <div className='font-bold'>- {filteredSubCategory[0].title}</div>
+  }
+  
   const handleNext = ()=>{
     console.log('next')
     getNextWorkForDashboard(workData[workData.length-1] , function(res){
@@ -45,7 +98,7 @@ function Home() {
   const fetchWorkDoneFun = (customStr, res)=>{
     setShowModal(false)
     if(res === 'success'){
-      getAllWorksForDashboard((res)=>{
+      getWorksByCategoryForDashboard(currentFilterCategoryId,(res)=>{
         setWorkData(res)
       })
     }else{
@@ -164,14 +217,18 @@ function Home() {
    
   }
   useEffect(()=>{
-    getAllWorksForDashboard((res)=>{
+   getCategory(  (res)=>{
+      setCategoryData(res)
+      setCurrentFilterCategory(res[0])
+    })
+    getWorksByCategoryForDashboard('2',(res)=>{
       setWorkData(res)
     })
-    getCategory((res)=>{
-      setCategoryData(res)
-    })
+
+
 
   },[])
+
 
   return (
     <section className='w-full bg-white p-5 text-black relative'>
@@ -186,7 +243,42 @@ function Home() {
           setFormStatus('ADD')
         }}
       >新增 </button>
-      <div id="table" className='w-full mt-5' >
+      <div className='border p-2 mt-4'>
+        <div className='flex gap-2 items-center'>
+          <div className='font-bold'>篩選管理</div>
+          <div className="  flex items-center gap-2">
+            <div  className="   text-gray-700">分類</div>
+            <select className="form-control  px-3 text-base p-2 font-normal text-gray-700 bg-white  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " id="category" {...register("category")}
+            onChange={(e)=>(handleChange(e))}
+            >
+              {categoryData.map((item,index)=>{
+                return(
+                  <option key={item.id} value={item.id}>{item.name} - {item.name_cht}</option>
+                )
+              })}
+            </select>
+          </div>
+          <div className='flex gap-2 items-center'>
+            <div>- 子分類</div>
+            <div className='p-y px-3 bg-slate-200 hover:bg-slate-300 cursor-pointer  rounded-full'  onClick={()=>setSubCategoryDisaply('all')}>全部</div>
+            {
+              currentFilterCategory &&
+              currentFilterCategory.sub_category.map((item,index)=>{
+                return(
+                  <div 
+                    key={item.id} className='p-y px-3 bg-slate-200 hover:bg-slate-300 cursor-pointer  rounded-full'
+                    onClick={()=>setSubCategoryDisaply(item.id)}
+                  >
+                    {item.title} </div>
+                )
+              })
+            }
+          </div>
+
+        </div>
+        
+      </div>
+      <div id="table" className='w-full mt-5  min-h-screen' >
         <table className="table-auto   border border-slate-200 w-full rounded-md ">
           <thead>
             <tr>
@@ -194,7 +286,7 @@ function Home() {
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>排序</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>作品名稱</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>分類-子分類</th>
-              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>狀態</th>
+              <th className='bg-zinc-100 border-b border-zinc-300 text-left'>前台顯示狀態</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>上傳日期</th>
               <th className='bg-zinc-100 border-b border-zinc-300 text-left'>編輯</th>
             </tr>
@@ -205,19 +297,19 @@ function Home() {
               workData.map((item,index)=>{
                 const {uid,id, display, title, time_added,category,sort_num,sub_category} =item
                 return(
-                  <tr className=' hover:bg-zinc-200' key={id+title}>
+                  <tr className={' hover:bg-zinc-200' + ( subCategoryDisplay === 'all' ? '  table-row ' :  subCategoryDisplay === sub_category ? ' table-row' : ' hidden' )} key={id+title}>
                     <td className='p-2 text-xs'>{id}</td>
                     <td className='p-2 text-xs'>{sort_num}</td>
-                    <td className='p-2 text-xs'>{title}</td>
+                    <td className='p-2 text-sm'>{title}</td>
                     <td className='p-2 text-xs'>
                       {categoryData.map((item) => {
                         if(item.id === category)
                           return <div key={item.id}>{item.name}</div>
                       })}
-                      {sub_category && sub_category}
+                      {sub_category === '沒有子分類' ? sub_category : <SubCategory name={title} cid={category} subcid={sub_category} categoryData={categoryData} />}
                     </td>
                     <td className='p-2 text-xs'>{display === '1' ? '顯示' : '不顯示'}</td>
-                    <td className='p-2 text-xs'>{time_added.toLocaleString()}</td>
+                    <td className='p-2 text-xs'>{time_added.toLocaleString().substr(0,10)}</td>
                     <td className='p-2 text-xs'>
                       <button 
                       className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600 '
@@ -240,7 +332,7 @@ function Home() {
           </tbody>
         </table>
       </div>
-      <div className='mt-3 flex gap-2'>
+      <div className='mt-3 flex gap-2 hidden'>
         <button className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600' onClick={handlePrev}>Prev</button>
         <button className='text-xs  rounded-md bg-black text-white py-2 px-6 hover:bg-slate-600' onClick={handleNext}>Next</button>
       </div>

@@ -213,7 +213,17 @@ export const getPrevWorkForDashboard = async (item , callback) => {
     callback(res)
   })
 }
+export const getWorksByCategoryForDashboard = async (cid,callback)=>{
+  const q = query(collection(db, "data"), 
+    where("category", "==", cid),
+    orderBy('time_added' , 'desc'))
+    ;
+  const data = await getDocs(q);
 
+  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
+    callback(res)
+  })
+}
 export const getSearchWork = async (search , callback)=>{
  //TODO
 }
