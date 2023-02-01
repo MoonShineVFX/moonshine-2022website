@@ -220,7 +220,7 @@ export const getWorksByCategoryForDashboard = async (cid,callback)=>{
     ;
   const data = await getDocs(q);
 
-  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
+  mapDataWithImage('data',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
 }
