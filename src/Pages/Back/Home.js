@@ -78,6 +78,7 @@ function Home() {
     let filteredSubCategory= filteredCategory[0].sub_category.filter((value)=> {
       return value.id === subcid
     })
+    if(filteredSubCategory.length === 0) return '此項需補選子分類'
     return <div className='font-bold'>- {filteredSubCategory[0].title}</div>
   }
   
