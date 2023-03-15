@@ -19,9 +19,9 @@ function About() {
           <h1 className='text-2xl lg:text-3xl font-light  leading-normal ' >Creation and Illumination, attained by MOONSHINE's animation and visual effects.</h1>
           <div className='h-[1px] w-[120px] bg-white mt-10' ></div>
           <div className="text-lg mt-5 font-light" data-aos="fade" data-aos-duration="1500">
-          MOONSHINE Studio is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.
+          Moonshine Studio is an artist-centered VFX company based in Taiwan. We are an integrated collective of directors, designers, artists and technologists, collaborating on projects for the advertising, film and VR industries.
             <div className="mb-6"></div>
-            Founded in 2012, MOONSHINE Studio has been through some challenges, and have done some cool things with our talents. We believe in the value of transparency and equity and constantly strive to deliver great work to the world.
+            Founded in 2012, Moonshine Studio has been through some challenges, and have done some cool things with our talents. We believe in the value of transparency and equity and constantly strive to deliver great work to the world.
           </div>
           <div className="mb-14 mt-36" data-aos="fade" data-aos-duration="1500">
             <div className="text-3xl font-light">
