@@ -41,8 +41,8 @@ function Contact() {
       }
   ]
   const center = {
-    lat: 25.051027,
-    lng: 121.594860
+    lat: 25.0578151,
+    lng: 121.5803296
   };
   return (
     <section id="contact">
@@ -82,7 +82,7 @@ function Contact() {
                 <div className=' text-xl mb-5 font-bold'>TAIPEI</div>
                 <div className=' text-sm'>
                   info@moonshine.tw <br />
-                  3F, No.481, Sec. 6, Zhongxiao E. Rd., Nangang Dist., Taipei City 115, Taiwan (R.O.C.) <br /><br />
+                  4F., No.188, Xingshan Rd., Neihu Dist., Taipei City 114066, Taiwan (R.O.C.) <br /><br />
                   02-2785-7037 
                 </div>
               </div>
