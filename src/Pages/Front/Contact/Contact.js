@@ -65,8 +65,8 @@ function Contact() {
             >
               <Marker 
                 position={{
-                  lat: 25.051027,
-                  lng: 121.594860
+                  lat: 25.0578151,
+                  lng: 121.5803296
                 }}
                 icon={process.env.PUBLIC_URL + '/images/MS_landmark.svg'}
               />
