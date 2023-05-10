@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
+    "@babylonjs/core": "^6.2.0",
+    "@babylonjs/gui": "^6.2.0",
+    "@babylonjs/loaders": "^6.2.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fullpage/react-fullpage": "^0.1.30",
@@ -20,6 +23,7 @@
     "aos": "^2.3.4",
     "firebase": "^9.8.3",
     "framer-motion": "^6.3.11",
+    "gsap": "^3.11.5",
     "i18next": "^21.8.9",
     "react": "^18.1.0",
     "react-confirm-alert": "^3.0.6",
