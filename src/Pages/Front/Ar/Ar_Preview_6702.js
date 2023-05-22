@@ -14,9 +14,7 @@ function Ar_Preview_6702() {
           ar-modes="webxr scene-viewer quick-look"
           touch-action="pan-y"
           id="modelViewer"
-
           xr-environment
-          
         >
           <button slot="ar-button" id="ar-button" >
             AR mode
@@ -24,7 +22,7 @@ function Ar_Preview_6702() {
 
           <div id="ar-prompt">
             <img src="https://modelviewer.dev/shared-assets/icons/hand.png"/>
-      </div>
+          </div>
         </model-viewer>
     </section>
 
