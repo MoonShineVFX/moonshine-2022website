@@ -20,6 +20,7 @@ import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
 import By_Category from '../Pages/Front/Work/By_Category';
 import Ar_Preview from "../Pages/Front/Ar/Ar_Preview";
+import Ar_Preview_6701 from "../Pages/Front/Ar/Ar_Preview_6701";
 import FirstScene from '../Pages/Front/Ar/FirstScene';
 import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
 import WatchArticle from "../Components/WatchArticle";
@@ -74,6 +75,7 @@ function App() {
               <Route path="/login" element={<Login />} />
             </Route>
             <Route path="viewer" element={<EmptyPageLayout/> }>
+              <Route path="6701" element={<Ar_Preview_6701/> }/>
               <Route path="/viewer" element={<FirstScene />} />
               <Route path="ar" element={<Ar_Preview />} />
             </Route>
