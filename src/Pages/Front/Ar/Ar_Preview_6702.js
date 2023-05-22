@@ -1,11 +1,11 @@
 import React from 'react'
 import "@google/model-viewer/dist/model-viewer";
-function Ar_Preview_6701() {
+function Ar_Preview_6702() {
   return (
     <section className='ar w-full bg-white p-2 text-black relative h-[90vh]'>
       <model-viewer
-          src={process.env.PUBLIC_URL+ '/assets/6701/animated_model_6701.glb'}
-          ios-src={process.env.PUBLIC_URL+ '/assets/6701/6701.usdz'}
+          src={process.env.PUBLIC_URL+ '/assets/6702/animated_model_6702.glb'}
+          ios-src={process.env.PUBLIC_URL+ '/assets/6702/6702.usdz'}
           alt="A 3D model of an People"
           camera-controls
           auto-rotate
@@ -24,7 +24,7 @@ function Ar_Preview_6701() {
 
           <div id="ar-prompt">
             <img src="https://modelviewer.dev/shared-assets/icons/hand.png"/>
-          </div>
+      </div>
         </model-viewer>
     </section>
 
@@ -32,4 +32,4 @@ function Ar_Preview_6701() {
   )
 }
 
-export default Ar_Preview_6701
+export default Ar_Preview_6702

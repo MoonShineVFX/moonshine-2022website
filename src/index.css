@@ -92,7 +92,8 @@
 }
 
 
-model-viewer {
+
+#modelViewer {
   background-color: #455A64;
   overflow-x: hidden;
   --poster-color: #eee;
@@ -101,7 +102,7 @@ model-viewer {
   /* border: 10px solid #1f2530; */
 }
 
-#ar-button {
+#modelViewer #ar-button {
   background-image: url(https://modelviewer.dev/assets/ic_view_in_ar_new_googblue_48dp.png);
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -146,7 +147,7 @@ model-viewer {
   to   { transform: translateX(-100px); }
 }
 
-model-viewer > #ar-prompt {
+#modelViewer > #ar-prompt {
   position: absolute;
   left: 50%;
   bottom: 175px;
@@ -154,15 +155,15 @@ model-viewer > #ar-prompt {
   display: none;
 }
 
-model-viewer[ar-status="session-started"] > #ar-prompt {
+#modelViewer[ar-status="session-started"] > #ar-prompt {
   display: block;
 }
 
-model-viewer > #ar-prompt > img {
+#modelViewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
 
-model-viewer > #ar-failure {
+#modelViewer > #ar-failure {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -170,6 +171,6 @@ model-viewer > #ar-failure {
   display: none;
 }
 
-model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+#modelViewer[ar-tracking="not-tracking"] > #ar-failure {
   display: block;
 }
