@@ -5,7 +5,7 @@ function Ar_Preview_test() {
     <section className='ar w-full bg-white p-2 text-black relative h-[90vh]'>
       <model-viewer
           src={process.env.PUBLIC_URL+ '/assets/test.glb'}
-          // ios-src={process.env.PUBLIC_URL+ '/assets/6702/6702.usdz'}
+          ios-src={process.env.PUBLIC_URL+ '/assets/usdztest.usdz'}
           alt="A 3D model of an People"
           camera-controls
           auto-rotate
