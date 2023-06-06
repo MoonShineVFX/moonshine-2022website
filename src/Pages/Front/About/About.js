@@ -10,6 +10,10 @@ function About() {
     'bg_about05.png',
     'bg_about06.png',
     'bg_about07.png',
+    'bg_about08.png',
+    'bg_about09.png',
+    'bg_about10.png',
+    'bg_about11.png',
   ];
   return (
     <div>
