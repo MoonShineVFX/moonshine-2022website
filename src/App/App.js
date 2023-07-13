@@ -23,6 +23,7 @@ import Ar_Preview from "../Pages/Front/Ar/Ar_Preview";
 import Ar_Preview_6701 from "../Pages/Front/Ar/Ar_Preview_6701";
 import Ar_Preview_6702 from "../Pages/Front/Ar/Ar_Preview_6702";
 import Ar_Preview_test from "../Pages/Front/Ar/Ar_Preview_test";
+import Ar_Preview_num from "../Pages/Front/Ar/Ar_Preview_num";
 import FirstScene from '../Pages/Front/Ar/FirstScene';
 import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
 import WatchArticle from "../Components/WatchArticle";
@@ -77,6 +78,7 @@ function App() {
               <Route path="/login" element={<Login />} />
             </Route>
             <Route path="viewer" element={<EmptyPageLayout/> }>
+              <Route path=":id" element={<Ar_Preview_num/> }/>
               <Route path="6701" element={<Ar_Preview_6701/> }/>
               <Route path="6702" element={<Ar_Preview_6702/> }/>
               <Route path="test" element={<Ar_Preview_test/> }/>
