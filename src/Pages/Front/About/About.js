@@ -122,7 +122,7 @@ function About() {
                 <div className=' text-sm'>
                   02-2785-7037 <br />
                   info@moonshine.tw <br />
-                  3F, No.481, Sec. 6, Zhongxiao E. Rd., Nangang Dist., Taipei City 115, Taiwan (R.O.C.)
+                  4F., No. 188, Xingshan Rd., Neihu Dist., Taipei City, 11469, Taiwan (R.O.C.)
                 </div>
               </div>
               <div>
@@ -136,7 +136,7 @@ function About() {
                 <div className=' text-xl mb-5 font-bold'>MONTREAL</div>
                 <div className=' text-sm'>
                   Producer@moonshine.tw<br />
-                  1330 Rue Olier, apt 101, Montreal, QC H3C 1W4, Canada 
+                  800, rue du Square-Victoria, bureau 3500, Montréal, Québec H4Z 1E9
                 </div>
               </div>
             </div>
