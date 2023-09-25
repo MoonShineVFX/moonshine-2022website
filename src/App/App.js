@@ -39,6 +39,19 @@ import AdminHeader from '../Pages/Back/AdminHeader'
 import FullpageScroll from "../Pages/Front/Home/FullpageScroll";
 
 function App() {
+
+  const GoVPsite = () => {
+    // 不存在的網址
+    // const navigate = useNavigate();
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        window.location.href = 'https://vpxrstudio.com/';
+      }, 500); 
+    
+      return () => clearTimeout(timeout);
+    }, []);
+  };
+
   const NotFound = () => {
     // 不存在的網址
     const navigate = useNavigate();
@@ -50,7 +63,7 @@ function App() {
       return () => clearTimeout(timeout);
     }, [navigate]);
   };
-  
+
   useEffect(() => {
     setTimeout(function() {
         AOS.init({
@@ -63,9 +76,10 @@ function App() {
     <AuthProvider>
     <BrowserRouter>
       <Routes> 
-             
+            <Route path="/virtualproduction" element={<GoVPsite/> } />
+            <Route path="*" element={<NotFound />} />
             <Route path="/"  element={ <PublicPageLayout/>}>
-              <Route path="*" element={<NotFound />} />
+              
               <Route path="" element={<FullpageScroll />} />
               <Route path="/about" element={<About />} />
               <Route path="/work" element={<DefaultWork />} />
