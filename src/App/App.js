@@ -25,6 +25,7 @@ import Ar_Preview_6702 from "../Pages/Front/Ar/Ar_Preview_6702";
 import Ar_Preview_test from "../Pages/Front/Ar/Ar_Preview_test";
 import Ar_Preview_num from "../Pages/Front/Ar/Ar_Preview_num";
 import FirstScene from '../Pages/Front/Ar/FirstScene';
+import TtxcScene from "../Pages/Front/Ar/TtxcScene";
 import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
 import WatchArticle from "../Components/WatchArticle";
 //Back Pages
@@ -110,6 +111,7 @@ function App() {
               <Route path="6702" element={<Ar_Preview_6702/> }/>
               <Route path="test" element={<Ar_Preview_test/> }/>
               <Route path="/viewer" element={<FirstScene />} />
+              <Route path="ttxc" element={<TtxcScene />} />
               <Route path="ar" element={<Ar_Preview />} />
             </Route>
 
