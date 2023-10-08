@@ -13,7 +13,7 @@ function Ar_Preview_num() {
           camera-controls
           auto-rotate
           auto-play
-          ar ar-scale="fixed"
+          ar
           ar-modes="webxr scene-viewer quick-look"
           touch-action="pan-y"
           id="modelViewer"
