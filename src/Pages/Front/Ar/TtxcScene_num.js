@@ -335,7 +335,7 @@ function TtxcScene_num() {
 		const getFirstData = async(id)=>{
 			const data =  await (await fetch(`https://fullbodyscan-dev.msvfx.com/api/guest_fbs_photo_profile/${id}`,requestOptions_ttxc )).json()
 			console.log(data)
-			await loadModels(data.rigged_glb).load()
+			await loadModels(data.animated_model).load()
 		}
 	
 		const refreshUrlList = () =>{
