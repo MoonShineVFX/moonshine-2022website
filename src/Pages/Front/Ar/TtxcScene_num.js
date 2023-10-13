@@ -351,7 +351,7 @@ function TtxcScene_num() {
 			item.isVisible = false 
 		}
 		// createNexPrevtButton()
-		createRefreshButton()
+		// createRefreshButton()
 		createButtonGroup()
 		//開讀取最新資料
 		// getLatestData()
