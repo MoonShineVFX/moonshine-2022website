@@ -27,6 +27,7 @@ import Ar_Preview_num from "../Pages/Front/Ar/Ar_Preview_num";
 import Ar_Preview_cdn from "../Pages/Front/Ar/Ar_Preview_cdn";
 import FirstScene from '../Pages/Front/Ar/FirstScene';
 import TtxcScene from "../Pages/Front/Ar/TtxcScene";
+import TtxcScene_num from "../Pages/Front/Ar/TtxcScene_num";
 import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
 import WatchArticle from "../Components/WatchArticle";
 //Back Pages
@@ -90,7 +91,6 @@ function App() {
               <Route path="/works/:cSlug" element={<By_Category />} />
               <Route path="/watcharticle/:workid" element={<WatchArticle />} />
 
-
             </Route>
             
             <Route path="admin"  element={ <ProtectedRoutes/>}>
@@ -113,13 +113,10 @@ function App() {
               <Route path="test" element={<Ar_Preview_test/> }/>
               <Route path="/viewer" element={<FirstScene />} />
               <Route path="ttxc" element={<TtxcScene />} />
-              <Route path="ttxc/:id" element={<Ar_Preview_cdn/> }/>
+              <Route path="ttxc/character/:id" element={<TtxcScene_num />} />
+              <Route path="ttxc/modelviewer/:id" element={<Ar_Preview_cdn/> }/>
               <Route path="ar" element={<Ar_Preview />} />
             </Route>
-
-            
- 
-          
       </Routes>
     </BrowserRouter>
     </AuthProvider>
