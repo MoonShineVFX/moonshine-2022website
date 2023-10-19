@@ -1,5 +1,5 @@
-import React from 'react'
-import { useParams } from 'react-router-dom';
+import React,{useEffect, useState} from 'react'
+import { useParams,useNavigate } from 'react-router-dom';
 import { Vector3,Color3, HemisphericLight, MeshBuilder,ArcRotateCamera,Tools,SpotLight,AssetsManager,Axis,SceneLoader } from "@babylonjs/core";
 import {AdvancedDynamicTexture,Button} from '@babylonjs/gui';
 import SceneComponent from './SceneComponent'
@@ -8,6 +8,8 @@ import {requestOptions_ttxc} from './Helper'
 import  gsap from 'gsap'
 function TtxcScene_num() {
 	const { id } = useParams();
+	const navigate = useNavigate()
+	const [ dataList , setDataList] = useState({})
 	console.log(id)
 	let box;
 	var haveModelDataArray=[]
@@ -337,6 +339,7 @@ function TtxcScene_num() {
 			console.log(data)
 			await loadModels(data.animated_model).load()
 		}
+
 	
 		const refreshUrlList = () =>{
 			// idDataArray = []
@@ -360,6 +363,28 @@ function TtxcScene_num() {
 
 
 	};
+	const fetchNewList = async()=>{
+		let url = 'https://fullbodyscan-dev.msvfx.com/api/latest_fbs_photos_with_glb?latest=20'
+		const ids = await (await fetch(url, requestOptions_ttxc)).json()
+		setDataList(ids)
+	}
+	const handleParamChange = (newId) => {
+    navigate(`/viewer/ttxc/character/${newId}`); // 使用 history.push 来更改URL
+  };
+	function formatDateTime(dateTimeString) {
+		const date = new Date(dateTimeString);
+	
+		const year = date.getFullYear();
+		const month = (date.getMonth() + 1).toString().padStart(2, "0");
+		const day = date.getDate().toString().padStart(2, "0");
+		const hours = date.getHours().toString().padStart(2, "0");
+		const minutes = date.getMinutes().toString().padStart(2, "0");
+	
+		return `${year}/${month}/${day} ${hours}:${minutes}`;
+	}
+	useEffect(()=>{
+		fetchNewList()
+	},[])
 
 	/**
 	 * Will run on every frame render.  We are spinning the box on y-axis.
@@ -373,7 +398,23 @@ function TtxcScene_num() {
 	}
 	};
   return (
-    <div >
+    <div className=' relative'>
+				<div className=' absolute top-0 left-0 p-4'> 
+					<div className='bg-black/70 p-1'>
+						{dataList.length>0 && dataList.map((item,index)=>{
+							return(
+								<div 
+									className=' text-white/80 hover:text-white cursor-pointer'
+									onClick={()=>handleParamChange(item.id)}
+								>
+										{item.id} - 
+									 <span className='text-xs'>{formatDateTime(item.created_at)}</span> 
+								</div>
+							)
+						})}
+					</div>
+
+				</div>
         <SceneComponent antialias onSceneReady={onSceneReady} onRender={onRender} id="my-canvas" />
     </div>
   )
