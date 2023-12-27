@@ -28,6 +28,7 @@ import Ar_Preview_cdn from "../Pages/Front/Ar/Ar_Preview_cdn";
 import FirstScene from '../Pages/Front/Ar/FirstScene';
 import TtxcScene from "../Pages/Front/Ar/TtxcScene";
 import TtxcScene_num from "../Pages/Front/Ar/TtxcScene_num";
+import S168Scene_num from "../Pages/Front/Ar/S168Scene_num.js";
 import Home_mainCategory from "../Pages/Front/Home/Home_mainCategory";
 import WatchArticle from "../Components/WatchArticle";
 //Back Pages
@@ -114,6 +115,7 @@ function App() {
               <Route path="/viewer" element={<FirstScene />} />
               <Route path="ttxc" element={<TtxcScene />} />
               <Route path="ttxc/character/:id" element={<TtxcScene_num />} />
+              <Route path="s168/character/:id" element={<S168Scene_num />} />
               <Route path="ttxc/modelviewer/:id" element={<Ar_Preview_cdn/> }/>
               <Route path="ar" element={<Ar_Preview />} />
             </Route>

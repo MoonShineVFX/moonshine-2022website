@@ -15,6 +15,7 @@ jobs:
       REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
       REACT_APP_FULLBODY_TOKEN_KEY: ${{ secrets.FULLBODY_TOKEN_KEY }}
       REACT_APP_TTXC_TOKEN_KEY: ${{ secrets.TTXC_TOKEN_KEY }}
+      REACT_APP_S168_TOKEN_KEY: ${{ secrets.S168_TOKEN_KEY }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
