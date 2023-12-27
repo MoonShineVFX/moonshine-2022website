@@ -369,7 +369,7 @@ function S168Scene_num() {
 		setDataList(ids)
 	}
 	const handleParamChange = (newId) => {
-    navigate(`/viewer/ttxc/character/${newId}`); // 使用 history.push 来更改URL
+    navigate(`/viewer/s168/character/${newId}`); // 使用 history.push 来更改URL
   };
 	function formatDateTime(dateTimeString) {
 		const date = new Date(dateTimeString);
