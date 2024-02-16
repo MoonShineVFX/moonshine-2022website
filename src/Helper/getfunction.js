@@ -1,6 +1,6 @@
 // firebase 資料庫連線
 import db from '../firebaseConfig/firebase'
-import {collection, query,  getDocs,orderBy,where,limit,limitToLast,startAfter,endBefore,addDoc,deleteDoc,doc,updateDoc} from "firebase/firestore"
+import {collection, query,  getDocs,getDoc,setDoc,orderBy,where,limit,limitToLast,startAfter,endBefore,addDoc,deleteDoc,doc,updateDoc} from "firebase/firestore"
 import { getStorage, ref, getDownloadURL,  } from "firebase/storage";
 import { async } from '@firebase/util';
 const storage = getStorage();
@@ -249,13 +249,62 @@ export const deleteWork = async(uid,callback)=>{
 }
  export const updateWork = async (uid,currentData,callback)=>{
   const workDoc = doc(db , 'data' , uid)
-   
+  const docSnap = await getDoc(workDoc); 
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
     try {
       await updateDoc( workDoc ,currentData)
       callback('success')
     } catch (error) {
       callback(error)
     }
+  } else {
+    callback("No such document!");
+  }
+
+ }
+ export const updateWork_articleLayout = async (uid,layoutData,callback)=>{
+  const workDoc = doc(db , 'data' , uid)
+  const docSnap = await getDoc(workDoc); 
+  let object = {
+      "sort_num": "699",
+      "title": "ASUS ROG CITADEL XV 1.5",
+      "img": "1670493713038.jpg",
+      "intro": "監製：吳文琪 \n專案經理：臺芸萱\n工程師組長：莊紹睿\n程式設計：陳皇佑、蔡伃晴、陸奕、吳唯廉\n程式企劃：黃國益\n導演：姚江\n美術總監：張天鴻\n視覺設計：李文愷、陳韋誠、何荔芳、周靖\n概念設計：李柏權、鍾語桐、陳冠儒、林于庭、王建盛\n遊戲引擎美術：賴威辰、林于琇、舒寶萱、陳薈芸\n技術美術：林栩安\n動畫設計：林奇鋒、林廷穎、朱家靚、鄭力源、周敏雯、王鈞威、李紫晴、林佳盈、林宛儀、王建傑、郭柔均、杜綉靖、任永耀、李亞憲、李哲誠、高志豪、張斌祺、鄭為澤、許博翔、童浩毓、林木清、鍾孟穎、石均宇、安良啟、董怡汝、郭柏延、許閎硯、楊靖淳、林致遠、張惠珺、駱信宏、陳俊良、林昱燊、陳麗月、呂宜靜 ",
+      "article": true,
+      "video_url": "https://vimeo.com/779184103",
+      "year_of_work": "2022",
+      "category": "l42c134v",
+      "sub_category": "沒有子分類",
+      "display": "1",
+      "article_text": "ASUS ROG Citadel XV 1.5 continues the online virtual immersion experience introduced in the first chapter. In the lastest iteration, MOONSHINE has further updated and expanded the scope of the experience by incorporating \"game-like\" interactions. In the game, players will travel through the expansive underground fortress from a first-person perspective and test their aiming and reaction abilities by shooting down planes in space. In addition, there are a large number of realistic cutscenes hidden in each virtual space, allowing players to embark on a thrilling adventure in the ROG world.",
+      "article_images": [
+          "article02_p01.png",
+          "article02_p02.png",
+          "article02_p03.png",
+          "article02_p04.png",
+          "article02_p05.png"
+      ],
+      "id": "lbewprl8",
+      "time_added": "2022-12-08 17:58:48"
+  }
+    if(docSnap.exists()){
+      await updateDoc(workDoc, {
+        artlcle_layout: layoutData
+      }).then(() => {
+        console.log("Document successfully updated with added layoutData.");
+        callback('success')
+      }).catch((error) => {
+        console.error("Error updating document: ", error);
+        if(callback) callback(false, error);
+      });
+
+
+    }else{
+      console.log("No such document!create it");
+
+    }
+
  }
 
 

@@ -7,7 +7,12 @@ function WatchArticle() {
   const {workid} = useParams();
 	let navigate = useNavigate();
 	const [data ,setData] = useState(null)
-	console.log(workid)
+	console.log(data)
+	const gridColsClassMap = {
+    '1': 'grid-cols-1',
+    '2': 'grid-cols-2',
+    '3': 'grid-cols-3',
+  };
   useEffect(()=>{
 		if(!workid) return
 
@@ -25,7 +30,7 @@ function WatchArticle() {
 			{data &&
 				<div className=" relative aspect-video">
 					<ReactPlayer
-						url={data.video_url}
+						url={data.artlcle_layout ? data.artlcle_layout.artlcle_video_cover : data.video_url}
 						className='react-player'
 						playing
 						controls
@@ -36,40 +41,51 @@ function WatchArticle() {
 					/>
       	</div>
 			}
-			<div className='w-10/12 lg:w-8/12 mx-auto'>
+			<div className='w-10/12 lg:w-11/12 mx-auto'>
 				{
-					data ?
-						<div className='flex justify-center flex-col items-center relative'>
-							<div className=' text-lg lg:text-3xl font-normal mt-10 lg:mt-20 mb-6'>{data.title}</div>
+					data?.artlcle_layout  ?
+						<div className='flex justify-center flex-col  relative'>
+							<div className=' text-lg lg:text-3xl font-normal mt-10 lg:mt-20  text-white/80'>{data?.artlcle_layout.artlcle_title}</div>
 
-							{data.article_text &&
-								<div className='text-base my-10 leading-normal lg:my-20 lg:leading-8' data-aos="fade-up" data-aos-duration="1500">
-									{data.article_text}
+							{data.artlcle_layout &&
+								<div className='flex gap-8  lg:my-10 text-white/60'>
+									<div className='text-base leading-normal lg:leading-6  whitespace-pre-line w-1/2' data-aos="fade-up" data-aos-duration="1500">
+										<div className=' uppercase text-white mb-4 '>statement</div>
+										{data.artlcle_layout.artlcle_statement}
+
+									</div>
+									<div className='text-base leading-normal lg:leading-6  whitespace-pre-line w-1/2' data-aos="fade-up" data-aos-duration="1500">
+										<div className=' uppercase text-white mb-4'>description</div>
+										{data.artlcle_layout.artlcle_description}
+									</div>
+								</div>
+
+							}									
+
+							{data.artlcle_layout && 
+								<div className=' flex flex-col  justify-between'>
+									{data.artlcle_layout.article_imglist.map((item, index) => (
+										<div key={index} className='' data-aos="fade-up" data-aos-duration="1500"> {/* 使用外层的index作为key */}
+											{item.type === 'divider' ? (
+												<div className="my-2 border-t-2 border-gray-400"></div>
+											) : (
+												<div className={`grid ${gridColsClassMap[parseInt(item.type[0], 10)]} gap-4`}>
+													{item.imgurl.map((element, columnIdx) => (
+														<div key={index + '-' + columnIdx} className="mb-4 relative"> {/* 修改key为组合形式 */}
+															<img src={element} alt="" className='object-cover w-full h-full ' />
+														</div>
+													))}
+												</div>
+											)}
+										</div>
+									))}
 								</div>
 							}
 
-							{data.article_images&& 
-								<div className=' flex flex-wrap gap-y-10 justify-between'>
-									{data.article_images.map((item,index)=>{
-										return(
-											<div className='' data-aos="fade-up" data-aos-duration="1500">
-												<img src={'https://storage.googleapis.com/web-moonshine-2022.appspot.com/img_article/'+item} alt="" className='max-w-full'/>
-											</div>
-										)
-									})}
-								</div>
-							}
-							{
-								data.intro &&
-								<div className=' whitespace-pre-line text-base mt-20 leading-8 w-full' data-aos="fade-up" data-aos-duration="1500">
-										<div className='text-lg font-bold'>{data.title}</div>
-										{data.intro}
-								</div>
-							}
 
 						</div>
 
-					: <div>Loading..</div>
+					: <div className='text-white/50 text-sm mt-2'>尚未加入頁面內容..</div>
 				}
 			</div>
 		</section>

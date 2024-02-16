@@ -1,6 +1,6 @@
 import React, { useState, useEffect,Suspense } from 'react'
 import { useRecoilState } from 'recoil';
-import { formDisplayState,formStatusState,workState } from './atoms/fromTypes';
+import { formDisplayState,formStatusState,workState,workpagerDisplayState } from './atoms/fromTypes';
 
 //components
 import EditForm from './Components/EditForm';
@@ -9,11 +9,14 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 //helper
-import {getAllWorksForDashboard ,getCategory,getWorksByCategoryForDashboard, getNextWorkForDashboard,getPrevWorkForDashboard,createWork,deleteWork,updateWork} from '../../Helper/getfunction'
+import {getAllWorksForDashboard ,getCategory,getWorksByCategoryForDashboard, getNextWorkForDashboard,getPrevWorkForDashboard,createWork,deleteWork,updateWork,updateWork_articleLayout} from '../../Helper/getfunction'
 import {LoadingAnim} from '../../Helper/HtmlComponents'
 //檔案上傳方法
 import { useStorage } from "../../Helper/useStorage";
 import { useForm } from 'react-hook-form';
+
+//workpager layout modal
+import WorkPager from './Components/WorkPager';
 
 function Home() {
   const [workData, setWorkData] = useState([]);
@@ -31,6 +34,8 @@ function Home() {
   const [currentFilterCategory, setCurrentFilterCategory] = useState()
   const [currentFilterCategoryId, setCurrentFilterCategoryId] = useState('2')
   const [subCategoryDisplay , setSubCategoryDisaply] = useState('all')
+  const [showWorkpager, setShowWorkpager] = useRecoilState(workpagerDisplayState);
+  const [articleStarus, setArticleStatus] = useState('編輯中')
   const handleChange = (e)=>{
     console.log(e.target.value)
     setCurrentFilterCategoryId(e.target.value)
@@ -139,11 +144,25 @@ function Home() {
       fetchWorkDoneFun('新增資料失敗，錯誤訊息:',res)
     })
   }
+  const handleEditWorkArticleLayout = (uid,data)=>{
+    setArticleStatus('儲存中')
+    console.log(data)
+    updateWork_articleLayout(uid,data,function(res){
+      if(res === 'success'){
+        setArticleStatus('已儲存')
+      }else{
+        console.log(res)
+        setArticleStatus('儲存失敗')
+        fetchWorkDoneFun('編輯資料失敗，錯誤訊息:',res)
+      }
 
+    })
+  }
   const handleEditWork = (uid,data) =>{
     let selectedFile = data.file[0];
+    const fileExtension = selectedFile.name.split('.').pop();
     // 設定圖檔重新命名
-    const imgFileName = Date.now()+'.jpg'
+    const imgFileName = `${Date.now()}.${fileExtension}`
     let currentDataWithoutImg ={
       "title": data.title,
       "intro": data.intro,
@@ -340,6 +359,7 @@ function Home() {
 
 
       {showModal && <EditForm categoryData={categoryData} handleCreateWork={handleCreateWork} handleEditWork={handleEditWork} />}
+      <WorkPager showModal={showWorkpager} setShowModal={setShowWorkpager} handleEditWorkArticleLayout={handleEditWorkArticleLayout} status={articleStarus}/>
     </section>
     
 

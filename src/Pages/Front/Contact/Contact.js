@@ -41,8 +41,8 @@ function Contact() {
       }
   ]
   const center = {
-    lat: 25.0578151,
-    lng: 121.5803296
+    lat: 25.058695,
+    lng: 121.579339
   };
   return (
     <section id="contact">
@@ -57,7 +57,7 @@ function Contact() {
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
-              zoom={17}
+              zoom={17.5}
               options={{
                 disableDefaultUI: true,
                 styles: styles,
@@ -65,8 +65,8 @@ function Contact() {
             >
               <Marker 
                 position={{
-                  lat: 25.0578151,
-                  lng: 121.5803296
+                  lat: 25.058695,
+                  lng: 121.579339
                 }}
                 icon={process.env.PUBLIC_URL + '/images/MS_landmark.svg'}
               />
@@ -82,7 +82,10 @@ function Contact() {
                 <div className=' text-xl mb-5 font-bold'>TAIPEI</div>
                 <div className=' text-sm'>
                   info@moonshine.tw <br />
-                  4F., No. 188, Xingshan Rd., Neihu Dist., Taipei City, 11469, Taiwan (R.O.C.) <br /><br />
+                  5F., No. 188, Xingshan Rd., Neihu Dist., Taipei City, 11469, Taiwan (R.O.C.) <br />
+                  台北市內湖區行善路188號5樓
+                  <br />
+                  <br />
                   02-2785-7037 
                 </div>
               </div>
@@ -91,6 +94,8 @@ function Contact() {
                 <div className=' text-sm'>
                   info@moonshine.tw   <br />
                   A5CF., No. 1, Zhen'ai Rd., Yancheng Dist., Kaohsiung City 803003 , Taiwan (R.O.C.) 
+                  <br />
+                  高雄市鹽埕區真愛路1號 高流音浪塔
                 </div>
               </div>
               <div>

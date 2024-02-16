@@ -18,6 +18,7 @@ import Work from '../Pages/Front/Work/Work'
 import DefaultWork from '../Pages/Front/DefaultWork/DefaultWork';
 import Services from '../Pages/Front/Services/Services';
 import Contact from '../Pages/Front/Contact/Contact'
+import LinkBio from '../Pages/Front/LinkBio'
 import By_Category from '../Pages/Front/Work/By_Category';
 import Ar_Preview from "../Pages/Front/Ar/Ar_Preview";
 import Ar_Preview_6701 from "../Pages/Front/Ar/Ar_Preview_6701";
@@ -41,6 +42,9 @@ import AminContact from '../Pages/Back/Contact'
 import AdminHeader from '../Pages/Back/AdminHeader'
 
 import FullpageScroll from "../Pages/Front/Home/FullpageScroll";
+
+//react-admin
+
 
 function App() {
 
@@ -91,6 +95,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/works/:cSlug" element={<By_Category />} />
               <Route path="/watcharticle/:workid" element={<WatchArticle />} />
+              <Route path="/biolink" element={<LinkBio/>} />
 
             </Route>
             
@@ -103,6 +108,7 @@ function App() {
               <Route  path="contact" element={<AminContact/>} />
               <Route  path="headers" element={<AdminHeader/>} />
             </Route> 
+
 
             <Route path="login" element={<PublicRoutes />}>
               <Route path="/login" element={<Login />} />
@@ -120,6 +126,7 @@ function App() {
               <Route path="ar" element={<Ar_Preview />} />
             </Route>
       </Routes>
+
     </BrowserRouter>
     </AuthProvider>
 

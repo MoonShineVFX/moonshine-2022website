@@ -29,3 +29,9 @@ export const adminServiceState = atom({
   key: 'adminServiceState',
   default: null,
 });
+
+
+export const workpagerDisplayState = atom({
+  key: 'workpagerDisplayState',
+  default: false,
+});

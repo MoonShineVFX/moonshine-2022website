@@ -45,7 +45,9 @@ function Navbar_centerLogo({data ,nav_Work, toggleTrueFalse,socialmedia}) {
   return (
     <div id="navbar" className={`fixed top-0 w-full z-30 transition-all duration-500 ` + (stickyClass === true ? ' bg-black '  : ' bg-transparent '  )}>
       <div className='flex justify-between items-center mx-4 md:mx-10 my-5'>
-        <div className=" ">
+      
+        <div className="flex items-center gap-1">
+          <div className='w-3 h-3 bg-slate-400/10 hidden'></div>
           <Link
             to="/"
           >
