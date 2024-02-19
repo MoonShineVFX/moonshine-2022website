@@ -6,6 +6,7 @@ function Index() {
     {type:"Products",title:"moonland",link:"https://moonland.ai/",   image:"https://moonland.ai/favicon-32x32.png"},
     {type:"Products",title:"vpxr studio",link:"https://vpxrstudio.com/",                                      image:"https://vpxrstudio.com/images/space/space01.png"},
     {type:"Products",title:"moondream reality",link:"https://moondreamreality.com/",                          image:"https://moondreamreality.com/mrLogo287.png"},
+    {type:"Products",title:"vitag ",link:"https://vitag.net/",                          image:"https://r2.web.moonshine.tw/msweb/msimgs/vitag.png"},
     {type:"in-company",title:"夢想發光吧(cafe)",link:"https://cafe.moonshine.tw",                               image:"https://cafe.moonshine.tw//icon.png"},
     {type:"in-company",title:"Zulip",link:"https://chat.moonshine.tw/",                                       image:"https://moonshine.tw/msicon2022.png"},
     {type:"in-company",title:"KnowHow 知識",link:"https://knowhow.moonshine.tw/",                               image:"https://moonshine.tw/msicon2022.png"},
