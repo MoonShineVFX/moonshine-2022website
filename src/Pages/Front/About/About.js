@@ -122,7 +122,7 @@ function About() {
                 <div className=' text-sm'>
                   02-2785-7037 <br />
                   info@moonshine.tw <br />
-                  4F., No. 188, Xingshan Rd., Neihu Dist., Taipei City, 11469, Taiwan (R.O.C.)<br />
+                  5F., No. 188, Xingshan Rd., Neihu Dist., Taipei City, 11469, Taiwan (R.O.C.) <br />
                   台北市內湖區行善路188號5樓
                 </div>
               </div>
