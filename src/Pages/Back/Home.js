@@ -160,7 +160,7 @@ function Home() {
   }
   const handleEditWork = (uid,data) =>{
     let selectedFile = data.file[0];
-    const fileExtension = selectedFile.name.split('.').pop();
+    const fileExtension = selectedFile?.name.split('.').pop();
     // 設定圖檔重新命名
     const imgFileName = `${Date.now()}.${fileExtension}`
     let currentDataWithoutImg ={
