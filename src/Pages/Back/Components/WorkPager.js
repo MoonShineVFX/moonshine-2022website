@@ -371,8 +371,8 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
                 </div>
                 <div className='text-xs text-zinc-500 my-2'>
                     Gif 動畫檔案，請盡可能壓縮在 16mb 以下(建議值: 15 frames/sec,800x450 pixel) <br />
-                    Jpg 圖片檔案單獨大張，請盡可能壓縮在 1mb 以下(建議值: > 2000x1126 pixel) <br />
-                    Jpg 圖片檔案雙邊兩張，請盡可能壓縮在 256kb 以下(建議值: > 1000x568 pixel) <br />
+                    Jpg 圖片檔案單獨大張，請盡可能壓縮在 1mb 以下(建議值:小於 2000x1126 pixel) <br />
+                    Jpg 圖片檔案雙邊兩張，請盡可能壓縮在 256kb 以下(建議值:小於 1000x568 pixel) <br />
                   </div>
                 <div className="my-4">
                   {renderItems()}
