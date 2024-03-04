@@ -72,7 +72,14 @@ function WatchArticle() {
 												<div className={`grid ${gridColsClassMap[parseInt(item.type[0], 10)]} gap-4`}>
 													{item.imgurl.map((element, columnIdx) => (
 														<div key={index + '-' + columnIdx} className="mb-4 relative"> {/* 修改key为组合形式 */}
-															<img src={element} alt="" className='object-cover w-full h-full ' />
+															{element.displayType === 'image' ? (
+																<img src={element.url} alt="" className='object-cover w-full h-full ' />
+															) : (
+																<div className='text-base leading-normal lg:leading-6  whitespace-pre-line lg:my-10 text-white/60' data-aos="fade-up" data-aos-duration="1500">{element.text}</div>
+															)
+
+															}
+															
 														</div>
 													))}
 												</div>

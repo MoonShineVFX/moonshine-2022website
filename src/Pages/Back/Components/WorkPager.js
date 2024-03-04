@@ -36,7 +36,7 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
       ...data, // 包含 artlcle_video_cover, artlcle_title, artlcle_statement, artlcle_description
       article_imglist: imgList, // 将 imgList 直接加入
     };
-    handleEditWorkArticleLayout(work.uid,submissionData)
+    handleEditWorkArticleLayout(work.uid,submissionData)  
     console.log(submissionData);
   };
   const handleChange = (e) => {
@@ -45,13 +45,13 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
   }
   const addItem = (type) => {
     let newItem = { type: type };
-
+    const initialImgUrl = { url: "", displayType: "image", text: "" };
     if (type === '1column') {
-      newItem.imgurl = [];
+      newItem.imgurl = [ {...initialImgUrl} ];
     } else if (type === '2column') {
-      newItem.imgurl = [];
+      newItem.imgurl = [ {...initialImgUrl}, {...initialImgUrl} ];
     } else if (type === '3column') {
-      newItem.imgurl = [];
+      newItem.imgurl = [ {...initialImgUrl}, {...initialImgUrl}, {...initialImgUrl} ];
     }
 
     setImgList([...imgList, newItem]);
@@ -90,24 +90,49 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
                         <div className="my-2 border-t-2 border-gray-400"></div>
                       ) : (
                         <div className={`grid ${gridColsClassMap[parseInt(item.type[0], 10)]} gap-2`}>
+                         
                           {Array.from({ length: parseInt(item.type[0], 10) }).map((_, imgIdx) => {
                             const imgUrl = item.imgurl[imgIdx];
                             return (
                               <div key={imgIdx} className="flex flex-col items-center justify-center p-4 border-2 border-gray-300 border-dashed rounded-md relative">
-                                {imgUrl ? (
+                                {imgUrl && imgUrl.displayType === 'image' ? (
                                   <>
-                                    <img src={imgUrl} alt={`Column ${imgIdx + 1}`} className="w-full h-auto" />
+                                    <img src={imgUrl.url} alt={`Column ${imgIdx + 1}`} className="w-full h-auto" />
                                     <label className="cursor-pointer bg-zinc-200 hover:bg-zinc-300 rounded-md py-2 px-3 mt-1 text-sm ">
-                                      <span className='  '>再次選擇圖片</span>
+                                      <span className='  '>選擇圖片</span>
+    
                                       <input
                                         type="file"
                                         onChange={(e) => handleFileChange(e, columnIdx, imgIdx)}
                                         className=" mt-1 cursor-pointer hidden "
 
                                       />
+
                                     </label>
+                                    <button 
+                                      onClick={(e)=>handleToggleDisplayType(columnIdx, imgIdx)}
+                                      className="px-2 py-1 bg-blue-500 text-white rounded-md absolute  top-0 left-0 text-xs">切換型態
+                                    </button>
+                                    
 
                                   </>
+                                ) : imgUrl && imgUrl.displayType === 'text' ? (
+                                  <>
+                                    <div className=" w-full h-32 flex items-center relative">
+                                      <textarea
+                                        value={imgUrl.text}
+                                        onChange={(e) => handleTextChange(e, columnIdx, imgIdx)}
+                                        className="w-full h-32 p-2 border"
+                                        placeholder="請輸入文字內容"
+                                      />
+                                    </div>
+                                    <button 
+                                      onClick={(e)=>handleToggleDisplayType(columnIdx, imgIdx)}
+                                      className="px-2 py-1 bg-blue-500 text-white rounded-md absolute  top-0 left-0 text-xs">切換型態
+                                    </button>
+                                  </>
+
+
                                 ) : (
                                   <div className="bg-zinc-200 hover:bg-zinc-300  w-full h-32 flex items-center justify-center">
                                     <label className="cursor-pointer">
@@ -117,7 +142,12 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
                                         onChange={(e) => handleFileChange(e, columnIdx, imgIdx)}
                                         className="hidden"
                                       />
+                                      <button 
+                                        onClick={(e)=>handleToggleDisplayType(columnIdx, imgIdx)}
+                                        className="px-2 py-1 bg-blue-500 text-white rounded-md absolute  top-0 left-0 text-xs">切換型態
+                                      </button>
                                     </label>
+                                   
                                   </div>
                                 )}
                               </div>
@@ -125,7 +155,7 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
                           })}
                         </div>
                       )}
-                      <button onClick={() => handleDeleteItem(columnIdx)} className="mt-2 px-4 py-2 bg-red-500 text-white rounded-md absolute right-0 top-0">Delete</button>
+                      <button onClick={() => handleDeleteItem(columnIdx)} className=" px-2 py-1 bg-red-500 text-white rounded-md absolute right-0 top-0 text-xs">Delete</button>
                     </div>
                   )}
                 </Draggable>
@@ -137,6 +167,8 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
       </DragDropContext>
     );
   };
+
+  //上傳圖片的方法
   const handleFileChange = (e,columnIdx, imgIdx) => {
     console.log(e,columnIdx, imgIdx)
     const file = e.target.files[0];
@@ -157,13 +189,13 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
   
         // 确保 imgurl 数组足够长
         while (targetColumn.imgurl.length <= imgIdx) {
-          targetColumn.imgurl.push(null);
+          targetColumn.imgurl.push({ url: "", displayType: "image", text: "" });
         }
-        // 更新图片 URL
-        targetColumn.imgurl[imgIdx] = uploadedImageUrl;
-        // 将更新后的列对象放回新列表中
+        // 更新目标图片对象的URL
+        const updatedImgItem = { ...targetColumn.imgurl[imgIdx], url: uploadedImageUrl };
+        targetColumn.imgurl[imgIdx] = updatedImgItem;
         newImgList[columnIdx] = targetColumn;
-  
+
         return newImgList;
       });
       setFile({
@@ -179,16 +211,89 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
       setUploadingIndex({ columnIdx, imgIdx });
     }
   };
+  //切換input型態的方法
+  const handleToggleDisplayType = (columnIdx, imgIdx) => {
+    setImgList(prevImgList => {
+      // 创建新数组的浅拷贝
+      const newImgList = [...prevImgList];
+      // 深拷贝需要更新的列对象
+      const targetColumn = { ...newImgList[columnIdx] };
+      // 深拷贝 imgurl 数组
+      targetColumn.imgurl = [...targetColumn.imgurl];
+      
+      // 获取当前项
+      const currentItem = targetColumn.imgurl[imgIdx];
+      // 判断当前显示类型，并切换
+      if (currentItem) {
+        const newDisplayType = currentItem.displayType === 'image' ? 'text' : 'image';
+        // 更新 displayType，如果是切换到 text，清空 url，如果切换到 image，清空 text
+        const updatedItem = { ...currentItem, displayType: newDisplayType, url: newDisplayType === 'image' ? currentItem.url : '', text: newDisplayType === 'text' ? currentItem.text : '' };
+        targetColumn.imgurl[imgIdx] = updatedItem;
+      }
+  
+      // 将更新后的列对象放回新列表中
+      newImgList[columnIdx] = targetColumn;
+  
+      return newImgList;
+    });
+  };
+  //處理下方為文字欄位的時候 更新內容
+  const handleTextChange = (e, columnIdx, imgIdx) => {
+    // 获取用户输入的文本
+    const newText = e.target.value;
+  
+    // 创建 imgList 的深拷贝以避免直接修改状态
+    const newImgList = [...imgList];
+  
+    // 确保目标项存在，并且有 imgurl 数组
+    if (newImgList[columnIdx] && newImgList[columnIdx].imgurl) {
+      // 如果该位置已有对象，则更新其 text 属性；否则，创建一个新对象
+      if (newImgList[columnIdx].imgurl[imgIdx]) {
+        newImgList[columnIdx].imgurl[imgIdx] = {
+          ...newImgList[columnIdx].imgurl[imgIdx],
+          text: newText, // 更新文本内容
+          displayType: 'text' // 确保显示类型为文本
+        };
+      } else {
+        // 如果该位置是空的，则创建一个新的包含文本内容的对象
+        newImgList[columnIdx].imgurl[imgIdx] = { text: newText, displayType: 'text' };
+      }
+      
+      // 更新状态以反映变化
+      setImgList(newImgList);
+    }
+  };
+  //偵測資料比變更完成 逼芳說圖片上傳完或文字已更新 變更資料的方法
   useEffect(() => {
     if (onlineUrl && uploadingIndex !== null) {
-      // 根据上传索引更新 imgList 中对应的图片 URL
       const { columnIdx, imgIdx } = uploadingIndex;
-      const newImgList = [...imgList];
-      newImgList[columnIdx].imgurl[imgIdx] = onlineUrl; // 使用真实上传后的 URL 替换临时 URL
-      setImgList(newImgList);
+      setImgList(prevImgList => {
+        // 创建新数组的浅拷贝
+        const newImgList = [...prevImgList];
+        // 深拷贝需要更新的列对象
+        const targetColumn = { ...newImgList[columnIdx] };
+        // 深拷贝 imgurl 数组
+        targetColumn.imgurl = [...targetColumn.imgurl];
+        
+        // 确保 imgurl 数组足够长
+        if (targetColumn.imgurl[imgIdx]) {
+          // 更新目标图片对象的URL，保留其他属性
+          const updatedImgItem = { 
+            ...targetColumn.imgurl[imgIdx], 
+            url: onlineUrl // 使用真实上传后的 URL 替换临时 URL
+          };
+          targetColumn.imgurl[imgIdx] = updatedImgItem;
+        }
+        
+        // 将更新后的列对象放回新列表中
+        newImgList[columnIdx] = targetColumn;
+        
+        return newImgList;
+      });
+      
       setUploadingIndex(null); // 重置上传索引
     }
-  }, [onlineUrl]);
+  }, [onlineUrl]); 
 
 
   const backdropVariants = {
@@ -264,6 +369,11 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
                   <button onClick={() => addItem('3column')} className='border rounded-md  px-2 py-1 hover:bg-blue-700'>3 Column</button>
                   <button onClick={() => addItem('divider')} className='border rounded-md  px-2 py-1 hover:bg-blue-700'>divider</button>
                 </div>
+                <div className='text-xs text-zinc-500 my-2'>
+                    Gif 動畫檔案，請盡可能壓縮在 16mb 以下(建議值: 15 frames/sec,800x450 pixel) <br />
+                    Jpg 圖片檔案單獨大張，請盡可能壓縮在 1mb 以下(建議值: > 2000x1126 pixel) <br />
+                    Jpg 圖片檔案雙邊兩張，請盡可能壓縮在 256kb 以下(建議值: > 1000x568 pixel) <br />
+                  </div>
                 <div className="my-4">
                   {renderItems()}
                 </div>
