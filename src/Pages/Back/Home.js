@@ -137,7 +137,7 @@ function Home() {
       "category":data.category ? data.category : '1',
       "sub_category":data.sub_category ? data.sub_category : '1',
       "article":data.article?data.article: false ,
-      "article_text": data.article_text,
+      "article_text": data.article_text?data.article_text : '',
     }
     createWork(currentData,function(res){
       console.log(res)
