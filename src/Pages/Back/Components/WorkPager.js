@@ -45,7 +45,7 @@ function WorkPager({ showModal, setShowModal,handleEditWorkArticleLayout,status 
   }
   const addItem = (type) => {
     let newItem = { type: type };
-    const initialImgUrl = { url: "", displayType: "image", text: "" };
+    const initialImgUrl = { url: "https://placehold.jp/9e9e9e/ffffff/300x150.png?text=image%20here", displayType: "image", text: "" };
     if (type === '1column') {
       newItem.imgurl = [ {...initialImgUrl} ];
     } else if (type === '2column') {
