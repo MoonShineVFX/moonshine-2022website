@@ -2,10 +2,10 @@
 
 :root {
   --main-bg-color: #000;
-  --white:#ffF;
-  --grey:#969696;
-  --main-color01:#5257CF;
-  --main-p-font-size:8pt;
+  --white: #fff;
+  --grey: #969696;
+  --main-color01: #5257cf;
+  --main-p-font-size: 8pt;
   --h1-fontsize: 18pt;
 }
 /* Scroll Bar */
@@ -15,7 +15,7 @@
 ::-webkit-scrollbar-track {
   background-color: #3c3c3c;
   border-radius: 5px;
-} 
+}
 ::-webkit-scrollbar-thumb {
   background-color: #666;
   border-radius: 5px;
@@ -27,174 +27,167 @@
 ::-webkit-scrollbar-corner {
   background-color: #555;
 }
-body{
+body {
   margin: 0;
   padding: 0;
   background: #000;
-  color:white;
+  color: white;
 }
-ul,li {
+ul,
+li {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-a{
+a {
   text-decoration: none;
-  color:var(--white)
+  color: var(--white);
 }
-.home_header{
+.home_header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 15px;
-  &.center{
+  &.center {
     text-align: center;
     justify-content: center;
   }
-  h1{
+  h1 {
     font-size: var(--h1-fontsize);
     margin: 0;
   }
-  .more{
+  .more {
     font-size: var(--main-p-font-size);
-    color:var(--grey);
+    color: var(--grey);
     font-weight: 100;
   }
-  .desc{
+  .desc {
     font-size: var(--main-p-font-size);
-    color:var(--grey);
+    color: var(--grey);
     font-weight: 100;
     text-align: right;
   }
 }
 
-#home{
-
-  .home_container{
+#home {
+  .home_container {
     width: 80%;
-    margin:0 auto;
+    margin: 0 auto;
     position: relative;
     margin-top: -150px;
     z-index: 9;
   }
-  #Newest{
-
-    .newest_list{
+  #Newest {
+    .newest_list {
       display: flex;
       width: 100%;
 
       // justify-content: center;
       // align-items: center;
-      &:hover .newest_item:not(:hover){
-        filter:brightness(0.5)
+      &:hover .newest_item:not(:hover) {
+        filter: brightness(0.5);
       }
 
-      .newest_item{
+      .newest_item {
         flex: 1;
         position: relative;
-        margin:0.5%;
+        margin: 0.5%;
         background-repeat: no-repeat;
-        background-position:  center;
+        background-position: center;
         background-size: cover;
         transition: 250ms all;
-        padding-top:11%;
+        padding-top: 11%;
         cursor: pointer;
         &:first-child {
-          margin-left:0;
+          margin-left: 0;
         }
 
-        &:last-child{
+        &:last-child {
           margin-right: 0;
         }
-        &:hover{
+        &:hover {
           transform: scale(1.2);
           opacity: 1;
-          margin:0 1.8%;
+          margin: 0 1.8%;
           z-index: 1;
-
-        }
-      
-        &:first-child:hover{
-          margin:0 1.8%;
         }
 
-        &:last-child:hover{
-            margin:0 1.8%;
+        &:first-child:hover {
+          margin: 0 1.8%;
         }
-        .title{
+
+        &:last-child:hover {
+          margin: 0 1.8%;
+        }
+        .title {
           position: absolute;
-          left:5px;
-          bottom:5px;
+          left: 5px;
+          bottom: 5px;
           font-size: 8pt;
         }
-
       }
     }
   }
-  #Home_services{
-    .service_list{
-      .service_item{
-        &.active{
+  #Home_services {
+    .service_list {
+      .service_item {
+        &.active {
           flex: 10;
           filter: contrast(120%);
         }
-        &:before{
-          content: '';
+        &:before {
+          content: "";
           position: absolute;
-          top: 0;left: 0;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
           background: rgba(0, 0, 0, 0.27);
         }
-        
       }
     }
   }
-  #home_about{
-    .home_about_container{
-
-      .content{
-
+  #home_about {
+    .home_about_container {
+      .content {
         background: rgba(28, 28, 28, 0.685);
-        padding:35px 20px;
+        padding: 35px 20px;
         z-index: 1;
-        .title{
+        .title {
           font-size: 20px;
           font-weight: bold;
           margin-bottom: 15px;
         }
-        .desc{
+        .desc {
           font-size: 13px;
           font-weight: 100;
-          color:#ddd;
+          color: #ddd;
           line-height: 18px;
         }
       }
-      .image_cover{
+      .image_cover {
         margin-left: 150px;
-        padding-top:25%;
+        padding-top: 25%;
         position: relative;
         background-repeat: no-repeat;
-        background-position:  center;
+        background-position: center;
         background-size: cover;
       }
     }
   }
-  #award{
-    .award_list{
-
-      li{
-        img{
+  #award {
+    .award_list {
+      li {
+        img {
           width: 100px;
         }
-        
       }
     }
   }
 }
 
-
-.vimeo-wrapper , .img-wrapper {
+.vimeo-wrapper,
+.img-wrapper {
   position: absolute;
   top: 0px;
   left: 0;
@@ -204,10 +197,10 @@ a{
   pointer-events: none;
   overflow: hidden;
   background-repeat: repeat;
-    background-position: center center;
-  
-  &:before{
-    content:'';
+  background-position: center center;
+
+  &:before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -216,9 +209,8 @@ a{
     background: rgba(0, 0, 0, 0.5);
     z-index: 2;
     visibility: hidden;
-
   }
-  .react-player{
+  .react-player {
     position: absolute;
     top: 0;
     left: 0;
@@ -229,10 +221,6 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  .imgbg{
-
-
   }
 }
 .vimeo-wrapper iframe {
@@ -246,7 +234,8 @@ a{
   transform: translate(-50%, -50%);
 }
 .footer {
-  font-family: 'Roboto Slab', "微軟正黑體" ,"Microsoft JhengHei","儷黑 Pro","LiHei Pro","文泉驛正黑", "WenQuanYi Zen Hei",serif;
+  font-family: "Roboto Slab", "微軟正黑體", "Microsoft JhengHei", "儷黑 Pro",
+    "LiHei Pro", "文泉驛正黑", "WenQuanYi Zen Hei", serif;
   color: white;
   font-size: 13px;
   padding-bottom: 25px;
@@ -255,8 +244,8 @@ a{
   .companyInfo {
     margin-top: 30px;
     font-size: 12px;
-    color:#ddd;
-    p{
+    color: #ddd;
+    p {
       margin-top: 5px;
       margin-bottom: 5px;
     }
@@ -269,7 +258,7 @@ a{
     border-bottom: 1px solid #e5e7eb70;
     .social {
       margin-right: 25px;
-      a{
+      a {
         opacity: 0.8;
         transition: 0.2s;
         img {
@@ -277,14 +266,14 @@ a{
           vertical-align: bottom;
           transition: 0.2s;
         }
-        &:hover{
+        &:hover {
           opacity: 1;
-        }  
-      } 
+        }
+      }
     }
-    .mslogo{
+    .mslogo {
       margin-left: auto;
-      img{
+      img {
         width: 137px;
         vertical-align: bottom;
       }
@@ -298,6 +287,6 @@ a{
   }
 }
 
-@import 'header';
-@import 'navbar';
-@import 'about';
+@import "header";
+@import "navbar";
+@import "about";
