@@ -21,6 +21,7 @@ function Ar_Preview_cdn() {
         camera-controls
         auto-rotate
         auto-play
+        autoplay
         ar
         ar-modes="webxr scene-viewer quick-look"
         touch-action="pan-y"
