@@ -18,7 +18,7 @@ export const requestOptions_openday = {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
-    Authorization: process.env.REACT_APP_ONENDAY_TOKEN_KEY,
+    Authorization: process.env.REACT_APP_OPENDAY_TOKEN_KEY,
   },
 };
 
