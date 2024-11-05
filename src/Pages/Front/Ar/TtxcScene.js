@@ -63,13 +63,13 @@ function TtxcScene() {
     SceneLoader.ImportMesh(
       "",
       `${process.env.PUBLIC_URL + "/sources/"}`,
-      "rock.glb",
+      "rwp.glb",
       scene,
       function (newMeshes) {
         // Set the target of the camera to the first imported mesh
         // camera.target = newMeshes[0];
         newMeshes[0].scaling = new Vector3(2, 1, 2);
-        newMeshes[0].position = new Vector3(0, -1.5, 0);
+        newMeshes[0].position = new Vector3(0, -1.65, 0);
         var a = scene.getMeshByName("RockFlyPt1");
         var b = scene.getMeshByName("RockFlyPt2");
         console.log(a.material);
