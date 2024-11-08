@@ -41,7 +41,7 @@ function TtxcScene() {
     camera.wheelPrecision = 100;
     //custom Scene
     // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
-    scene.clearColor = Color3.FromHexString("#1d1d1d");
+    scene.clearColor = Color3.FromHexString("#666666");
     //Adding a light
     var light = new HemisphericLight("hemi", new Vector3(0, 1, 0), scene);
     light.intensity = 1;
@@ -371,11 +371,11 @@ function TtxcScene() {
         }
       });
       console.log(newArray);
-      loadModels(haveModelDataArray[0].rigged_glb).load();
+      loadModels(haveModelDataArray[0].animated_model).load();
     };
     const swapObject = async (num) => {
       // glbUrl = await fetchGetObject(num)
-      await loadModels(haveModelDataArray[num].rigged_glb).load();
+      await loadModels(haveModelDataArray[num].animated_model).load();
     };
     const fetchDataList = async () => {
       let url =
