@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import ReactFullpage from '@fullpage/react-fullpage';
 //import units
 import Home_mainCategory from './Home_mainCategory';
@@ -7,14 +7,20 @@ import Home_mainService from './Home_mainService';
 import Footer from '../../../Components/Footer';
 import footerData from '../../../Components/footer.json'
 import socialMediaData from '../../../Components/socialitemData.json'
-import partnerjsonData from '../../../Components/partnerItem.json'
-import awardjsonData from '../../../Components/awardItem.json'
+import { getAwards } from '../../../Helper/getfunction'
 import { sectionState } from '../../../atoms/modalAtom';
 import { useRecoilState } from 'recoil';
+
 function FullpageScroll(){
   const {socialmedia} = socialMediaData
-  const {award} = awardjsonData
+  const [awardData, setAwardData] = useState([]);
   const [currentPage, setCurrentPage] = useRecoilState(sectionState);
+
+  useEffect(() => {
+    getAwards((res) => {
+      setAwardData(res || []);
+    });
+  }, []);
 
   return(
     <ReactFullpage
@@ -40,7 +46,7 @@ function FullpageScroll(){
               <Home_mainService />
             </div>
             <div className='section fp-auto-height'>
-              <Footer footerData={footerData} socialmedia={socialmedia} awardData={award}/>
+              <Footer footerData={footerData} socialmedia={socialmedia} awardData={awardData}/>
             </div>
           </ReactFullpage.Wrapper>
         );

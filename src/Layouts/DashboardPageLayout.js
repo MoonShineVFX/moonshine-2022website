@@ -4,18 +4,15 @@ import AdminNavbar from '../Pages/Back/Components/AdminNavbar';
 import { RecoilRoot } from 'recoil';
 function DashboardPageLayout() {
   return (
-    <React.Fragment>
-      <RecoilRoot>
-        <div className='flex bg-gray-50'>
-          <AdminNavbar />
+    <RecoilRoot>
+      <div className='flex min-h-screen w-full bg-gray-50'>
+        <AdminNavbar />
+        <main className='flex-1 min-h-screen bg-white'>
           <Outlet />
-        </div>
-      </RecoilRoot>
-
-
-    </React.Fragment>
+        </main>
+      </div>
+    </RecoilRoot>
   )
-
 }
 
 export default DashboardPageLayout

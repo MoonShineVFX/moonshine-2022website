@@ -79,6 +79,34 @@ export const useStorage = (file) => {
     return { progress, url, error};
 };
 
+/** 影片上傳（不壓縮，直接傳 Storage） */
+export const useVideoStorage = (file) => {
+    const [progress, setProgress] = useState(0);
+    const [error, setError] = useState(null);
+    const [url, setUrl] = useState(null);
+
+    useEffect(() => {
+        if (!file) return;
+
+        const storageRef = ref(db, file.folder + file.filename);
+        const uploadTask = uploadBytesResumable(storageRef, file.file, {
+            contentType: file.file.type || 'video/mp4',
+        });
+
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            },
+            (err) => setError(err),
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then(setUrl);
+            }
+        );
+    }, [file]);
+
+    return { progress, url, error };
+};
+
 
 
 export const useImageUrl = (img)=>{

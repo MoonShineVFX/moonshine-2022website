@@ -102,6 +102,33 @@ const mapDataWithImage =async (folder,data , callback)=>{
   // setWorkData(await Promise.all(twoarr))
   // setFilteredWorkData(await Promise.all(twoarr))
 }
+
+const getStorageUrl = async (folder, filename) => {
+  if (!filename) return undefined;
+  try {
+    return await getDownloadURL(ref(storage, `${folder}/${filename}`));
+  } catch {
+    return undefined;
+  }
+};
+
+const mapCategoryWithAssets = async (data, imgFolder, callback) => {
+  const sorted = [...data].sort((a, b) => Number(b.sort_num) - Number(a.sort_num));
+  const result = await Promise.all(sorted.map(async (element) => {
+    const imgpath = await getStorageUrl(imgFolder, element.img);
+    const posterpath = await getStorageUrl('img_home', element.video_poster);
+    const coverFromStorage = await getStorageUrl('video_category_cover', element.cover_video_file);
+    const headerFromStorage = await getStorageUrl('video_category_header', element.header_video_file);
+    return {
+      ...element,
+      imgpath,
+      posterpath,
+      cover_video: coverFromStorage || element.cover_video || '',
+      video_url: headerFromStorage || element.video_url || '',
+    };
+  }));
+  callback(result);
+};
 const mapDataWithUid = async (data, callback)=>{
   let dataSorted = data.sort(function(a, b) {
     return b.sort_num - a.sort_num;
@@ -121,13 +148,17 @@ const mapDataWithUid = async (data, callback)=>{
  * 不用處理圖片路徑的 直接 set
  * **/ 
  export const getCategory = async (callback)=>{
-  const q = query(collection(db, "category"), where("display", "==", '1'))
-  const data = await getDocs(q);
-  // mapCategoryData(data.docs.map(doc=> doc.data()))
-  // callback(data.docs.map(doc=> doc.data()))
-  mapDataWithImage('data',data.docs.map(doc=> doc.data()),function(res){
-    callback(res)
-  })
+  try {
+    const q = query(collection(db, "category"), orderBy('sort_num', 'desc'))
+    const data = await getDocs(q);
+    const visible = data.docs
+      .map(doc => doc.data())
+      .filter(item => String(item.display) === '1');
+    mapCategoryWithAssets(visible, 'data', callback);
+  } catch (error) {
+    console.error('getCategory failed:', error);
+    callback([]);
+  }
 }
 
 
@@ -312,12 +343,7 @@ export const deleteWork = async(uid,callback)=>{
  export const getAllCategoryForDashboard = async (callback)=>{
   const q = query(collection(db, "category"),orderBy('sort_num' , 'desc'))
   const data = await getDocs(q);
-  // mapDataWithUid(data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
-  //   callback(res)
-  // })
-  mapDataWithImage('img_category',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
-    callback(res)
-  })
+  mapCategoryWithAssets(data.docs.map(doc=> ({...doc.data(),uid:doc.id})), 'img_category', callback)
 }
 
 export const createCategory = async (data , callback)=>{
@@ -352,11 +378,29 @@ const categoryDoc = doc(db , 'category' , uid)
 
 // admin Award
 export const getAwardForDashboard = async (callback) => {
-  const q = query(collection(db, "awards"))
+  const q = query(collection(db, "awards"), orderBy('sort_num', 'desc'))
   const data = await getDocs(q);
   mapDataWithImage('img_award',data.docs.map(doc=> ({...doc.data(),uid:doc.id})),function(res){
     callback(res)
   })
+}
+
+/** 前台首頁獎項：僅 display === '1'，依 sort_num 排序 */
+export const getAwards = async (callback) => {
+  try {
+    // 與後台相同查詢，避免 where+orderBy 需額外 composite index 導致查詢失敗
+    const q = query(collection(db, "awards"), orderBy('sort_num', 'desc'))
+    const data = await getDocs(q);
+    const visible = data.docs
+      .map(doc => doc.data())
+      .filter(item => String(item.display) === '1');
+    mapDataWithImage('img_award', visible, function(res) {
+      callback(res)
+    })
+  } catch (error) {
+    console.error('getAwards failed:', error)
+    callback([])
+  }
 }
 
 export const createAward = async (data , callback)=>{

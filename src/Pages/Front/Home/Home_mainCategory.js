@@ -44,7 +44,7 @@ function Home_mainCategory() {
         {
           categoryData ? 
           categoryData.map((item,index)=>{
-            const{id, name, name_cht, display, imgpath, cover_video, slug,video_poster } = item
+            const{id, name, display, cover_video, slug, video_poster, posterpath } = item
             return display === '1' ? 
               <Link key={name+id} 
                   to={"/works/"+slug}
@@ -54,12 +54,11 @@ function Home_mainCategory() {
                     }
                   }
                   className=" relative cursor-pointer  text-white md:text-[1.6rem] bg-no-repeat bg-cover bg-center flex justify-center items-center tracking-[.15em] hover:tracking-[.25em] transition-all    "
-                  // style={{backgroundImage : `url(${imgpath})`}}
               >
      
                   <VideoContainer url={cover_video}  /> 
                   <div className='video_img_cover block lg:hidden bg-center bg-cover bg-no-repeat h-screen  max-h-[25vh] w-full brightness-75'
-                    style={{backgroundImage : `url(${process.env.PUBLIC_URL+'/images/home/'+video_poster})`}}
+                    style={{backgroundImage : `url(${posterpath || (video_poster ? process.env.PUBLIC_URL+'/images/home/'+video_poster : '')})`}}
                   >
                   </div>
 
