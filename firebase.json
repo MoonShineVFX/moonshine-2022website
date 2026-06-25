@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "web-moonshine-2022",
     "public": "build",
     "ignore": [
       "firebase.json",

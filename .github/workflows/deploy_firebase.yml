@@ -56,8 +56,8 @@ jobs:
           name: node-build
           path: build
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@v13.29.0
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting --project web-moonshine-2022 --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
